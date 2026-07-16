@@ -177,7 +177,7 @@ em{font-style:italic;}
 .statute-note{font-size:12px; line-height:1.7; color:var(--ink-72); margin:0 0 34px; padding:15px 20px; border-left:3px solid var(--accent); background:var(--surface-2); border-radius:0 var(--radius) var(--radius) 0;}
 
 /* section header — serif italic + pipe + kicker */
-.sec-head{display:flex; align-items:baseline; gap:16px; padding-bottom:14px; border-bottom:1px solid var(--line-strong); margin:0 0 30px;}
+.sec-head{display:flex; align-items:baseline; gap:16px; padding-bottom:0; margin:0 0 24px;}
 .sec-head h3{font-family:var(--serif); font-style:italic; font-weight:600; font-size:21px; letter-spacing:-.01em; color:var(--ink); white-space:nowrap;}
 .sec-head .pipe{color:var(--accent); font-size:20px; font-weight:300;}
 .sec-head .kick{font-size:11px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-65); white-space:nowrap;}
@@ -203,6 +203,9 @@ em{font-style:italic;}
 .cell::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--accent); transform:scaleY(0); transform-origin:top; transition:transform .25s var(--ease);}
 .cell:hover{background:var(--surface-2);}
 .cell:hover::before{transform:scaleY(1);}
+.cell[data-route]{cursor:pointer;}
+.cell[data-route] .cell-title::after{content:" \2197"; color:var(--accent); font-weight:600; opacity:0; transition:opacity .16s var(--ease);}
+.cell[data-route]:hover .cell-title::after{opacity:1;}
 .kicker{font-size:11px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:16px; padding-right:30px;}
 .cell-title{font-family:var(--sans); font-size:15.5px; font-weight:600; color:var(--ink); margin-bottom:16px; line-height:1.32; letter-spacing:-.01em;}
 .cell-desc{font-size:13px; line-height:1.7; color:var(--ink-72);}
@@ -534,11 +537,11 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
     <nav class="nav-links" id="navlinks" aria-label="Primary">
       <div class="nav-tabs">
         <button class="nav-link" data-route="overview">Overview</button>
+        <button class="nav-link" data-route="howwework">How We Work</button>
+        <button class="nav-link" data-route="tools">Tools</button>
         <button class="nav-link" data-route="shipped">Delivered</button>
         <button class="nav-link" data-route="inflight">Active Projects</button>
         <button class="nav-link" data-route="pipeline">Pipeline</button>
-        <button class="nav-link" data-route="tools">Tools</button>
-        <button class="nav-link" data-route="howwework">How We Work</button>
         <button class="nav-link" data-route="costs">Costs</button>
         <button class="nav-link" data-route="appfolio">AppFolio API</button>
       </div>
@@ -587,15 +590,47 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
 
         <div class="block reveal">
           <div class="sec-head"><h3>Who We Are</h3><span class="pipe">|</span><span class="kick">In Brief</span></div>
-          <p class="lead">AGM&rsquo;s internal build team. We create custom software for problems where off-the-shelf tools don&rsquo;t fit or cost too much &mdash; reporting, dashboards, data pipelines, and workflow tools built specifically around how AGM operates.</p>
+          <p class="lead">AGM&rsquo;s internal build team &mdash; custom software for problems where off-the-shelf tools don&rsquo;t fit or cost too much, built around how AGM actually operates. We build the smallest useful version, ship it to the people who need it, and let real usage decide what&rsquo;s next.</p>
         </div>
 
         <div class="block reveal">
-          <div class="sec-head"><h3>How We Build</h3><span class="pipe">|</span><span class="kick">Ship Small &middot; Learn Fast</span></div>
-          <div class="funnel-rail">
-            <div class="funnel-stage"><div class="funnel-num">01</div><div><div class="funnel-stage-label">Build</div><div class="funnel-stage-title">The smallest useful version</div></div></div>
-            <div class="funnel-stage"><div class="funnel-num">02</div><div><div class="funnel-stage-label">Ship</div><div class="funnel-stage-title">Put it in front of the people who need it</div></div></div>
-            <div class="funnel-stage"><div class="funnel-num">03</div><div><div class="funnel-stage-label">Learn</div><div class="funnel-stage-title">Let real usage decide what&rsquo;s next</div></div></div>
+          <div class="sec-head"><h3>What&rsquo;s Inside</h3><span class="pipe">|</span><span class="kick">The Takeaway From Each Section</span></div>
+          <div class="cellgrid no-num reveal">
+            <div class="cell" data-route="howwework" role="button" tabindex="0">
+              <div class="kicker">How We Work</div>
+              <div class="cell-title">Ship small, learn fast</div>
+              <div class="cell-desc">Purpose-built tools in small increments &mdash; a six-person team, secure by default, shipping at a much larger team&rsquo;s pace.</div>
+            </div>
+            <div class="cell" data-route="tools" role="button" tabindex="0">
+              <div class="kicker">Tools</div>
+              <div class="cell-title">One connected stack</div>
+              <div class="cell-desc">Cloudflare, GitHub, Claude Code, Monday.com, and Slack/Teams &mdash; each doing one job well.</div>
+            </div>
+            <div class="cell" data-route="shipped" role="button" tabindex="0">
+              <div class="kicker">Delivered</div>
+              <div class="cell-title">Five products, live daily</div>
+              <div class="cell-desc">Report Studio, KPI Dashboard, Corporate Library, Digital Proposals, and the property marketing sites.</div>
+            </div>
+            <div class="cell" data-route="inflight" role="button" tabindex="0">
+              <div class="kicker">Active Projects</div>
+              <div class="cell-title">Eight builds in flight</div>
+              <div class="cell-desc">From Report Studio HOA and the Security Deposit workflow to the Lease Population tool and after-hours call handling.</div>
+            </div>
+            <div class="cell" data-route="pipeline" role="button" tabindex="0">
+              <div class="kicker">Pipeline</div>
+              <div class="cell-title">Scoped and queued</div>
+              <div class="cell-desc">A work-order digest, a unified proposal editor, market comps, and a deeper backlog behind them.</div>
+            </div>
+            <div class="cell" data-route="costs" role="button" tabindex="0">
+              <div class="kicker">Costs</div>
+              <div class="cell-title">~$8K a year, all-in</div>
+              <div class="cell-desc">The full AI tooling spend &mdash; against $630K&ndash;$1.7M to build this portfolio through outside vendors.</div>
+            </div>
+            <div class="cell" data-route="appfolio" role="button" tabindex="0">
+              <div class="kicker">AppFolio API</div>
+              <div class="cell-title">The one unlock</div>
+              <div class="cell-desc">A read-write Database API that replaces per-report CSV pipelines with live data &mdash; the key ask.</div>
+            </div>
           </div>
         </div>
 
@@ -673,7 +708,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
 
       <!-- ============ 04 · PIPELINE ============ -->
       <div class="page" id="page-pipeline">
-        <div class="sec-head reveal"><h3>High Priority</h3><span class="pipe">|</span><span class="kick">Scoped, Not Yet Started</span></div>
+        <div class="sec-head reveal"><h3>High Priority</h3><span class="pipe">|</span><span class="kick">Scoped</span></div>
         <div class="cellgrid reveal">
           <div class="cell">
             <div class="kicker">Work Orders</div>
@@ -697,7 +732,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
           </div>
         </div>
 
-        <div class="sec-head reveal" style="margin-top:44px;"><h3>Medium / Low Priority</h3><span class="pipe">|</span><span class="kick">Backlog</span></div>
+        <div class="sec-head reveal" style="margin-top:44px;"><h3>Medium / Low Priority</h3><span class="pipe">|</span><span class="kick">Not yet started</span></div>
         <ul class="mp-list reveal">
           <li><strong>Brokerage / Corporate CRM</strong> &mdash; deal tracking for the brokerage side</li>
           <li><strong>Tenant Feedback &amp; Review Outreach</strong> &mdash; automated review collection</li>
@@ -731,7 +766,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
             <div class="tool-desc">Roadmap, project tracking, and product requirement docs (PRDs) &mdash; where work is planned before it&rsquo;s built.<div class="pills"><span class="pill">Roadmap</span><span class="pill">PRD Development</span><span class="pill">Tracking</span></div></div>
           </div>
           <div class="tool-row">
-            <div class="tool-name">Slack<span class="tn-role">Communication</span></div>
+            <div class="tool-name">Slack / Teams<span class="tn-role">Communication</span></div>
             <div class="tool-desc">Internal team communication and day-to-day coordination.<div class="pills"><span class="pill">Team Comms</span><span class="pill">Coordination</span></div></div>
           </div>
         </div>
@@ -973,16 +1008,16 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
   var PAGES = [
     {route:"overview",   nav:"overview",   eyebrow:"01 · Overview",    t1:"Product Design &",  t2:"Development",           label:"Team Overview",
       lead:"AGM’s internal build team — custom software for problems where off-the-shelf tools don’t fit or cost too much, built specifically around how AGM operates."},
-    {route:"shipped",    nav:"shipped",    eyebrow:"02 · Delivered",   t1:"Products We’ve",    t2:"Delivered",             label:"Products We’ve Delivered",
-      lead:"Five products built in-house and live in daily use — each replacing manual work, a vendor tool, or both."},
-    {route:"inflight",   nav:"inflight",   eyebrow:"03 · Active",      t1:"Active",            t2:"Projects",              label:"Active Projects",
-      lead:"Projects currently in development across the team, with owner and status for each."},
-    {route:"pipeline",   nav:"pipeline",   eyebrow:"04 · Pipeline",    t1:"The",               t2:"Pipeline",              label:"What’s Next",
-      lead:"What’s queued next — high-priority builds already scoped, plus the medium- and lower-priority backlog."},
-    {route:"tools",      nav:"tools",      eyebrow:"05 · Tools",       t1:"Tools &",           t2:"Stack",                 label:"The Stack",
-      lead:"The platforms behind everything we build — deployment, versioning, development, project management, and communication."},
-    {route:"howwework",  nav:"howwework",  eyebrow:"06 · How We Work", t1:"How We",            t2:"Work",                  label:"Operating Model",
+    {route:"howwework",  nav:"howwework",  eyebrow:"02 · How We Work", t1:"How We",            t2:"Work",                  label:"Operating Model",
       lead:"Principles, documentation, and why building takes the time it does — behind a small team that ships at a large team’s pace."},
+    {route:"tools",      nav:"tools",      eyebrow:"03 · Tools",       t1:"Tools &",           t2:"Stack",                 label:"The Stack",
+      lead:"The platforms behind everything we build — deployment, versioning, development, project management, and communication."},
+    {route:"shipped",    nav:"shipped",    eyebrow:"04 · Delivered",   t1:"Products We’ve",    t2:"Delivered",             label:"Products We’ve Delivered",
+      lead:"Five products built in-house and live in daily use — each replacing manual work, a vendor tool, or both."},
+    {route:"inflight",   nav:"inflight",   eyebrow:"05 · Active",      t1:"Active",            t2:"Projects",              label:"Active Projects",
+      lead:"Projects currently in development across the team, with owner and status for each."},
+    {route:"pipeline",   nav:"pipeline",   eyebrow:"06 · Pipeline",    t1:"The",               t2:"Pipeline",              label:"What’s Next",
+      lead:"What’s queued next — high-priority builds already scoped, plus the medium- and lower-priority backlog."},
     {route:"costs",      nav:"costs",      eyebrow:"07 · Costs",       t1:"Cost &",            t2:"Savings",               label:"What We Cost · What You Save",
       lead:"What we cost, and what building this portfolio through outside vendors would have cost — about $8K a year, all-in, against $630K–$1.7M to build externally."},
     {route:"appfolio",   nav:"appfolio",   eyebrow:"08 · AppFolio API",t1:"The AppFolio",      t2:"Database API",          label:"The One Thing That Speeds Everything Up",
