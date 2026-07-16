@@ -534,14 +534,13 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
     <nav class="nav-links" id="navlinks" aria-label="Primary">
       <div class="nav-tabs">
         <button class="nav-link" data-route="overview">Overview</button>
-        <button class="nav-link" data-route="shipped">Shipped</button>
-        <button class="nav-link" data-route="inflight">In Flight</button>
+        <button class="nav-link" data-route="shipped">Delivered</button>
+        <button class="nav-link" data-route="inflight">Active Projects</button>
         <button class="nav-link" data-route="pipeline">Pipeline</button>
         <button class="nav-link" data-route="tools">Tools</button>
         <button class="nav-link" data-route="howwework">How We Work</button>
         <button class="nav-link" data-route="costs">Costs</button>
         <button class="nav-link" data-route="appfolio">AppFolio API</button>
-        <button class="nav-link" data-route="appendix">Cost Basis</button>
       </div>
       <div class="nav-right">
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle light / dark">◐</button>
@@ -580,7 +579,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
             <span class="m-unit">per year, entire team</span>
           </div>
           <div class="metric">
-            <span class="m-label">Shipped Products</span>
+            <span class="m-label">Products Delivered</span>
             <span class="m-value">5</span>
             <span class="m-unit">live and in daily use</span>
           </div>
@@ -608,7 +607,6 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
 
       <!-- ============ 02 · SHIPPED ============ -->
       <div class="page" id="page-shipped">
-        <p class="lead reveal">Five products, built in-house and live in daily use. Each replaces manual work, a vendor tool, or both. Links and access are for live visibility during the walkthrough.</p>
         <div class="cellgrid reveal">
           <div class="cell">
             <div class="kicker">Reporting</div>
@@ -651,7 +649,6 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
 
       <!-- ============ 03 · IN FLIGHT ============ -->
       <div class="page" id="page-inflight">
-        <p class="lead reveal">In development now, with owner, status, and target completion for each.</p>
         <div class="sec-head reveal"><h3>Active Projects</h3><span class="pipe">|</span><span class="kick">In Progress</span></div>
         <div class="comp-wrap reveal">
           <table class="comp-table">
@@ -676,7 +673,6 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
 
       <!-- ============ 04 · PIPELINE ============ -->
       <div class="page" id="page-pipeline">
-        <p class="lead reveal">What&rsquo;s queued next &mdash; high-priority builds already scoped, plus the backlog.</p>
         <div class="sec-head reveal"><h3>High Priority</h3><span class="pipe">|</span><span class="kick">Scoped, Not Yet Started</span></div>
         <div class="cellgrid reveal">
           <div class="cell">
@@ -716,7 +712,6 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
 
       <!-- ============ 05 · TOOLS / STACK ============ -->
       <div class="page" id="page-tools">
-        <p class="lead reveal">The platforms behind everything we build &mdash; each doing one job well, connected into a single workflow.</p>
         <div class="sec-head reveal"><h3>Core Stack</h3><span class="pipe">|</span><span class="kick">What Runs Everything</span></div>
         <div class="tool-list reveal">
           <div class="tool-row">
@@ -750,29 +745,6 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
 
       <!-- ============ 06 · HOW WE WORK ============ -->
       <div class="page" id="page-howwework">
-        <div class="metrics block reveal">
-          <div class="metric">
-            <span class="m-label">AI Tooling</span>
-            <span class="m-value">~$650</span>
-            <span class="m-unit">per month, whole team</span>
-          </div>
-          <div class="metric">
-            <span class="m-label">Library AI Cost</span>
-            <span class="m-value">~$1</span>
-            <span class="m-unit">per month to run the cited assistant</span>
-          </div>
-          <div class="metric">
-            <span class="m-label">Hosting</span>
-            <span class="m-value">~$0</span>
-            <span class="m-unit">serverless &mdash; nothing to patch</span>
-          </div>
-          <div class="metric">
-            <span class="m-label">Team</span>
-            <span class="m-value">6</span>
-            <span class="m-unit">including one intern</span>
-          </div>
-        </div>
-
         <div class="sec-head reveal"><h3>Operating Principles</h3><span class="pipe">|</span><span class="kick">Stack &middot; Philosophy &middot; Governance</span></div>
         <div class="cellgrid reveal">
           <div class="cell">
@@ -782,8 +754,8 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
           </div>
           <div class="cell">
             <div class="kicker">The Philosophy</div>
-            <div class="cell-title">Build, Don&rsquo;t Bloat</div>
-            <div class="cell-desc">Purpose-built tools over bloated vendor software, shipped in small increments. Real usage decides what&rsquo;s next.</div>
+            <div class="cell-title">AI Builds the Tools, Not the Answers</div>
+            <div class="cell-desc">We don&rsquo;t solve problems by having AI do the work. We use AI to build software that removes friction, saves time, and improves accuracy &mdash; purpose-built tools, shipped in small increments, with real usage deciding what&rsquo;s next.</div>
           </div>
           <div class="cell">
             <div class="kicker">Governance</div>
@@ -830,8 +802,6 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         <div class="cellgrid reveal no-num">
           <div class="cell"><div class="role-title">Cody</div><div class="cell-desc">Lead</div></div>
           <div class="cell"><div class="role-title">Leary</div><div class="cell-desc">Technical Product Management</div></div>
-          <div class="cell"><div class="role-title">Kenzie</div><div class="cell-desc">Development</div></div>
-          <div class="cell"><div class="role-title">Alec</div><div class="cell-desc">Development</div></div>
           <div class="cell"><div class="role-title">Carter</div><div class="cell-desc">Development</div></div>
           <div class="cell"><div class="role-title">Helen <em>(Intern)</em></div><div class="cell-desc">Development</div></div>
         </div>
@@ -839,32 +809,30 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
 
       <!-- ============ 07 · COSTS ============ -->
       <div class="page" id="page-costs">
-        <p class="lead reveal">Our complete monthly technology cost &mdash; the Claude Team plan, metered overflow credits, production API usage, and hosting. There are no servers to buy, maintain, or patch.</p>
-
         <div class="metrics block reveal">
           <div class="metric">
-            <span class="m-label">Total AI Spend</span>
-            <span class="m-value">~$650</span>
-            <span class="m-unit">per month, all-in</span>
-          </div>
-          <div class="metric">
-            <span class="m-label">Annualized</span>
+            <span class="m-label">Our Cost</span>
             <span class="m-value">~$8K</span>
-            <span class="m-unit">per year, entire team</span>
+            <span class="m-unit">per year, entire team, all-in</span>
           </div>
           <div class="metric">
-            <span class="m-label">Corporate Library API</span>
-            <span class="m-value">~$1</span>
-            <span class="m-unit">per month of metered usage</span>
+            <span class="m-label">To Build Externally</span>
+            <span class="m-value">$630K&ndash;$1.7M</span>
+            <span class="m-unit">one-time, at US agency rates</span>
           </div>
           <div class="metric">
-            <span class="m-label">Claude Seats</span>
-            <span class="m-value">9</span>
-            <span class="m-unit">covering the full team</span>
+            <span class="m-label">Annual Upkeep Avoided</span>
+            <span class="m-value">$110K&ndash;$390K</span>
+            <span class="m-unit">per year in vendor maintenance &amp; hosting</span>
+          </div>
+          <div class="metric">
+            <span class="m-label">Our 3-Year Cost</span>
+            <span class="m-value">&lt;$25K</span>
+            <span class="m-unit">plus the team&rsquo;s time</span>
           </div>
         </div>
 
-        <div class="sec-head reveal"><h3>Monthly Technology Cost</h3><span class="pipe">|</span><span class="kick">Complete, All-In</span></div>
+        <div class="sec-head reveal"><h3>What We Cost</h3><span class="pipe">|</span><span class="kick">Complete &middot; Per Month</span></div>
         <div class="comp-wrap reveal">
           <table class="comp-table">
             <thead>
@@ -882,12 +850,35 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
           </table>
         </div>
         <p class="fee-footnote reveal">For scale: the Corporate Library&rsquo;s AI research assistant &mdash; which reads and cites across every corporate document &mdash; costs about one dollar per month in AI usage to operate.</p>
+
+        <div class="sec-head reveal" style="margin-top:48px;"><h3>What You&rsquo;re Saving</h3><span class="pipe">|</span><span class="kick">Build vs. Buy</span></div>
+        <div class="statute-note reveal">Commissioning this portfolio through outside vendors would run an estimated <strong>$630K&ndash;$1.7M</strong> to build (2026 US agency rates), plus <strong>$110K&ndash;$390K per year</strong> in maintenance and hosting. Our three-year cost is under $25K, plus the team&rsquo;s time.</div>
+        <div class="comp-wrap reveal">
+          <table class="comp-table">
+            <thead>
+              <tr class="colhead-row">
+                <th class="type wrap">Product</th><th class="tint-market">Est. Vendor Build</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="type wrap">Report Studio</td><td class="range">$150K&ndash;$350K</td></tr>
+              <tr><td class="type wrap">Corporate Library</td><td class="range">$150K&ndash;$400K</td></tr>
+              <tr><td class="type wrap">Property Website Fleet <em style="font-weight:400; color:var(--ink-55);">(~100 sites)</em></td><td class="range">$115K&ndash;$340K</td></tr>
+              <tr><td class="type wrap">Commercial Brokerage CRM</td><td class="range">$75K&ndash;$200K</td></tr>
+              <tr><td class="type wrap">Lease Population Tool</td><td class="range">$40K&ndash;$120K</td></tr>
+              <tr><td class="type wrap">KPI Dashboard</td><td class="range">$30K&ndash;$80K</td></tr>
+              <tr><td class="type wrap">Operations Intake &amp; Solutions</td><td class="range">$30K&ndash;$80K</td></tr>
+              <tr><td class="type wrap">Digital Proposal System</td><td class="range">$25K&ndash;$75K</td></tr>
+              <tr><td class="type wrap">Security Deposits + Misc. Marketing Tools</td><td class="range">$15K&ndash;$60K</td></tr>
+              <tr class="total"><td class="type wrap">Total to build externally</td><td class="range">~$630K&ndash;$1.7M</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="fee-footnote reveal">Plus $110K&ndash;$390K per year in vendor maintenance &amp; hosting. Sources: 2026 US agency pricing surveys (Clutch, GoodFirms) and current list pricing from Glean, Birdeye, Buildout, Proposify, PandaDoc, Domo, and Prophia. Detailed citations available on request.</p>
       </div>
 
       <!-- ============ 08 · APPFOLIO DATABASE API ============ -->
       <div class="page" id="page-appfolio">
-        <p class="lead reveal">Take the KPI Dashboard. Every number on that screen runs through the six-step pipeline below &mdash; and because reports are scoped per manager, the first two steps repeat three to four times per KPI. One number is a dozen-plus setup steps and a permanent maintenance obligation.</p>
-
         <div class="sec-head reveal"><h3>Today vs. the Database API</h3><span class="pipe">|</span><span class="kick">Per KPI</span></div>
         <div class="compare reveal">
           <div class="col left">
@@ -949,36 +940,6 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         </div>
       </div>
 
-      <!-- ============ 09 · VENDOR COST BASIS (APPENDIX) ============ -->
-      <div class="page" id="page-appendix">
-        <p class="lead reveal">How the build-versus-buy comparison is calculated, product by product.</p>
-        <div class="statute-note reveal">Build estimates use 2026 US agency market data: internal tools $20K&ndash;$50K, mid-complexity apps $50K&ndash;$200K, complex platforms $200K&ndash;$500K. Ongoing maintenance is the standard 15&ndash;20% of build cost per year. Where a licensed product exists, its list price is shown as the alternative.</div>
-
-        <div class="sec-head reveal"><h3>Vendor Cost Basis</h3><span class="pipe">|</span><span class="kick">Build vs. Buy</span></div>
-        <div class="comp-wrap reveal">
-          <table class="comp-table">
-            <thead>
-              <tr class="colhead-row">
-                <th class="type wrap">Product</th><th class="wrap">One-Time Build</th><th class="wrap">Licensed Alternative</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td class="type wrap">Report Studio <em style="font-weight:400; color:var(--ink-55);">(dual pipelines, approval workflow, review annotations, SSO, test mode)</em></td><td class="range">$150K&ndash;$350K</td><td class="wrap">No direct equivalent; custom development territory</td></tr>
-              <tr><td class="type wrap">Corporate Library <em style="font-weight:400; color:var(--ink-55);">(doc platform + AI search + reputation portal)</em></td><td class="range">$150K&ndash;$400K</td><td class="wrap">Enterprise AI search ~$50K&ndash;$60K/yr minimum + doc management + reputation tool $299&ndash;$449/mo</td></tr>
-              <tr><td class="type wrap">Property Website Fleet <em style="font-weight:400; color:var(--ink-55);">(~100 sites)</em></td><td class="range">$115K&ndash;$340K</td><td class="wrap">Agency hosting/maintenance $30&ndash;$100 per site per month ($36K&ndash;$120K/yr)</td></tr>
-              <tr><td class="type wrap">Commercial Brokerage CRM</td><td class="range">$75K&ndash;$200K</td><td class="wrap">Buildout: $125/user/mo + $275/mo platform fee</td></tr>
-              <tr><td class="type wrap">Lease Population Tool</td><td class="range">$40K&ndash;$120K</td><td class="wrap">AI lease abstraction services: ~$20/document + platform fees</td></tr>
-              <tr><td class="type wrap">KPI Dashboard</td><td class="range">$30K&ndash;$80K</td><td class="wrap">BI platforms: ~$30K&ndash;$60K/yr minimum contracts</td></tr>
-              <tr><td class="type wrap">Operations Intake &amp; Solutions</td><td class="range">$30K&ndash;$80K</td><td class="wrap">Ticketing SaaS, per-seat</td></tr>
-              <tr><td class="type wrap">Digital Proposal System</td><td class="range">$25K&ndash;$75K</td><td class="wrap">Proposal SaaS: $19&ndash;$49/user/mo + template design services</td></tr>
-              <tr><td class="type wrap">Security Deposits Tool + Misc. Marketing Tools</td><td class="range">$15K&ndash;$60K</td><td class="wrap">Web agency one-offs</td></tr>
-              <tr class="total"><td class="type wrap">Total</td><td class="range">~$630K&ndash;$1.7M</td><td class="wrap">+ $110K&ndash;$390K per year ongoing</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="fee-footnote reveal">Sources: 2026 published market surveys of US agency project pricing (Clutch, GoodFirms), and current list pricing from Glean, Birdeye, Buildout, Proposify, PandaDoc, Domo, and Prophia. Detailed citations available on request.</p>
-      </div>
-
                                     <!-- prev / next pager (shared, updated by JS) -->
       <div class="pager">
         <button class="prev" id="pgPrev" type="button"><span class="pg-dir">← Previous</span><span class="pg-name"></span></button>
@@ -1012,9 +973,9 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
   var PAGES = [
     {route:"overview",   nav:"overview",   eyebrow:"01 · Overview",    t1:"Product Design &",  t2:"Development",           label:"Team Overview",
       lead:"AGM’s internal build team — custom software for problems where off-the-shelf tools don’t fit or cost too much, built specifically around how AGM operates."},
-    {route:"shipped",    nav:"shipped",    eyebrow:"02 · Shipped",     t1:"What We’ve",        t2:"Shipped",               label:"Shipped Products",
+    {route:"shipped",    nav:"shipped",    eyebrow:"02 · Delivered",   t1:"Products We’ve",    t2:"Delivered",             label:"Products We’ve Delivered",
       lead:"Five products built in-house and live in daily use — each replacing manual work, a vendor tool, or both."},
-    {route:"inflight",   nav:"inflight",   eyebrow:"03 · In Flight",   t1:"In",                t2:"Flight",                label:"Active Development",
+    {route:"inflight",   nav:"inflight",   eyebrow:"03 · Active",      t1:"Active",            t2:"Projects",              label:"Active Projects",
       lead:"Projects currently in development across the team, with owner and status for each."},
     {route:"pipeline",   nav:"pipeline",   eyebrow:"04 · Pipeline",    t1:"The",               t2:"Pipeline",              label:"What’s Next",
       lead:"What’s queued next — high-priority builds already scoped, plus the medium- and lower-priority backlog."},
@@ -1022,12 +983,10 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
       lead:"The platforms behind everything we build — deployment, versioning, development, project management, and communication."},
     {route:"howwework",  nav:"howwework",  eyebrow:"06 · How We Work", t1:"How We",            t2:"Work",                  label:"Operating Model",
       lead:"Principles, documentation, and why building takes the time it does — behind a small team that ships at a large team’s pace."},
-    {route:"costs",      nav:"costs",      eyebrow:"07 · Costs",       t1:"AI",                t2:"Costs",                 label:"Monthly Technology Cost",
-      lead:"Our complete monthly technology cost — the Claude Team plan, metered overflow, production API usage, and hosting. About $8K a year, all-in."},
+    {route:"costs",      nav:"costs",      eyebrow:"07 · Costs",       t1:"Cost &",            t2:"Savings",               label:"What We Cost · What You Save",
+      lead:"What we cost, and what building this portfolio through outside vendors would have cost — about $8K a year, all-in, against $630K–$1.7M to build externally."},
     {route:"appfolio",   nav:"appfolio",   eyebrow:"08 · AppFolio API",t1:"The AppFolio",      t2:"Database API",          label:"The One Thing That Speeds Everything Up",
-      lead:"A single change that removes the most repeated constraint across the portfolio — replacing per-report CSV pipelines with live, read-write data."},
-    {route:"appendix",   nav:"appendix",   eyebrow:"09 · Cost Basis",  t1:"Vendor",            t2:"Cost Basis",            label:"Appendix · Vendor Cost Basis",
-      lead:"How the build-versus-buy comparison is calculated, product by product, against 2026 US agency market pricing."}
+      lead:"A single change that removes the most repeated constraint across the portfolio — replacing per-report CSV pipelines with live, read-write data."}
   ];
   var IDX = {};
   PAGES.forEach(function(p,i){ IDX[p.route]=i; });
@@ -1050,8 +1009,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
     tools:'<rect x="3.5" y="4.5" width="17" height="12" rx="1.5"/><path d="M8.5 20.5h7M12 16.5v4"/>',
     howwework:'<circle cx="9" cy="8.5" r="2.8"/><path d="M3.5 19.5c0-3 2.6-4.8 5.5-4.8s5.5 1.8 5.5 4.8"/><path d="M16 6a2.8 2.8 0 0 1 0 5.4"/><path d="M17 14.9c2.2.5 3.5 2.1 3.5 4.6"/>',
     costs:'<rect x="4.5" y="3.5" width="15" height="17" rx="1"/><path d="M8 13.5v3.5M12 9.5v7.5M16 11.5v5.5"/>',
-    appfolio:'<path d="M12 3.5c3.6 0 6.5 1.3 6.5 3v11c0 1.7-2.9 3-6.5 3s-6.5-1.3-6.5-3v-11c0-1.7 2.9-3 6.5-3z"/><path d="M5.5 6.5c0 1.7 2.9 3 6.5 3s6.5-1.3 6.5-3M5.5 12c0 1.7 2.9 3 6.5 3s6.5-1.3 6.5-3"/>',
-    appendix:'<path d="M6.5 3.5h11v17l-2.2-1.4-2.3 1.4-2.3-1.4-2.2 1.4z"/><path d="M9.5 8h5M9.5 11.5h5"/>'
+    appfolio:'<path d="M12 3.5c3.6 0 6.5 1.3 6.5 3v11c0 1.7-2.9 3-6.5 3s-6.5-1.3-6.5-3v-11c0-1.7 2.9-3 6.5-3z"/><path d="M5.5 6.5c0 1.7 2.9 3 6.5 3s6.5-1.3 6.5-3M5.5 12c0 1.7 2.9 3 6.5 3s6.5-1.3 6.5-3"/>'
   };
   function iconSVG(nav){
     var paths = ICONS[nav] || ICONS.overview;
