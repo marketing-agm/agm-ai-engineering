@@ -8,10 +8,10 @@ dependencies). Fonts load from Google Fonts; everything else is inline. This rep
 system built for AGM's proposal micro-sites (multi-family, commercial, HOA).
 
 ## What this is
-The overview's eight sections, rebuilt as an institutional, navigable micro-site:
+The overview's seven sections, rebuilt as an institutional, navigable micro-site:
 
 1. Overview (TL;DR) · 2. Shipped · 3. In Flight · 4. Pipeline · 5. How We Work ·
-6. The AppFolio Database API · 7. Claude Premium Seats · 8. Vendor Cost Basis (Appendix).
+6. The AppFolio Database API · 7. Claude Premium Seats.
 
 Copy is adapted from the source team-overview document. The layout, palette (navy `#00202F`, brand
 blue `#3A8DDE`, serif/sans pairing), and rail-and-content structure follow the shared AGM micro-site
@@ -49,7 +49,7 @@ What it tracks once the key is set:
 - `_headers` enforces `noindex` and security headers at the edge.
 - Several figures carry bracketed placeholders (`[ estimate ]`, `[ decision date ]`,
   `[ X hrs/mo ]`, `[ one-liner in progress ]`) — fill these in as details are confirmed.
-- Cost figures (vendor cost basis, AppFolio API pricing, Claude seat pricing) reflect the source
-  document; update per the latest quotes before circulating.
+- Cost figures (AppFolio API pricing, Claude seat pricing) reflect the source document; update
+  per the latest quotes before circulating.
 - The footer logos are shared AGM brand assets at `/assets/agm-logo-black.svg` and
   `/assets/agm-logo-white.svg`.
