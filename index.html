@@ -517,12 +517,12 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
     <nav class="nav-links" id="navlinks" aria-label="Primary">
       <div class="nav-tabs">
         <button class="nav-link" data-route="overview">Overview</button>
-        <button class="nav-link" data-route="shipped">Shipped</button>
-        <button class="nav-link" data-route="inflight">In Flight</button>
-        <button class="nav-link" data-route="pipeline">Pipeline</button>
         <button class="nav-link" data-route="howwework">How We Work</button>
         <button class="nav-link" data-route="appfolio">AppFolio API</button>
         <button class="nav-link" data-route="seats">Claude Seats</button>
+        <button class="nav-link" data-route="shipped">Shipped</button>
+        <button class="nav-link" data-route="inflight">In Flight</button>
+        <button class="nav-link" data-route="pipeline">Pipeline</button>
       </div>
       <div class="nav-right">
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle light / dark">◐</button>
@@ -588,114 +588,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         </div>
       </div>
 
-      <!-- ============ 02 · SHIPPED ============ -->
-      <div class="page" id="page-shipped">
-        <p class="lead reveal">Five products built in-house and live in daily use across the company &mdash; each one replacing manual work, a vendor tool, or both.</p>
-        <div class="cellgrid reveal">
-          <div class="cell">
-            <div class="kicker">Reporting</div>
-            <div class="cell-title">Report Studio</div>
-            <div class="cell-desc">Automated monthly owner-report pipeline, live for Multifamily and Commercial. Replaces manual report assembly with a guided workflow; the HOA build is underway.</div>
-            <div class="pills"><span class="pill">Multifamily &middot; Live</span><span class="pill">Commercial &middot; Live</span><span class="pill">Guided Workflow</span><span class="pill">HOA &middot; In Flight</span></div>
-          </div>
-          <div class="cell">
-            <div class="kicker">Analytics</div>
-            <div class="cell-title">KPI Dashboard</div>
-            <div class="cell-desc">Manager-level performance metrics displayed on an office TV, updated daily from AppFolio data. Six of eight Multifamily KPIs are live; the remaining two are pending AppFolio report setup.</div>
-            <div class="pills"><span class="pill">Daily Refresh</span><span class="pill">Office TV Display</span><span class="pill">6 of 8 KPIs Live</span><span class="pill">AppFolio Data</span></div>
-          </div>
-          <div class="cell">
-            <div class="kicker">Knowledge</div>
-            <div class="cell-title">Corporate Library</div>
-            <div class="cell-desc">Document management and AI research platform. Centralizes leases, SOPs, contracts, inspection reports, and records in one place, with an AI assistant that answers plain-language questions with cited, source-linked answers. Includes a Reputation Portal that drafts and routes Google and Yelp review responses through team approval.</div>
-            <div class="pills"><span class="pill">Cited AI Search</span><span class="pill">Document Management</span><span class="pill">Reputation Portal</span><span class="pill">Live &middot; Expanding</span></div>
-          </div>
-          <div class="cell">
-            <div class="kicker">Proposals</div>
-            <div class="cell-title">Digital Proposal System</div>
-            <div class="cell-desc">Branded, editable proposal templates for Multifamily, Commercial, HOA, and Commercial HOA, plus client-specific proposals &mdash; replacing static PDF proposals with navigable, on-brand micro-sites.</div>
-            <div class="pills"><span class="pill">Multifamily</span><span class="pill">Commercial</span><span class="pill">HOA</span><span class="pill">Client-Specific</span></div>
-          </div>
-          <div class="cell">
-            <div class="kicker">Web</div>
-            <div class="cell-title">Property Marketing Sites &amp; Tools</div>
-            <div class="cell-desc">Availabilities page, business map, corporate and HOA contact forms, and property-specific sites &mdash; the public-facing web surface that supports leasing and company marketing.</div>
-            <div class="pills"><span class="pill">Availabilities Page</span><span class="pill">Business Map</span><span class="pill">Contact Forms</span><span class="pill">Property Sites</span></div>
-          </div>
-        </div>
-        <div class="highlight reveal">
-          <span class="h-label">Common Thread</span>
-          <span class="h-value">Every shipped product replaces manual assembly or a paid vendor tool with software built specifically around how AGM operates.</span>
-        </div>
-      </div>
-
-      <!-- ============ 03 · IN FLIGHT ============ -->
-      <div class="page" id="page-inflight">
-        <p class="lead reveal">Work currently in development, with owner and status for each. Completion dates marked <em>[ estimate ]</em> are being finalized.</p>
-        <div class="sec-head reveal"><h3>Active Projects</h3><span class="pipe">|</span><span class="kick">In Progress</span></div>
-        <div class="comp-wrap reveal">
-          <table class="comp-table">
-            <thead>
-              <tr class="colhead-row">
-                <th class="type wrap">Project</th><th>Owner</th><th class="wrap">Status</th><th>Est. Completion</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td class="type wrap">Report Studio &mdash; HOA</td><td>Carter</td><td class="wrap">In progress &mdash; Multifamily &amp; Commercial live</td><td>[ estimate ]</td></tr>
-              <tr><td class="type wrap">KPI Dashboard</td><td>Carter</td><td class="wrap">In progress &mdash; 6 of 8 KPIs live</td><td>[ estimate ]</td></tr>
-              <tr><td class="type wrap">Security Deposit Checkout Process</td><td>Helen, Cody</td><td class="wrap">In progress &mdash; design doc complete</td><td>[ estimate ]</td></tr>
-              <tr><td class="type wrap">Corporate Library (Expansion)</td><td>Leary</td><td class="wrap">Live &mdash; building AI document drafting and bulk review import</td><td>[ estimate ]</td></tr>
-              <tr><td class="type wrap">Commercial Website Templates (Astro Migration)</td><td>Leary, Helen</td><td class="wrap">In progress &mdash; on target</td><td>Jul 31</td></tr>
-              <tr><td class="type wrap">Lease Population Tool</td><td>Carter</td><td class="wrap">In progress &mdash; awaiting lease component files</td><td>[ estimate ]</td></tr>
-              <tr><td class="type wrap">AppFolio &harr; BuildOps Sync (Matcher)</td><td>Carter</td><td class="wrap">First build session scoped</td><td>[ estimate ]</td></tr>
-              <tr><td class="type wrap">Office Sign-In Kiosk</td><td>Carter</td><td class="wrap">In development</td><td>[ estimate ]</td></tr>
-              <tr><td class="type wrap">Dialzara (After-Hours Call Handling)</td><td>Carter</td><td class="wrap">Demo scheduled &mdash; evaluating</td><td>[ decision date ]</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- ============ 04 · PIPELINE ============ -->
-      <div class="page" id="page-pipeline">
-        <p class="lead reveal">What&rsquo;s queued next &mdash; high-priority builds already scoped, plus the medium- and lower-priority backlog.</p>
-        <div class="sec-head reveal"><h3>High Priority</h3><span class="pipe">|</span><span class="kick">Scoped, Not Yet Started</span></div>
-        <div class="cellgrid reveal">
-          <div class="cell">
-            <div class="kicker">Work Orders</div>
-            <div class="cell-title">Weekly Digest for Work Orders</div>
-            <div class="cell-desc">A recurring digest summarizing work-order activity for the team. Scoped this week; design doc drafted.</div>
-          </div>
-          <div class="cell">
-            <div class="kicker">Proposals</div>
-            <div class="cell-title">AGM Proposal Editor</div>
-            <div class="cell-desc">A unified editor built on top of the proposal template system, giving the team a single place to compose and manage every proposal.</div>
-          </div>
-          <div class="cell">
-            <div class="kicker">Leasing</div>
-            <div class="cell-title">Leasing Strategy Reports</div>
-            <div class="cell-desc">Reporting to support leasing strategy and decisions. <em>[ one-liner in progress ]</em></div>
-          </div>
-          <div class="cell">
-            <div class="kicker">Market Data</div>
-            <div class="cell-title">AGM Market Pulse / Comps Software</div>
-            <div class="cell-desc">In-house market and comparables tooling. <em>[ one-liner in progress ]</em></div>
-          </div>
-        </div>
-
-        <div class="sec-head reveal" style="margin-top:44px;"><h3>Medium / Low Priority</h3><span class="pipe">|</span><span class="kick">Backlog</span></div>
-        <ul class="mp-list reveal">
-          <li><strong>Brokerage / Corporate CRM</strong> &mdash; deal tracking for the brokerage side</li>
-          <li><strong>Tenant Feedback &amp; Review Outreach</strong> &mdash; automated review collection</li>
-          <li><strong>Deliverable Ticketing &amp; Calendar</strong> &mdash; deliverables workflow</li>
-          <li><strong>Websites Template Migration</strong> &mdash; internal template consolidation</li>
-          <li><strong>Operations Intake &amp; Solutions</strong> &mdash; internal ticketing for ops requests</li>
-          <li><strong>AI Email Assistant</strong> &mdash; concept stage</li>
-          <li><strong>Report Studio &mdash; Single Family</strong> &mdash; final division rollout</li>
-          <li><strong>Accounting Financials Assist</strong> &mdash; exploring how Report Studio can support accounting&rsquo;s portion of the monthly financial package</li>
-        </ul>
-      </div>
-
-      <!-- ============ 05 · HOW WE WORK ============ -->
+      <!-- ============ 02 · HOW WE WORK ============ -->
       <div class="page" id="page-howwework">
         <div class="metrics block reveal">
           <div class="metric">
@@ -759,7 +652,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         </div>
       </div>
 
-      <!-- ============ 06 · APPFOLIO DATABASE API ============ -->
+      <!-- ============ 03 · APPFOLIO DATABASE API ============ -->
       <div class="page" id="page-appfolio">
         <p class="lead reveal">Take the KPI Dashboard on the office TV. Every number on that screen exists because we ran the full six-step pipeline below &mdash; for every single metric. And it compounds: AppFolio reports are scoped per manager, so the first two steps repeat three to four times per KPI, and maintenance never ends. One number on that screen is a dozen-plus setup steps, a code change, and a permanent maintenance obligation.</p>
 
@@ -824,7 +717,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         </div>
       </div>
 
-      <!-- ============ 07 · CLAUDE PREMIUM SEATS ============ -->
+      <!-- ============ 04 · CLAUDE PREMIUM SEATS ============ -->
       <div class="page" id="page-seats">
         <p class="lead reveal">A smaller constraint. Three team members do Premium-seat-level AI work &mdash; full-time AI-assisted development, the Corporate Library platform, and the AppFolio/BuildOps data pipeline &mdash; but we hold two Premium seats, so we rotate seats between people and projects. This costs coordination time and interrupts work when a seat has to move.</p>
 
@@ -861,6 +754,112 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         </div>
       </div>
 
+      <!-- ============ 05 · SHIPPED ============ -->
+      <div class="page" id="page-shipped">
+        <p class="lead reveal">Five products built in-house and live in daily use across the company &mdash; each one replacing manual work, a vendor tool, or both.</p>
+        <div class="cellgrid reveal">
+          <div class="cell">
+            <div class="kicker">Reporting</div>
+            <div class="cell-title">Report Studio</div>
+            <div class="cell-desc">Automated monthly owner-report pipeline, live for Multifamily and Commercial. Replaces manual report assembly with a guided workflow; the HOA build is underway.</div>
+            <div class="pills"><span class="pill">Multifamily &middot; Live</span><span class="pill">Commercial &middot; Live</span><span class="pill">Guided Workflow</span><span class="pill">HOA &middot; In Flight</span></div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Analytics</div>
+            <div class="cell-title">KPI Dashboard</div>
+            <div class="cell-desc">Manager-level performance metrics displayed on an office TV, updated daily from AppFolio data. Six of eight Multifamily KPIs are live; the remaining two are pending AppFolio report setup.</div>
+            <div class="pills"><span class="pill">Daily Refresh</span><span class="pill">Office TV Display</span><span class="pill">6 of 8 KPIs Live</span><span class="pill">AppFolio Data</span></div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Knowledge</div>
+            <div class="cell-title">Corporate Library</div>
+            <div class="cell-desc">Document management and AI research platform. Centralizes leases, SOPs, contracts, inspection reports, and records in one place, with an AI assistant that answers plain-language questions with cited, source-linked answers. Includes a Reputation Portal that drafts and routes Google and Yelp review responses through team approval.</div>
+            <div class="pills"><span class="pill">Cited AI Search</span><span class="pill">Document Management</span><span class="pill">Reputation Portal</span><span class="pill">Live &middot; Expanding</span></div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Proposals</div>
+            <div class="cell-title">Digital Proposal System</div>
+            <div class="cell-desc">Branded, editable proposal templates for Multifamily, Commercial, HOA, and Commercial HOA, plus client-specific proposals &mdash; replacing static PDF proposals with navigable, on-brand micro-sites.</div>
+            <div class="pills"><span class="pill">Multifamily</span><span class="pill">Commercial</span><span class="pill">HOA</span><span class="pill">Client-Specific</span></div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Web</div>
+            <div class="cell-title">Property Marketing Sites &amp; Tools</div>
+            <div class="cell-desc">Availabilities page, business map, corporate and HOA contact forms, and property-specific sites &mdash; the public-facing web surface that supports leasing and company marketing.</div>
+            <div class="pills"><span class="pill">Availabilities Page</span><span class="pill">Business Map</span><span class="pill">Contact Forms</span><span class="pill">Property Sites</span></div>
+          </div>
+        </div>
+        <div class="highlight reveal">
+          <span class="h-label">Common Thread</span>
+          <span class="h-value">Every shipped product replaces manual assembly or a paid vendor tool with software built specifically around how AGM operates.</span>
+        </div>
+      </div>
+
+      <!-- ============ 06 · IN FLIGHT ============ -->
+      <div class="page" id="page-inflight">
+        <p class="lead reveal">Work currently in development, with owner and status for each. Completion dates marked <em>[ estimate ]</em> are being finalized.</p>
+        <div class="sec-head reveal"><h3>Active Projects</h3><span class="pipe">|</span><span class="kick">In Progress</span></div>
+        <div class="comp-wrap reveal">
+          <table class="comp-table">
+            <thead>
+              <tr class="colhead-row">
+                <th class="type wrap">Project</th><th>Owner</th><th class="wrap">Status</th><th>Est. Completion</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="type wrap">Report Studio &mdash; HOA</td><td>Carter</td><td class="wrap">In progress &mdash; Multifamily &amp; Commercial live</td><td>[ estimate ]</td></tr>
+              <tr><td class="type wrap">KPI Dashboard</td><td>Carter</td><td class="wrap">In progress &mdash; 6 of 8 KPIs live</td><td>[ estimate ]</td></tr>
+              <tr><td class="type wrap">Security Deposit Checkout Process</td><td>Helen, Cody</td><td class="wrap">In progress &mdash; design doc complete</td><td>[ estimate ]</td></tr>
+              <tr><td class="type wrap">Corporate Library (Expansion)</td><td>Leary</td><td class="wrap">Live &mdash; building AI document drafting and bulk review import</td><td>[ estimate ]</td></tr>
+              <tr><td class="type wrap">Commercial Website Templates (Astro Migration)</td><td>Leary, Helen</td><td class="wrap">In progress &mdash; on target</td><td>Jul 31</td></tr>
+              <tr><td class="type wrap">Lease Population Tool</td><td>Carter</td><td class="wrap">In progress &mdash; awaiting lease component files</td><td>[ estimate ]</td></tr>
+              <tr><td class="type wrap">AppFolio &harr; BuildOps Sync (Matcher)</td><td>Carter</td><td class="wrap">First build session scoped</td><td>[ estimate ]</td></tr>
+              <tr><td class="type wrap">Office Sign-In Kiosk</td><td>Carter</td><td class="wrap">In development</td><td>[ estimate ]</td></tr>
+              <tr><td class="type wrap">Dialzara (After-Hours Call Handling)</td><td>Carter</td><td class="wrap">Demo scheduled &mdash; evaluating</td><td>[ decision date ]</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 07 · PIPELINE ============ -->
+      <div class="page" id="page-pipeline">
+        <p class="lead reveal">What&rsquo;s queued next &mdash; high-priority builds already scoped, plus the medium- and lower-priority backlog.</p>
+        <div class="sec-head reveal"><h3>High Priority</h3><span class="pipe">|</span><span class="kick">Scoped, Not Yet Started</span></div>
+        <div class="cellgrid reveal">
+          <div class="cell">
+            <div class="kicker">Work Orders</div>
+            <div class="cell-title">Weekly Digest for Work Orders</div>
+            <div class="cell-desc">A recurring digest summarizing work-order activity for the team. Scoped this week; design doc drafted.</div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Proposals</div>
+            <div class="cell-title">AGM Proposal Editor</div>
+            <div class="cell-desc">A unified editor built on top of the proposal template system, giving the team a single place to compose and manage every proposal.</div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Leasing</div>
+            <div class="cell-title">Leasing Strategy Reports</div>
+            <div class="cell-desc">Reporting to support leasing strategy and decisions. <em>[ one-liner in progress ]</em></div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Market Data</div>
+            <div class="cell-title">AGM Market Pulse / Comps Software</div>
+            <div class="cell-desc">In-house market and comparables tooling. <em>[ one-liner in progress ]</em></div>
+          </div>
+        </div>
+
+        <div class="sec-head reveal" style="margin-top:44px;"><h3>Medium / Low Priority</h3><span class="pipe">|</span><span class="kick">Backlog</span></div>
+        <ul class="mp-list reveal">
+          <li><strong>Brokerage / Corporate CRM</strong> &mdash; deal tracking for the brokerage side</li>
+          <li><strong>Tenant Feedback &amp; Review Outreach</strong> &mdash; automated review collection</li>
+          <li><strong>Deliverable Ticketing &amp; Calendar</strong> &mdash; deliverables workflow</li>
+          <li><strong>Websites Template Migration</strong> &mdash; internal template consolidation</li>
+          <li><strong>Operations Intake &amp; Solutions</strong> &mdash; internal ticketing for ops requests</li>
+          <li><strong>AI Email Assistant</strong> &mdash; concept stage</li>
+          <li><strong>Report Studio &mdash; Single Family</strong> &mdash; final division rollout</li>
+          <li><strong>Accounting Financials Assist</strong> &mdash; exploring how Report Studio can support accounting&rsquo;s portion of the monthly financial package</li>
+        </ul>
+      </div>
                   <!-- prev / next pager (shared, updated by JS) -->
       <div class="pager">
         <button class="prev" id="pgPrev" type="button"><span class="pg-dir">← Previous</span><span class="pg-name"></span></button>
@@ -894,18 +893,18 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
   var PAGES = [
     {route:"overview",   nav:"overview",   eyebrow:"01 · Overview",    t1:"Product Design &",  t2:"Development",           label:"Team Overview",
       lead:"AGM’s internal build team — custom software for problems where off-the-shelf tools don’t fit or cost too much, built specifically around how AGM operates."},
-    {route:"shipped",    nav:"shipped",    eyebrow:"02 · Shipped",     t1:"What We’ve",        t2:"Shipped",               label:"Shipped Products",
-      lead:"Five products built in-house and live in daily use — each replacing manual work, a vendor tool, or both."},
-    {route:"inflight",   nav:"inflight",   eyebrow:"03 · In Flight",   t1:"In",                t2:"Flight",                label:"Active Development",
-      lead:"Projects currently in development across the team, with owner and status for each."},
-    {route:"pipeline",   nav:"pipeline",   eyebrow:"04 · Pipeline",    t1:"The",               t2:"Pipeline",              label:"What’s Next",
-      lead:"What’s queued next — high-priority builds already scoped, plus the medium- and lower-priority backlog."},
-    {route:"howwework",  nav:"howwework",  eyebrow:"05 · How We Work", t1:"How We",            t2:"Work",                  label:"Operating Model",
+    {route:"howwework",  nav:"howwework",  eyebrow:"02 · How We Work", t1:"How We",            t2:"Work",                  label:"Operating Model",
       lead:"The stack, the philosophy, and the governance behind a small team that ships at the pace of a much larger one."},
-    {route:"appfolio",   nav:"appfolio",   eyebrow:"06 · AppFolio API",t1:"The AppFolio",      t2:"Database API",          label:"The One Thing That Speeds Everything Up",
+    {route:"appfolio",   nav:"appfolio",   eyebrow:"03 · AppFolio API",t1:"The AppFolio",      t2:"Database API",          label:"The One Thing That Speeds Everything Up",
       lead:"A single change that removes the most repeated constraint across the portfolio — replacing per-report CSV pipelines with live, read-write data."},
-    {route:"seats",      nav:"seats",      eyebrow:"07 · Claude Seats",t1:"Claude Premium",    t2:"Seats",                 label:"A Smaller Constraint",
-      lead:"Three people do Premium-seat-level AI work; we hold two seats. One more removes the rotation overhead."}
+    {route:"seats",      nav:"seats",      eyebrow:"04 · Claude Seats",t1:"Claude Premium",    t2:"Seats",                 label:"A Smaller Constraint",
+      lead:"Three people do Premium-seat-level AI work; we hold two seats. One more removes the rotation overhead."},
+    {route:"shipped",    nav:"shipped",    eyebrow:"05 · Shipped",     t1:"What We’ve",        t2:"Shipped",               label:"Shipped Products",
+      lead:"Five products built in-house and live in daily use — each replacing manual work, a vendor tool, or both."},
+    {route:"inflight",   nav:"inflight",   eyebrow:"06 · In Flight",   t1:"In",                t2:"Flight",                label:"Active Development",
+      lead:"Projects currently in development across the team, with owner and status for each."},
+    {route:"pipeline",   nav:"pipeline",   eyebrow:"07 · Pipeline",    t1:"The",               t2:"Pipeline",              label:"What’s Next",
+      lead:"What’s queued next — high-priority builds already scoped, plus the medium- and lower-priority backlog."}
   ];
   var IDX = {};
   PAGES.forEach(function(p,i){ IDX[p.route]=i; });

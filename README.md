@@ -10,8 +10,8 @@ system built for AGM's proposal micro-sites (multi-family, commercial, HOA).
 ## What this is
 The overview's seven sections, rebuilt as an institutional, navigable micro-site:
 
-1. Overview (TL;DR) · 2. Shipped · 3. In Flight · 4. Pipeline · 5. How We Work ·
-6. The AppFolio Database API · 7. Claude Premium Seats.
+1. Overview (TL;DR) · 2. How We Work · 3. The AppFolio Database API · 4. Claude Premium Seats ·
+5. Shipped · 6. In Flight · 7. Pipeline.
 
 Copy is adapted from the source team-overview document. The layout, palette (navy `#00202F`, brand
 blue `#3A8DDE`, serif/sans pairing), and rail-and-content structure follow the shared AGM micro-site
