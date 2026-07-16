@@ -459,6 +459,23 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
 .step-list.tight li{margin-bottom:12px;}
 @media(max-width:680px){.compare{grid-template-columns:1fr;} .compare .col.left{border-right:none;}}
 
+/* app link + access row (Shipped product cells) */
+.app-meta{display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-top:24px; padding-top:18px; border-top:1px solid var(--line-soft);}
+.app-link{display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:600; letter-spacing:.02em; color:var(--accent); border:1px solid var(--line-strong); border-radius:100px; padding:7px 15px; background:var(--surface); transition:background .16s var(--ease), color .16s var(--ease), border-color .16s var(--ease), transform .16s var(--ease);}
+.app-link:hover{background:var(--accent); border-color:var(--accent); color:#fff; transform:translateY(-2px);}
+.app-access{font-size:11.5px; color:var(--ink-55); letter-spacing:.02em;}
+.app-access strong{font-weight:600; color:var(--ink-72);}
+
+/* tool row (Tools/Stack) — brief tool + role, hairline divided */
+.tool-list{border-top:1px solid var(--line-strong);}
+.tool-row{display:grid; grid-template-columns:190px 1fr; gap:32px; align-items:baseline; padding:24px 8px; border-bottom:1px solid var(--line-soft); transition:background .16s var(--ease);}
+.tool-row:hover{background:var(--surface-2);}
+.tool-name{font-family:var(--sans); font-size:16px; font-weight:600; color:var(--ink); letter-spacing:-.01em;}
+.tool-name .tn-role{display:block; font-size:10.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-top:7px;}
+.tool-desc{font-size:13px; line-height:1.6; color:var(--ink-72);}
+.tool-desc .pills{margin-top:14px;}
+@media(max-width:680px){.tool-row{grid-template-columns:1fr; gap:12px;}}
+
 /* Compact fee grid (Fees B) */
 .fee-compact-grid{display:grid; grid-template-columns:1fr 1fr; border-top:1px solid var(--line-strong); border-bottom:1px solid var(--line-strong);}
 .fee-compact-cell{padding:24px 26px 26px; border-bottom:1px solid var(--line-soft);}
@@ -520,7 +537,9 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         <button class="nav-link" data-route="shipped">Shipped</button>
         <button class="nav-link" data-route="inflight">In Flight</button>
         <button class="nav-link" data-route="pipeline">Pipeline</button>
+        <button class="nav-link" data-route="tools">Tools</button>
         <button class="nav-link" data-route="howwework">How We Work</button>
+        <button class="nav-link" data-route="costs">Costs</button>
         <button class="nav-link" data-route="appfolio">AppFolio API</button>
         <button class="nav-link" data-route="seats">Claude Seats</button>
         <button class="nav-link" data-route="appendix">Cost Basis</button>
@@ -570,69 +589,70 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
 
         <div class="block reveal">
           <div class="sec-head"><h3>Who We Are</h3><span class="pipe">|</span><span class="kick">In Brief</span></div>
-          <p class="lead">We&rsquo;re AGM&rsquo;s internal build team. We create custom software for problems where off-the-shelf tools don&rsquo;t fit or cost too much &mdash; reporting, dashboards, data pipelines, and workflow tools built specifically around how AGM operates.</p>
-          <p class="lead">Commissioning and maintaining this portfolio through outside vendors would cost an estimated <strong>$1M&ndash;$2.9M over three years</strong> &mdash; roughly $630K&ndash;$1.7M to build at US agency rates, plus $110K&ndash;$390K per year in maintenance and hosting. Our actual three-year cost is <strong>under $25K</strong>, plus the team&rsquo;s time.</p>
+          <p class="lead">AGM&rsquo;s internal build team. We make custom software for problems where off-the-shelf tools don&rsquo;t fit or cost too much &mdash; reporting, dashboards, data pipelines, and workflow tools built around how AGM actually operates.</p>
         </div>
 
         <div class="block reveal">
           <div class="sec-head"><h3>How We Build</h3><span class="pipe">|</span><span class="kick">Ship Small &middot; Learn Fast</span></div>
           <div class="funnel-rail">
-            <div class="funnel-stage"><div class="funnel-num">01</div><div><div class="funnel-stage-label">Build</div><div class="funnel-stage-title">The smallest useful version of a tool</div></div></div>
+            <div class="funnel-stage"><div class="funnel-num">01</div><div><div class="funnel-stage-label">Build</div><div class="funnel-stage-title">The smallest useful version</div></div></div>
             <div class="funnel-stage"><div class="funnel-num">02</div><div><div class="funnel-stage-label">Ship</div><div class="funnel-stage-title">Put it in front of the people who need it</div></div></div>
-            <div class="funnel-stage"><div class="funnel-num">03</div><div><div class="funnel-stage-label">Learn</div><div class="funnel-stage-title">Let real usage decide what to build next</div></div></div>
+            <div class="funnel-stage"><div class="funnel-num">03</div><div><div class="funnel-stage-label">Learn</div><div class="funnel-stage-title">Let real usage decide what&rsquo;s next</div></div></div>
           </div>
         </div>
 
         <div class="highlight reveal">
           <span class="h-label">The Short Version</span>
-          <span class="h-value">Version 1 does one thing well; real usage decides what version 2 looks like &mdash; which keeps us from spending months building features nobody asked for.</span>
+          <span class="h-value">Version 1 does one thing well; real usage decides version 2 &mdash; so we don&rsquo;t spend months building features nobody asked for.</span>
         </div>
       </div>
 
       <!-- ============ 02 · SHIPPED ============ -->
       <div class="page" id="page-shipped">
-        <p class="lead reveal">Five products built in-house and live in daily use across the company &mdash; each one replacing manual work, a vendor tool, or both.</p>
+        <p class="lead reveal">Five products, built in-house and live in daily use. Each replaces manual work, a vendor tool, or both. Links and access are for live visibility during the walkthrough.</p>
         <div class="cellgrid reveal">
           <div class="cell">
             <div class="kicker">Reporting</div>
             <div class="cell-title">Report Studio</div>
-            <div class="cell-desc">Automated monthly owner-report pipeline, live for Multifamily and Commercial. Replaces manual report assembly with a guided workflow; the HOA build is underway.</div>
-            <div class="pills"><span class="pill">Multifamily &middot; Live</span><span class="pill">Commercial &middot; Live</span><span class="pill">Guided Workflow</span><span class="pill">HOA &middot; In Flight</span></div>
+            <div class="cell-desc">Automated monthly owner reports &mdash; a guided workflow in place of manual assembly.</div>
+            <div class="pills"><span class="pill">Multifamily &middot; Live</span><span class="pill">Commercial &middot; Live</span><span class="pill">HOA &middot; In Flight</span></div>
+            <div class="app-meta"><a class="app-link" href="#" data-app="report-studio">Launch &nearr;</a><span class="app-access">Access &middot; <strong>AGM Google Workspace SSO</strong> &middot; <em>[ add link ]</em></span></div>
           </div>
           <div class="cell">
             <div class="kicker">Analytics</div>
             <div class="cell-title">KPI Dashboard</div>
-            <div class="cell-desc">Manager-level performance metrics displayed on an office TV, updated daily from AppFolio data. Six of eight Multifamily KPIs are live; the remaining two are pending AppFolio report setup.</div>
-            <div class="pills"><span class="pill">Daily Refresh</span><span class="pill">Office TV Display</span><span class="pill">6 of 8 KPIs Live</span><span class="pill">AppFolio Data</span></div>
+            <div class="cell-desc">Manager-level metrics on the office TV, refreshed daily from AppFolio.</div>
+            <div class="pills"><span class="pill">Daily Refresh</span><span class="pill">Office TV</span><span class="pill">6 of 8 KPIs Live</span></div>
+            <div class="app-meta"><a class="app-link" href="#" data-app="kpi-dashboard">Launch &nearr;</a><span class="app-access">Access &middot; <strong>AGM Google Workspace SSO</strong> &middot; <em>[ add link ]</em></span></div>
           </div>
           <div class="cell">
             <div class="kicker">Knowledge</div>
             <div class="cell-title">Corporate Library</div>
-            <div class="cell-desc">Document management and AI research platform. Centralizes leases, SOPs, contracts, inspection reports, and records in one place, with an AI assistant that answers plain-language questions with cited, source-linked answers. Includes a Reputation Portal that drafts and routes Google and Yelp review responses through team approval.</div>
-            <div class="pills"><span class="pill">Cited AI Search</span><span class="pill">Document Management</span><span class="pill">Reputation Portal</span><span class="pill">Live &middot; Expanding</span></div>
+            <div class="cell-desc">Document platform with a cited AI research assistant, plus a Reputation Portal for review responses.</div>
+            <div class="pills"><span class="pill">Cited AI Search</span><span class="pill">Doc Management</span><span class="pill">Reputation Portal</span></div>
+            <div class="app-meta"><a class="app-link" href="#" data-app="corporate-library">Launch &nearr;</a><span class="app-access">Access &middot; <strong>AGM Google Workspace SSO</strong> &middot; <em>[ add link ]</em></span></div>
           </div>
           <div class="cell">
             <div class="kicker">Proposals</div>
             <div class="cell-title">Digital Proposal System</div>
-            <div class="cell-desc">Branded, editable proposal templates for Multifamily, Commercial, HOA, and Commercial HOA, plus client-specific proposals &mdash; replacing static PDF proposals with navigable, on-brand micro-sites.</div>
-            <div class="pills"><span class="pill">Multifamily</span><span class="pill">Commercial</span><span class="pill">HOA</span><span class="pill">Client-Specific</span></div>
+            <div class="cell-desc">On-brand, editable proposal micro-sites &mdash; Multifamily, Commercial, HOA, and client-specific.</div>
+            <div class="pills"><span class="pill">Multifamily</span><span class="pill">Commercial</span><span class="pill">HOA</span></div>
+            <div class="app-meta"><a class="app-link" href="#" data-app="proposals">Launch &nearr;</a><span class="app-access">Access &middot; <strong>Shared password</strong> (per proposal) &middot; <em>[ add link ]</em></span></div>
           </div>
           <div class="cell">
             <div class="kicker">Web</div>
             <div class="cell-title">Property Marketing Sites &amp; Tools</div>
-            <div class="cell-desc">Availabilities page, business map, corporate and HOA contact forms, and property-specific sites &mdash; the public-facing web surface that supports leasing and company marketing.</div>
-            <div class="pills"><span class="pill">Availabilities Page</span><span class="pill">Business Map</span><span class="pill">Contact Forms</span><span class="pill">Property Sites</span></div>
+            <div class="cell-desc">Availabilities page, business map, contact forms, and property-specific sites.</div>
+            <div class="pills"><span class="pill">Availabilities</span><span class="pill">Business Map</span><span class="pill">Contact Forms</span></div>
+            <div class="app-meta"><a class="app-link" href="#" data-app="marketing-sites">Launch &nearr;</a><span class="app-access">Access &middot; <strong>Public</strong> &middot; <em>[ add link ]</em></span></div>
           </div>
         </div>
-        <div class="highlight reveal">
-          <span class="h-label">Common Thread</span>
-          <span class="h-value">Every shipped product replaces manual assembly or a paid vendor tool with software built specifically around how AGM operates.</span>
-        </div>
+        <p class="fee-footnote reveal">Replace each <em>Launch</em> link with the live URL before the presentation. Login credentials are shared separately &mdash; not stored in this repository.</p>
       </div>
 
       <!-- ============ 03 · IN FLIGHT ============ -->
       <div class="page" id="page-inflight">
-        <p class="lead reveal">Work currently in development, with owner and status for each. Completion dates marked <em>[ estimate ]</em> are being finalized.</p>
+        <p class="lead reveal">In development now, with owner and status for each. Dates marked <em>[ estimate ]</em> are being finalized.</p>
         <div class="sec-head reveal"><h3>Active Projects</h3><span class="pipe">|</span><span class="kick">In Progress</span></div>
         <div class="comp-wrap reveal">
           <table class="comp-table">
@@ -658,27 +678,27 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
 
       <!-- ============ 04 · PIPELINE ============ -->
       <div class="page" id="page-pipeline">
-        <p class="lead reveal">What&rsquo;s queued next &mdash; high-priority builds already scoped, plus the medium- and lower-priority backlog.</p>
+        <p class="lead reveal">What&rsquo;s queued next &mdash; high-priority builds already scoped, plus the backlog.</p>
         <div class="sec-head reveal"><h3>High Priority</h3><span class="pipe">|</span><span class="kick">Scoped, Not Yet Started</span></div>
         <div class="cellgrid reveal">
           <div class="cell">
             <div class="kicker">Work Orders</div>
             <div class="cell-title">Weekly Digest for Work Orders</div>
-            <div class="cell-desc">A recurring digest summarizing work-order activity for the team. Scoped this week; design doc drafted.</div>
+            <div class="cell-desc">A recurring summary of work-order activity. Scoped; doc drafted.</div>
           </div>
           <div class="cell">
             <div class="kicker">Proposals</div>
             <div class="cell-title">AGM Proposal Editor</div>
-            <div class="cell-desc">A unified editor built on top of the proposal template system, giving the team a single place to compose and manage every proposal.</div>
+            <div class="cell-desc">One editor on top of the proposal template system &mdash; a single place to compose every proposal.</div>
           </div>
           <div class="cell">
             <div class="kicker">Leasing</div>
             <div class="cell-title">Leasing Strategy Reports</div>
-            <div class="cell-desc">Reporting to support leasing strategy and decisions. <em>[ one-liner in progress ]</em></div>
+            <div class="cell-desc">Reporting to support leasing strategy. <em>[ one-liner in progress ]</em></div>
           </div>
           <div class="cell">
             <div class="kicker">Market Data</div>
-            <div class="cell-title">AGM Market Pulse / Comps Software</div>
+            <div class="cell-title">AGM Market Pulse / Comps</div>
             <div class="cell-desc">In-house market and comparables tooling. <em>[ one-liner in progress ]</em></div>
           </div>
         </div>
@@ -692,27 +712,61 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
           <li><strong>Operations Intake &amp; Solutions</strong> &mdash; internal ticketing for ops requests</li>
           <li><strong>AI Email Assistant</strong> &mdash; concept stage</li>
           <li><strong>Report Studio &mdash; Single Family</strong> &mdash; final division rollout</li>
-          <li><strong>Accounting Financials Assist</strong> &mdash; exploring how Report Studio can support accounting&rsquo;s portion of the monthly financial package</li>
+          <li><strong>Accounting Financials Assist</strong> &mdash; Report Studio support for the monthly financial package</li>
         </ul>
       </div>
 
-      <!-- ============ 05 · HOW WE WORK ============ -->
+      <!-- ============ 05 · TOOLS / STACK ============ -->
+      <div class="page" id="page-tools">
+        <p class="lead reveal">The platforms behind everything we build &mdash; each doing one job well, connected into a single workflow.</p>
+        <div class="sec-head reveal"><h3>Core Stack</h3><span class="pipe">|</span><span class="kick">What Runs Everything</span></div>
+        <div class="tool-list reveal">
+          <div class="tool-row">
+            <div class="tool-name">Cloudflare<span class="tn-role">Hosting &amp; Security</span></div>
+            <div class="tool-desc">Deployment, web-app security, and domain publishing &mdash; serverless, with nothing to buy or patch.<div class="pills"><span class="pill">Deployment</span><span class="pill">Edge Security</span><span class="pill">Domains &amp; DNS</span></div></div>
+          </div>
+          <div class="tool-row">
+            <div class="tool-name">GitHub<span class="tn-role">Versioning</span></div>
+            <div class="tool-desc">Every code change tracked, reviewable, and reversible &mdash; full history, independent of any one machine.<div class="pills"><span class="pill">Version History</span><span class="pill">Code Review</span><span class="pill">Rollback</span></div></div>
+          </div>
+          <div class="tool-row">
+            <div class="tool-name">Claude Code<span class="tn-role">Development</span></div>
+            <div class="tool-desc">AI-assisted development &mdash; how we design, build, and ship, following documented standards in every repo.<div class="pills"><span class="pill">AI-Assisted Dev</span><span class="pill">Documented Standards</span></div></div>
+          </div>
+          <div class="tool-row">
+            <div class="tool-name">Monday.com<span class="tn-role">Project Management</span></div>
+            <div class="tool-desc">Roadmap, project tracking, and product requirement docs (PRDs) &mdash; where work is planned before it&rsquo;s built.<div class="pills"><span class="pill">Roadmap</span><span class="pill">PRD Development</span><span class="pill">Tracking</span></div></div>
+          </div>
+          <div class="tool-row">
+            <div class="tool-name">Slack<span class="tn-role">Communication</span></div>
+            <div class="tool-desc">Internal team communication and day-to-day coordination.<div class="pills"><span class="pill">Team Comms</span><span class="pill">Coordination</span></div></div>
+          </div>
+        </div>
+
+        <div class="sec-head reveal" style="margin-top:44px;"><h3>Behind the Scenes</h3><span class="pipe">|</span><span class="kick">Supporting Tools</span></div>
+        <p class="lead reveal">Additional tools that power specific features under the hood.</p>
+        <div class="pills reveal" style="margin-top:0;">
+          <span class="pill">Claude Skills</span><span class="pill">Render.com</span><span class="pill">Anthropic API</span><span class="pill">AppFolio Data</span><span class="pill">Google Workspace SSO</span><span class="pill">PostHog Analytics</span>
+        </div>
+      </div>
+
+      <!-- ============ 06 · HOW WE WORK ============ -->
       <div class="page" id="page-howwework">
         <div class="metrics block reveal">
           <div class="metric">
             <span class="m-label">AI Tooling</span>
             <span class="m-value">~$650</span>
-            <span class="m-unit">per month &mdash; 9 Claude seats plus all metered usage</span>
+            <span class="m-unit">per month, whole team</span>
           </div>
           <div class="metric">
             <span class="m-label">Library AI Cost</span>
             <span class="m-value">~$1</span>
-            <span class="m-unit">per month to run the cited research assistant</span>
+            <span class="m-unit">per month to run the cited assistant</span>
           </div>
           <div class="metric">
             <span class="m-label">Hosting</span>
             <span class="m-value">~$0</span>
-            <span class="m-unit">serverless &mdash; no servers to buy or patch</span>
+            <span class="m-unit">serverless &mdash; nothing to patch</span>
           </div>
           <div class="metric">
             <span class="m-label">Team</span>
@@ -721,33 +775,58 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
           </div>
         </div>
 
-        <div class="sec-head reveal"><h3>Operating Model</h3><span class="pipe">|</span><span class="kick">Stack &middot; Philosophy &middot; Governance</span></div>
+        <div class="sec-head reveal"><h3>Operating Principles</h3><span class="pipe">|</span><span class="kick">Stack &middot; Philosophy &middot; Governance</span></div>
         <div class="cellgrid reveal">
           <div class="cell">
             <div class="kicker">The Stack</div>
-            <div class="cell-title">Modern Cloud, In Plain Terms</div>
-            <div class="cell-desc">Our tools run on a modern cloud platform (Cloudflare) &mdash; no servers to buy, maintain, or patch, and hosting costs effectively zero. AI-assisted development (Claude Code) lets a small team ship at the pace of a much larger one. Code lives in GitHub with full version history, so nothing depends on any one person&rsquo;s machine or memory.</div>
-            <div class="pills"><span class="pill">Cloudflare</span><span class="pill">Claude Code</span><span class="pill">GitHub</span><span class="pill">~$8K / yr AI tooling</span></div>
+            <div class="cell-title">Modern Cloud</div>
+            <div class="cell-desc">Serverless hosting, AI-assisted development, and code in GitHub &mdash; a small team shipping at a large team&rsquo;s pace.</div>
           </div>
           <div class="cell">
             <div class="kicker">The Philosophy</div>
-            <div class="cell-title">Purpose-Built, Shipped in Increments</div>
-            <div class="cell-desc">We build purpose-built tools instead of buying bloated vendor software, and we ship in small increments. Version 1 does one thing well; real usage decides version 2. Every repository carries documented development standards our AI tools follow, so code quality and conventions stay consistent regardless of who &mdash; or what &mdash; wrote the code.</div>
-            <div class="pills"><span class="pill">Smallest Useful Version</span><span class="pill">Usage-Driven</span><span class="pill">Documented Standards</span></div>
+            <div class="cell-title">Build, Don&rsquo;t Bloat</div>
+            <div class="cell-desc">Purpose-built tools over bloated vendor software, shipped in small increments. Real usage decides what&rsquo;s next.</div>
           </div>
           <div class="cell">
-            <div class="kicker">Security &amp; Governance</div>
-            <div class="cell-title">Access Control &amp; Auditability</div>
-            <div class="cell-desc">Internal apps sit behind email-verified access control (Cloudflare Zero Trust) tied to AGM Google Workspace accounts &mdash; no separate passwords to manage or leak. API keys and secrets are centrally managed and never stored in code. The Corporate Library keeps a full audit trail of every document action, and restricted folders are invisible to both users and the AI assistant without explicit access. Our Claude business plan does not train on company data by default, with admin spend limits set per user and org-wide.</div>
-            <div class="pills"><span class="pill">Zero Trust SSO</span><span class="pill">Central Secrets</span><span class="pill">Full Audit Trail</span><span class="pill">No Data Training</span></div>
+            <div class="kicker">Governance</div>
+            <div class="cell-title">Secure by Default</div>
+            <div class="cell-desc">Zero Trust SSO, centrally managed secrets, full audit trail. Our AI plan doesn&rsquo;t train on company data.</div>
           </div>
           <div class="cell">
             <div class="kicker">Vendor Risk</div>
             <div class="cell-title">Portable by Design</div>
-            <div class="cell-desc">Most of the portfolio runs without AI at runtime &mdash; if our AI vendor disappeared tomorrow, Report Studio, the KPI Dashboard, and the proposal system keep working unchanged. The pieces that do use AI call an industry-standard API that could be re-pointed to another provider with a modest code change, and all data lives in storage we control and can export at any time. The same portability applies to our cloud platform: standard web technology, not proprietary lock-in.</div>
-            <div class="pills"><span class="pill">No Runtime Lock-In</span><span class="pill">Re-Pointable API</span><span class="pill">Exportable Data</span></div>
+            <div class="cell-desc">Most tools run without AI at runtime. AI pieces use a re-pointable API; all data is ours to export.</div>
           </div>
         </div>
+
+        <div class="sec-head reveal" style="margin-top:48px;"><h3>Where Things Are Documented</h3><span class="pipe">|</span><span class="kick">Three Layers</span></div>
+        <div class="cellgrid reveal no-num">
+          <div class="cell">
+            <div class="kicker">GitHub</div>
+            <div class="cell-title">Update History</div>
+            <div class="cell-desc">Every change, when it happened, and why &mdash; a permanent, reviewable record.</div>
+          </div>
+          <div class="cell">
+            <div class="kicker">In the Code</div>
+            <div class="cell-title">README Files</div>
+            <div class="cell-desc">Standards and how each repo works, kept alongside the code itself.</div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Monday.com</div>
+            <div class="cell-title">Live Reporting <em>(Planned)</em></div>
+            <div class="cell-desc">Interactive, continuously-updated status &mdash; surfaced to a live website.</div>
+          </div>
+        </div>
+
+        <div class="sec-head reveal" style="margin-top:48px;"><h3>Why Development Takes Time</h3><span class="pipe">|</span><span class="kick">The Work Behind a Feature</span></div>
+        <p class="lead reveal">A finished feature is the small, visible tip of the work. Most of the time goes into the steps before the code ships.</p>
+        <ol class="step-list reveal tight">
+          <li><strong>Product design decisions</strong> &mdash; what to build, and what to leave out</li>
+          <li><strong>Thinking through features</strong> &mdash; the edge cases and real-world workflows</li>
+          <li><strong>Connecting tools &amp; data</strong> &mdash; integrations across AppFolio, GitHub, Cloudflare, and more</li>
+          <li><strong>Deployment &amp; security setup</strong> &mdash; Cloudflare settings, access control, and domains</li>
+          <li><strong>Testing end to end</strong> &mdash; before anyone relies on it</li>
+        </ol>
 
         <div class="sec-head reveal" style="margin-top:48px;"><h3>The Team</h3><span class="pipe">|</span><span class="kick">Roles</span></div>
         <div class="cellgrid reveal no-num">
@@ -760,9 +839,56 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         </div>
       </div>
 
-      <!-- ============ 06 · APPFOLIO DATABASE API ============ -->
+      <!-- ============ 07 · COSTS ============ -->
+      <div class="page" id="page-costs">
+        <p class="lead reveal">What our AI tooling actually costs &mdash; team seats plus metered Anthropic API usage across the tools we&rsquo;ve built.</p>
+
+        <div class="metrics block reveal">
+          <div class="metric">
+            <span class="m-label">Total AI Spend</span>
+            <span class="m-value">~$650</span>
+            <span class="m-unit">per month, all-in</span>
+          </div>
+          <div class="metric">
+            <span class="m-label">Annualized</span>
+            <span class="m-value">~$8K</span>
+            <span class="m-unit">per year, entire team</span>
+          </div>
+          <div class="metric">
+            <span class="m-label">Corporate Library API</span>
+            <span class="m-value">~$1</span>
+            <span class="m-unit">per month of metered usage</span>
+          </div>
+          <div class="metric">
+            <span class="m-label">Claude Seats</span>
+            <span class="m-value">9</span>
+            <span class="m-unit">covering the full team</span>
+          </div>
+        </div>
+
+        <div class="sec-head reveal"><h3>Anthropic Cost Breakdown</h3><span class="pipe">|</span><span class="kick">Seats &amp; Metered Usage</span></div>
+        <div class="comp-wrap reveal">
+          <table class="comp-table">
+            <thead>
+              <tr class="colhead-row">
+                <th class="type wrap">Line Item</th><th class="wrap">Basis</th><th>Qty</th><th class="tint-current">Monthly</th><th class="tint-market">Annual</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="type wrap">Claude seats &mdash; team</td><td class="wrap">Subscription (per seat)</td><td>9</td><td class="tint-current">[ $X ]</td><td class="tint-market">[ $X ]</td></tr>
+              <tr><td class="type wrap">&mdash; of which Premium seats</td><td class="wrap">Subscription (per seat)</td><td>2</td><td class="tint-current">~$125 ea</td><td class="tint-market">[ $X ]</td></tr>
+              <tr><td class="type wrap">Anthropic API &mdash; Corporate Library</td><td class="wrap">Metered usage (internal chat)</td><td>&mdash;</td><td class="tint-current">~$1</td><td class="tint-market">~$12</td></tr>
+              <tr><td class="type wrap">Anthropic API &mdash; other tools</td><td class="wrap">Metered usage</td><td>&mdash;</td><td class="tint-current">[ $X ]</td><td class="tint-market">[ $X ]</td></tr>
+              <tr class="total"><td class="type wrap">Total &mdash; seats + all metered usage</td><td class="wrap"></td><td>&mdash;</td><td class="tint-current">~$650</td><td class="tint-market">~$8K</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="fee-footnote reveal">Per-line figures marked <em>[ $X ]</em> are pulled from the Anthropic Console (Usage &amp; Billing) &mdash; drop in the current amounts before circulating. Totals reflect approximate current spend.</p>
+      </div>
+
+      <!-- ============ 08 · APPFOLIO DATABASE API ============ -->
       <div class="page" id="page-appfolio">
-        <p class="lead reveal">Take the KPI Dashboard on the office TV. Every number on that screen exists because we ran the full six-step pipeline below &mdash; for every single metric. And it compounds: AppFolio reports are scoped per manager, so the first two steps repeat three to four times per KPI, and maintenance never ends. One number on that screen is a dozen-plus setup steps, a code change, and a permanent maintenance obligation.</p>
+        <p class="lead reveal">Take the KPI Dashboard. Every number on that screen runs through the six-step pipeline below &mdash; and because reports are scoped per manager, the first two steps repeat three to four times per KPI. One number is a dozen-plus setup steps and a permanent maintenance obligation.</p>
 
         <div class="sec-head reveal"><h3>Today vs. the Database API</h3><span class="pipe">|</span><span class="kick">Per KPI</span></div>
         <div class="compare reveal">
@@ -773,9 +899,9 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
               <li>Build a saved report in AppFolio &mdash; one per manager</li>
               <li>Set a scheduled email send on each report</li>
               <li>Route the emails to a dedicated inbox</li>
-              <li>Update our parsing script to read the new report</li>
-              <li>Test end to end (wait for the next scheduled send)</li>
-              <li>Maintain it forever &mdash; if a report changes, the pipeline silently breaks</li>
+              <li>Update our parsing script to read it</li>
+              <li>Test end to end (wait for the next send)</li>
+              <li>Maintain it forever &mdash; changes silently break it</li>
             </ol>
           </div>
           <div class="col">
@@ -794,30 +920,30 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
             <div class="fc-k">Monthly</div>
             <div class="fc-n">Read-Write API Add-On</div>
             <div class="fc-a">$2,992<span class="u">/ month</span></div>
-            <div class="fc-nt">$1.00 per unit per month across the portfolio &mdash; an add-on to our existing Plus tier, no plan upgrade required</div>
+            <div class="fc-nt">$1.00 per unit per month &mdash; an add-on to our existing Plus tier, no upgrade required</div>
           </div>
           <div class="fee-compact-cell">
             <div class="fc-k">One-Time</div>
             <div class="fc-n">Onboarding Fee</div>
             <div class="fc-a">$500</div>
-            <div class="fc-nt">One-time setup fee</div>
+            <div class="fc-nt">One-time setup</div>
           </div>
           <div class="fee-compact-cell left no-bottom">
             <div class="fc-k">In Context</div>
             <div class="fc-n">Increase vs. Current Spend</div>
             <div class="fc-a">+37%</div>
-            <div class="fc-nt">Against our current AppFolio spend of $8,168/mo &mdash; one dollar per unit on a portfolio already spending $3.27 per unit per month</div>
+            <div class="fc-nt">On $8,168/mo current AppFolio spend &mdash; one dollar per unit, on a portfolio already at $3.27/unit/mo</div>
           </div>
           <div class="fee-compact-cell no-bottom">
             <div class="fc-k">Break-Even</div>
             <div class="fc-n">Manual Entry Eliminated</div>
             <div class="fc-a sm">[ X hrs/mo ]</div>
-            <div class="fc-nt">Because it is read-write, manual AppFolio data entry across the PM team is reduced &mdash; the add-on pays for itself on labor alone before any tooling benefit</div>
+            <div class="fc-nt">Read-write means less manual AppFolio entry &mdash; the add-on pays for itself on labor alone</div>
           </div>
         </div>
 
         <div class="sec-head reveal" style="margin-top:44px;"><h3>What It Buys</h3><span class="pipe">|</span><span class="kick">Portfolio-Wide</span></div>
-        <p class="lead reveal">This is not just a KPI Dashboard problem &mdash; the same pipeline gets rebuilt for every way we pull AppFolio data on every project: Report Studio, the Lease Population Tool, Corporate Library, Leasing Strategy Reports, the Work Order Digest. The API removes that constraint for all of them at once and makes the data real-time instead of only as fresh as the last scheduled email. Because it is read-write, it also works the other direction: charges, records, and field updates can be pushed programmatically.</p>
+        <p class="lead reveal">The same pipeline gets rebuilt for every AppFolio-fed project &mdash; Report Studio, Lease Population, Corporate Library, Leasing Strategy Reports, the Work Order Digest. The API removes that constraint for all of them at once, makes data real-time, and (being read-write) lets us push updates back.</p>
 
         <div class="highlight reveal">
           <span class="h-label">Ask</span>
@@ -825,20 +951,20 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         </div>
       </div>
 
-      <!-- ============ 07 · CLAUDE PREMIUM SEATS ============ -->
+      <!-- ============ 09 · CLAUDE PREMIUM SEATS ============ -->
       <div class="page" id="page-seats">
-        <p class="lead reveal">A smaller constraint. Three team members do Premium-seat-level AI work &mdash; full-time AI-assisted development, the Corporate Library platform, and the AppFolio/BuildOps data pipeline &mdash; but we hold two Premium seats, so we rotate seats between people and projects. This costs coordination time and interrupts work when a seat has to move.</p>
+        <p class="lead reveal">A smaller constraint. Three people do Premium-seat-level AI work &mdash; full-time AI-assisted development, the Corporate Library platform, and the AppFolio/BuildOps pipeline &mdash; but we hold two Premium seats. Rotating them between people costs coordination time and interrupts work.</p>
 
         <div class="compare reveal">
           <div class="col left">
             <div class="kicker">Current State</div>
             <div class="cmp-title">Two Seats, Three People</div>
-            <div class="cell-desc">Seats rotate between people and projects. Every move interrupts active work and adds coordination overhead.</div>
+            <div class="cell-desc">Seats rotate between people and projects. Every move interrupts active work.</div>
           </div>
           <div class="col">
             <div class="kicker">Requested</div>
             <div class="cmp-title">One Permanent Seat Each</div>
-            <div class="cell-desc">A third Premium seat means each active developer holds a permanent seat &mdash; no rotation, no interruptions.</div>
+            <div class="cell-desc">A third seat means each active developer holds their own &mdash; no rotation, no interruptions.</div>
           </div>
         </div>
 
@@ -847,7 +973,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
             <div>
               <div class="fc-label">Additional Premium Seat &middot; Monthly</div>
               <div class="fc-title">One More Seat</div>
-              <div class="fc-desc">A single additional Claude Premium seat, so each of the three developers doing Premium-level work holds their own permanent seat.</div>
+              <div class="fc-desc">A single additional Claude Premium seat, so each of the three developers holds a permanent seat.</div>
             </div>
             <div class="fc-price">
               <div class="fc-amount">~$125<span class="fc-unit" style="display:inline; margin:0;"> / mo</span></div>
@@ -858,14 +984,14 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
 
         <div class="highlight reveal">
           <span class="h-label">Ask</span>
-          <span class="h-value">One additional Premium seat (approximately $125/month at current billing), so each active developer holds a permanent seat.</span>
+          <span class="h-value">One additional Premium seat (~$125/month at current billing), so each active developer holds a permanent seat.</span>
         </div>
       </div>
 
-      <!-- ============ 08 · VENDOR COST BASIS (APPENDIX) ============ -->
+      <!-- ============ 10 · VENDOR COST BASIS (APPENDIX) ============ -->
       <div class="page" id="page-appendix">
         <p class="lead reveal">How the build-versus-buy comparison is calculated, product by product.</p>
-        <div class="statute-note reveal">One-time build estimates use published 2026 US agency market data: internal tools $20K&ndash;$50K, mid-complexity applications $50K&ndash;$200K, and complex multi-role platforms $200K&ndash;$500K. Ongoing maintenance is the industry-standard 15&ndash;20% of build cost per year. Where a licensed product exists, its list pricing is shown as the alternative.</div>
+        <div class="statute-note reveal">Build estimates use 2026 US agency market data: internal tools $20K&ndash;$50K, mid-complexity apps $50K&ndash;$200K, complex platforms $200K&ndash;$500K. Ongoing maintenance is the standard 15&ndash;20% of build cost per year. Where a licensed product exists, its list price is shown as the alternative.</div>
 
         <div class="sec-head reveal"><h3>Vendor Cost Basis</h3><span class="pipe">|</span><span class="kick">Build vs. Buy</span></div>
         <div class="comp-wrap reveal">
@@ -892,7 +1018,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         <p class="fee-footnote reveal">Sources: 2026 published market surveys of US agency project pricing (Clutch, GoodFirms), and current list pricing from Glean, Birdeye, Buildout, Proposify, PandaDoc, Domo, and Prophia. Detailed citations available on request.</p>
       </div>
 
-                  <!-- prev / next pager (shared, updated by JS) -->
+                                    <!-- prev / next pager (shared, updated by JS) -->
       <div class="pager">
         <button class="prev" id="pgPrev" type="button"><span class="pg-dir">← Previous</span><span class="pg-name"></span></button>
         <button class="next" id="pgNext" type="button"><span class="pg-dir">Next →</span><span class="pg-name"></span></button>
@@ -931,13 +1057,17 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
       lead:"Projects currently in development across the team, with owner and status for each."},
     {route:"pipeline",   nav:"pipeline",   eyebrow:"04 · Pipeline",    t1:"The",               t2:"Pipeline",              label:"What’s Next",
       lead:"What’s queued next — high-priority builds already scoped, plus the medium- and lower-priority backlog."},
-    {route:"howwework",  nav:"howwework",  eyebrow:"05 · How We Work", t1:"How We",            t2:"Work",                  label:"Operating Model",
-      lead:"The stack, the philosophy, and the governance behind a small team that ships at the pace of a much larger one."},
-    {route:"appfolio",   nav:"appfolio",   eyebrow:"06 · AppFolio API",t1:"The AppFolio",      t2:"Database API",          label:"The One Thing That Speeds Everything Up",
+    {route:"tools",      nav:"tools",      eyebrow:"05 · Tools",       t1:"Tools &",           t2:"Stack",                 label:"The Stack",
+      lead:"The platforms behind everything we build — deployment, versioning, development, project management, and communication."},
+    {route:"howwework",  nav:"howwework",  eyebrow:"06 · How We Work", t1:"How We",            t2:"Work",                  label:"Operating Model",
+      lead:"Principles, documentation, and why building takes the time it does — behind a small team that ships at a large team’s pace."},
+    {route:"costs",      nav:"costs",      eyebrow:"07 · Costs",       t1:"AI",                t2:"Costs",                 label:"Anthropic Cost Breakdown",
+      lead:"What our AI tooling actually costs — team seats plus metered Anthropic API usage, broken down."},
+    {route:"appfolio",   nav:"appfolio",   eyebrow:"08 · AppFolio API",t1:"The AppFolio",      t2:"Database API",          label:"The One Thing That Speeds Everything Up",
       lead:"A single change that removes the most repeated constraint across the portfolio — replacing per-report CSV pipelines with live, read-write data."},
-    {route:"seats",      nav:"seats",      eyebrow:"07 · Claude Seats",t1:"Claude Premium",    t2:"Seats",                 label:"A Smaller Constraint",
+    {route:"seats",      nav:"seats",      eyebrow:"09 · Claude Seats",t1:"Claude Premium",    t2:"Seats",                 label:"A Smaller Constraint",
       lead:"Three people do Premium-seat-level AI work; we hold two seats. One more removes the rotation overhead."},
-    {route:"appendix",   nav:"appendix",   eyebrow:"08 · Cost Basis",  t1:"Vendor",            t2:"Cost Basis",            label:"Appendix · Vendor Cost Basis",
+    {route:"appendix",   nav:"appendix",   eyebrow:"10 · Cost Basis",  t1:"Vendor",            t2:"Cost Basis",            label:"Appendix · Vendor Cost Basis",
       lead:"How the build-versus-buy comparison is calculated, product by product, against 2026 US agency market pricing."}
   ];
   var IDX = {};
@@ -958,8 +1088,10 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
     shipped:'<path d="M12 3.5l7 3v5c0 4.2-2.9 7.4-7 8.5-4.1-1.1-7-4.3-7-8.5v-5z"/><path d="M9 11.5l2 2 4-4"/>',
     inflight:'<circle cx="12" cy="12" r="3"/><path d="M12 4.2v2.2M12 17.6v2.2M4.2 12h2.2M17.6 12h2.2M6.5 6.5l1.5 1.5M16 16l1.5 1.5M17.5 6.5L16 8M8 16l-1.5 1.5"/>',
     pipeline:'<path d="M4 20V10M9.5 20V5M15 20V13M20.5 20V8"/><path d="M3 20.5h18"/>',
+    tools:'<rect x="3.5" y="4.5" width="17" height="12" rx="1.5"/><path d="M8.5 20.5h7M12 16.5v4"/>',
     howwework:'<circle cx="9" cy="8.5" r="2.8"/><path d="M3.5 19.5c0-3 2.6-4.8 5.5-4.8s5.5 1.8 5.5 4.8"/><path d="M16 6a2.8 2.8 0 0 1 0 5.4"/><path d="M17 14.9c2.2.5 3.5 2.1 3.5 4.6"/>',
-    appfolio:'<rect x="4.5" y="3.5" width="15" height="17" rx="1"/><path d="M8 13.5v3.5M12 9.5v7.5M16 11.5v5.5"/>',
+    costs:'<rect x="4.5" y="3.5" width="15" height="17" rx="1"/><path d="M8 13.5v3.5M12 9.5v7.5M16 11.5v5.5"/>',
+    appfolio:'<path d="M12 3.5c3.6 0 6.5 1.3 6.5 3v11c0 1.7-2.9 3-6.5 3s-6.5-1.3-6.5-3v-11c0-1.7 2.9-3 6.5-3z"/><path d="M5.5 6.5c0 1.7 2.9 3 6.5 3s6.5-1.3 6.5-3M5.5 12c0 1.7 2.9 3 6.5 3s6.5-1.3 6.5-3"/>',
     seats:'<circle cx="12" cy="8" r="3.2"/><path d="M5.5 20c0-3.4 2.9-5.6 6.5-5.6s6.5 2.2 6.5 5.6"/>',
     appendix:'<path d="M6.5 3.5h11v17l-2.2-1.4-2.3 1.4-2.3-1.4-2.2 1.4z"/><path d="M9.5 8h5M9.5 11.5h5"/>'
   };
