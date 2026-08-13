@@ -76,7 +76,10 @@ switch sections.
 1. Cloudflare dashboard, then **Workers & Pages > Create > Pages > Connect to Git**, then select
    this repository.
 2. Settings: Framework preset **None**, Build command **(empty)**, Build output directory **/**
-3. Every push to `main` deploys production. Every branch and pull request receives a preview URL.
+3. Every push to `main` deploys production, **provided the project's production branch is set to
+   `main`**. Check this under Settings, Build, Production branch. If it points at a feature branch,
+   pushes to `main` build successfully but are labeled Preview and the live site does not change.
+   Every other branch and pull request receives a preview URL.
 
 ## Analytics (PostHog), optional
 The site is instrumented for PostHog and is off by default. To enable it, paste the Project API Key
@@ -115,5 +118,19 @@ Tracked once the key is set:
   such in the Granola footnote.
 - AppFolio and Claude seat costs reflect the source document. Update against current quotes before
   circulating.
+- Section 2 carries an itemized tooling spend table taken from the source team overview document.
+  The annual column is computed from the monthly figures rather than quoted, giving a total of
+  $7,440 to $8,040. The approximately $8,000 per year figure used in the Overview metrics is the
+  upper end of that range. The additional Premium seat in section 7 and the three licenses in
+  section 3 are outside that table, which its disclosure states.
+- The vendor cost range in section 1 cites 2026 US agency pricing surveys from Clutch and
+  GoodFirms, plus list pricing for Glean, Birdeye, Buildout, Proposify, PandaDoc, Domo, and Prophia
+  as commercial equivalents. The per-product build estimates that backed this range lived on a
+  Vendor Cost Basis appendix page, removed deliberately in commit `1a1c293`. Only the source
+  attribution was carried forward; the page was not restored.
+- The 31 July 2026 target dates in section 9 come from the source document and have passed. Four
+  items need status reconfirmed before the deck is presented, which the note under the table says.
+- The access control table in section 8 has `[ add link ]` in every Live URL cell. Credentials are
+  distributed separately and must not be committed here.
 - The footer logos are shared AGM brand assets at `/assets/agm-logo-black.svg` and
   `/assets/agm-logo-white.svg`.

@@ -605,7 +605,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
           <div class="sec-head"><h3>Function</h3><span class="pipe">|</span><span class="kick">Scope</span></div>
           <p class="lead">The team builds internal software for AGM. Current output covers reporting, dashboards, data pipelines, and workflow tools for processes where commercial software does not fit the requirement or does not fit the budget.</p>
           <p class="lead">Commissioning and maintaining the current portfolio through outside vendors is estimated at <strong>$1.0M to $2.9M over three years</strong>. That figure is $630K to $1.7M to build at US agency rates, plus $110K to $390K per year for maintenance and hosting. Direct cost over the same period is <strong>under $25,000</strong>. Neither figure includes team salaries.</p>
-          <p class="statute-note">The vendor range is an internal estimate derived from published agency rates. No vendor has been asked to bid on this scope, so the figure has not been tested against a quote.</p>
+          <p class="statute-note">The vendor range is an internal estimate built from 2026 US agency pricing surveys published by Clutch and GoodFirms, and from current list pricing for Glean, Birdeye, Buildout, Proposify, PandaDoc, Domo, and Prophia as commercial equivalents. No vendor has been asked to bid on this scope, so the figure has not been tested against a quote.</p>
         </div>
 
         <div class="block reveal">
@@ -671,6 +671,32 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
             <div class="cell-desc">Most of the portfolio does not call AI at runtime. Report Studio, the KPI Dashboard, and the proposal system function without it. The components that do call AI use a standard API that can be re-pointed to another provider with a code change; the scope of that change has not been tested. Data is held in storage AGM controls and can be exported. The Cloudflare platform uses standard web technology rather than a proprietary runtime.</div>
           </div>
         </div>
+
+        <div class="sec-head reveal" style="margin-top:48px;"><h3>Current tooling spend</h3><span class="pipe">|</span><span class="kick">All line items</span></div>
+        <div class="comp-wrap reveal">
+          <table class="comp-table">
+            <thead>
+              <tr class="colhead-row">
+                <th class="type">Line item</th><th class="wrap">Basis</th><th class="wrap">USD per month</th><th class="wrap">USD per year</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="type">Claude Team plan, 9 seats</td><td class="wrap">Subscription covering the team, including AI-assisted development</td><td>579</td><td>6,948</td></tr>
+              <tr><td class="type">Claude usage credits</td><td class="wrap">Metered overflow above the plan allowance</td><td>40&ndash;90</td><td>480&ndash;1,080</td></tr>
+              <tr><td class="type">Anthropic API</td><td class="wrap">Metered usage by AI features in production</td><td>~1</td><td>~12</td></tr>
+              <tr><td class="type">Cloudflare hosting</td><td class="wrap">All applications and approximately 100 websites</td><td>~0</td><td>~0</td></tr>
+              <tr class="total"><td class="type">Total</td><td></td><td class="fig">620&ndash;670</td><td class="fig">7,440&ndash;8,040</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <details class="disc reveal">
+          <summary>Spend table notes and what sits outside it<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <p>Figures are taken from the source team overview document. The annual column is the monthly figure multiplied by twelve; the annual total of $7,440 to $8,040 is computed from the line items rather than quoted, and the figure of approximately $8,000 per year used elsewhere in this deck is the upper end of that range.</p>
+            <p>Two items sit outside this table. The additional Claude Premium seat requested in the Claude Seats section would add approximately $125 per month, or $1,500 per year. The three tool licenses in the Tool Stack section are not included here at any rollout size.</p>
+            <p>Hosting is recorded at approximately zero because usage falls inside the Cloudflare free allowance at current volume. It is not a negotiated rate and will become a line item if traffic grows.</p>
+          </div>
+        </details>
 
         <div class="sec-head reveal" style="margin-top:48px;"><h3>Team</h3><span class="pipe">|</span><span class="kick">Roles</span></div>
         <div class="cellgrid reveal no-num">
@@ -1266,32 +1292,52 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
             <div class="cell-desc">Availabilities page, business map, corporate and HOA contact forms, and property-specific sites. This is the public-facing web surface supporting leasing and company marketing.</div>
           </div>
         </div>
+
+        <div class="sec-head reveal" style="margin-top:48px;"><h3>Access control</h3><span class="pipe">|</span><span class="kick">By product</span></div>
+        <div class="comp-wrap reveal">
+          <table class="comp-table">
+            <thead>
+              <tr class="colhead-row">
+                <th class="type">Product</th><th class="wrap">Access method</th><th class="wrap">Live URL</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="type">Report Studio</td><td class="wrap">AGM Google Workspace SSO</td><td>[ add link ]</td></tr>
+              <tr><td class="type">KPI Dashboard</td><td class="wrap">AGM Google Workspace SSO</td><td>[ add link ]</td></tr>
+              <tr><td class="type">Corporate Library</td><td class="wrap">AGM Google Workspace SSO</td><td>[ add link ]</td></tr>
+              <tr><td class="type">Digital Proposal System</td><td class="wrap">Shared password, one per proposal</td><td>[ add link ]</td></tr>
+              <tr><td class="type">Property marketing sites</td><td class="wrap">Public</td><td>[ add link ]</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="statute-note">Live URLs are not filled in. Each needs its production address added before this deck is presented. Login credentials are distributed separately and are not held in this repository.</p>
       </div>
 
       <!-- ============ 09 · IN DEVELOPMENT ============ -->
       <div class="page" id="page-inflight">
-        <p class="lead reveal">Projects currently in development, with owner and status. Entries marked [ estimate ] have no completion date set.</p>
+        <p class="lead reveal">Projects currently in development, with owner and status. Target dates come from the source team overview document. Entries marked [ estimate ] and [ decision date ] have no date set.</p>
         <div class="sec-head reveal"><h3>Active projects</h3><span class="pipe">|</span><span class="kick">Owner and status</span></div>
         <div class="comp-wrap reveal">
           <table class="comp-table">
             <thead>
               <tr class="colhead-row">
-                <th class="type wrap">Project</th><th>Owner</th><th class="wrap">Status</th><th>Completion date</th>
+                <th class="type wrap">Project</th><th>Owner</th><th class="wrap">Status</th><th class="wrap">Target date</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td class="type wrap">Report Studio, HOA</td><td>Carter</td><td class="wrap">In progress. Multifamily and Commercial in production</td><td>[ estimate ]</td></tr>
-              <tr><td class="type wrap">KPI Dashboard</td><td>Carter</td><td class="wrap">In progress. 6 of 8 metrics in production</td><td>[ estimate ]</td></tr>
-              <tr><td class="type wrap">Security Deposit Checkout Process</td><td>Helen, Cody</td><td class="wrap">In progress. Design document complete</td><td>[ estimate ]</td></tr>
-              <tr><td class="type wrap">Corporate Library expansion</td><td>Leary</td><td class="wrap">In production. Building document drafting and bulk review import</td><td>[ estimate ]</td></tr>
-              <tr><td class="type wrap">Commercial website templates, Astro migration</td><td>Leary, Helen</td><td class="wrap">In progress, on target</td><td>Jul 31</td></tr>
+              <tr><td class="type wrap">Report Studio, HOA</td><td>Carter</td><td class="wrap">In progress. Multifamily and Commercial in production</td><td>31 Jul 2026</td></tr>
+              <tr><td class="type wrap">KPI Dashboard</td><td>Carter</td><td class="wrap">In progress. 6 of 8 metrics in production</td><td>Ongoing</td></tr>
+              <tr><td class="type wrap">Security Deposit Checkout Process</td><td>Helen, Cody</td><td class="wrap">In progress. Design document complete, in user testing</td><td>31 Jul 2026</td></tr>
+              <tr><td class="type wrap">Corporate Library expansion</td><td>Leary</td><td class="wrap">In production. Building document drafting and bulk review import</td><td>Ongoing</td></tr>
+              <tr><td class="type wrap">Commercial website templates, Astro migration</td><td>Leary, Helen</td><td class="wrap">In progress</td><td>31 Jul 2026</td></tr>
               <tr><td class="type wrap">Lease Population Tool</td><td>Carter</td><td class="wrap">In progress. Awaiting lease component files</td><td>[ estimate ]</td></tr>
-              <tr><td class="type wrap">AppFolio and BuildOps sync (Matcher)</td><td>Carter</td><td class="wrap">First build session scoped</td><td>[ estimate ]</td></tr>
-              <tr><td class="type wrap">Office Sign-In Kiosk</td><td>Carter</td><td class="wrap">In development</td><td>[ estimate ]</td></tr>
-              <tr><td class="type wrap">Dialzara, after-hours call handling</td><td>Carter</td><td class="wrap">Demo scheduled, under evaluation</td><td>[ decision date ]</td></tr>
+              <tr><td class="type wrap">AppFolio and BuildOps sync (Matcher)</td><td>Carter</td><td class="wrap">First build session scoped. Identifies and reconciles discrepancies between AppFolio and BuildOps</td><td>[ estimate ]</td></tr>
+              <tr><td class="type wrap">Office Sign-In Kiosk</td><td>Carter</td><td class="wrap">In development</td><td>31 Jul 2026</td></tr>
+              <tr><td class="type wrap">Dialzara, after-hours call handling</td><td>Carter</td><td class="wrap">Demonstration scheduled, under evaluation</td><td>[ decision date ]</td></tr>
             </tbody>
           </table>
         </div>
+        <p class="statute-note">The 31 July 2026 targets above are drawn from the source team overview document and have passed. Status for those four items needs reconfirming before this deck is presented. "Ongoing" denotes work with no fixed end date rather than work without a target.</p>
       </div>
 
       <!-- ============ 10 · PLANNED WORK ============ -->
@@ -1317,7 +1363,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
           <div class="cell">
             <div class="kicker">Market data</div>
             <div class="cell-title">AGM Market Pulse and comparables</div>
-            <div class="cell-desc">In-house market and comparables tooling. Scope description outstanding.</div>
+            <div class="cell-desc">A portfolio-wide and market-wide tracker for market and comparables data.</div>
           </div>
         </div>
 
