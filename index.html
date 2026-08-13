@@ -550,7 +550,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         <button class="nav-link" data-route="overview">Overview</button>
         <button class="nav-link" data-route="howwework">Operating Model</button>
         <button class="nav-link" data-route="toolstack">Tool Stack</button>
-        <button class="nav-link" data-route="standards">Standards</button>
+        <button class="nav-link" data-route="standards">Risks</button>
         <button class="nav-link" data-route="ongoing">Open Items</button>
         <button class="nav-link" data-route="appfolio">AppFolio</button>
         <button class="nav-link" data-route="seats">Claude Seats</button>
@@ -1191,74 +1191,92 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         </details>
       </div>
 
-      <!-- ============ 04 · SOFTWARE STANDARDS ============ -->
+      <!-- ============ 04 · ADOPTION RISKS ============ -->
       <div class="page" id="page-standards">
-        <p class="lead reveal">Every licensed tool carries a written requirement for use, a named owner, and a quarterly usage review. This section states the requirement for each tool and the review that verifies it. The purpose is to establish that purchased licenses are used, and to identify licenses that are not.</p>
+        <p class="lead reveal">The licenses in the previous section return value only if they are used, consistently, by everyone holding a seat. This section states what the team expects to get in the way of that, and the time proposed to prevent it. These are concerns held by the team rather than findings from a review.</p>
 
-        <div class="sec-head reveal"><h3>Review cycle</h3><span class="pipe">|</span><span class="kick">Three stages</span></div>
-        <div class="funnel-rail reveal">
-          <div class="funnel-stage"><div class="funnel-num">01</div><div><div class="funnel-stage-label">Approval</div><div class="funnel-stage-title">Named owner and a written requirement for use</div></div></div>
-          <div class="funnel-stage"><div class="funnel-num">02</div><div><div class="funnel-stage-label">Use</div><div class="funnel-stage-title">The requirement applies to everyone holding a seat</div></div></div>
-          <div class="funnel-stage"><div class="funnel-num">03</div><div><div class="funnel-stage-label">Review</div><div class="funnel-stage-title">Quarterly usage report and seat reconciliation</div></div></div>
-        </div>
-
-        <div class="sec-head reveal" style="margin-top:48px;"><h3>Requirements by tool</h3><span class="pipe">|</span><span class="kick">Expected use</span></div>
+        <div class="sec-head reveal"><h3>What we are watching</h3><span class="pipe">|</span><span class="kick">Four risks</span></div>
         <div class="cellgrid reveal">
           <div class="cell">
-            <div class="kicker">Granola</div>
-            <div class="cell-title">Recording requirement</div>
-            <div class="cell-desc">Record every conversation. This applies in particular to any discussion touching a large project or a general business problem the company is working to solve. Staff do not attend meetings without a laptop and a running recording. The requirement exists so that expectations set by leadership and by internal teams are documented at the time they are set, and so that a decision made in March is retrievable in September. Notes are filed to the relevant project location the same day.</div>
+            <div class="kicker">Adoption</div>
+            <div class="cell-title">Inconsistent use</div>
+            <div class="cell-desc">A tool used by part of the team produces a partial record. Message history, meeting notes, and shared component libraries return value in proportion to how completely they are populated. A month in which a tool is skipped produces no record for that month, and the gap is not visible until someone needs it. The license is paid either way.</div>
           </div>
           <div class="cell">
-            <div class="kicker">Slack</div>
-            <div class="cell-title">Channel use</div>
-            <div class="cell-desc">Project work is conducted in the project channel rather than in direct messages or email. Decisions are written in the channel that owns them. Files are posted to the channel. Vendors, owners, and contractors are given a Slack Connect channel in place of an email thread.</div>
+            <div class="kicker">Drift</div>
+            <div class="cell-title">Upkeep without an owner</div>
+            <div class="cell-desc">Each tool needs continuous small effort that belongs to no single role: channels created and archived, requests and messages answered, a recording started at the beginning of every meeting, design files and components tidied as they accumulate. None of it is difficult. All of it stops when no time is set aside for it, and the tools degrade quietly rather than failing outright.</div>
           </div>
           <div class="cell">
-            <div class="kicker">Figma</div>
-            <div class="cell-title">Design file requirement</div>
-            <div class="cell-desc">Interface changes begin as a Figma file and are reviewed there before code is written. Shared components are drawn from the team library rather than defined per file. Developers work from Dev Mode rather than from screenshots.</div>
+            <div class="kicker">Onboarding</div>
+            <div class="cell-title">Habits inherited rather than taught</div>
+            <div class="cell-desc">New staff copy what they see. If the expected use is not demonstrated in the first week, what they adopt is whatever the team is doing at the time, including the parts that have already drifted. Drift compounds through each person added.</div>
           </div>
           <div class="cell">
-            <div class="kicker">Asana</div>
-            <div class="cell-title">Task tracking requirement</div>
-            <div class="cell-desc">Work items are entered as tasks with a named owner and a due date at the time they are agreed, not reconstructed afterward. Status is read from the task rather than requested in a message. A task whose scope changes is edited, so the record reflects what is currently agreed. Requests from other teams arrive through an intake form rather than a direct message.</div>
-          </div>
-          <div class="cell">
-            <div class="kicker">Claude</div>
-            <div class="cell-title">Development standards and spend limits</div>
-            <div class="cell-desc">Each repository carries written development standards that the AI tools follow, which holds code conventions consistent regardless of contributor. Seat and API usage is tracked per user against admin spend limits set organization-wide.</div>
-          </div>
-          <div class="cell">
-            <div class="kicker">AppFolio API</div>
-            <div class="cell-title">Data access method</div>
-            <div class="cell-desc">On approval of the Database API, the scheduled-report-to-inbox method is closed to new work. New data requirements are met through the API. Existing CSV pipelines are migrated on a schedule rather than left running alongside the API.</div>
-          </div>
-          <div class="cell">
-            <div class="kicker">All tools</div>
-            <div class="cell-title">Quarterly license review</div>
-            <div class="cell-desc">Usage is pulled per seat each quarter. A seat with no activity in 30 days is reclaimed, downgraded, or reassigned. A tool with no activity from the team that requested it is cancelled at renewal. Renewals are not automatic.</div>
+            <div class="kicker">Renewal</div>
+            <div class="cell-title">Seats renewing without a usage check</div>
+            <div class="cell-desc">Licenses renew on their own. Without a usage review before the renewal date, a seat that has gone unused continues to be paid for, and the first signal is the invoice. This is the risk that converts an adoption problem into a cost problem.</div>
           </div>
         </div>
 
-        <div class="sec-head reveal" style="margin-top:48px;"><h3>Basis for the requirements</h3><span class="pipe">|</span><span class="kick">Rationale</span></div>
-        <ul class="mp-list reveal">
-          <li><strong>Coverage.</strong> A record with gaps cannot be used to establish what was asked for. If half the team records meetings and half does not, the record does not answer questions about the periods it does not cover.</li>
-          <li><strong>Retained value.</strong> Message history, shared component libraries, and meeting records return value in proportion to how completely they are populated. A month in which the tool is not used produces no record for that month.</li>
-          <li><strong>Cost review.</strong> A license renewal can be defended against a usage report. It cannot be defended against an absent one.</li>
-          <li><strong>Handover.</strong> Staff joining a project inherit the recorded material rather than reconstructing it from conversation.</li>
-        </ul>
+        <div class="sec-head reveal" style="margin-top:48px;"><h3>Scheduled maintenance time</h3><span class="pipe">|</span><span class="kick">Proposed response</span></div>
+        <p class="lead reveal">The response is time on the calendar rather than a policy document. A recurring block during the week, held for upkeep, in which the work below is completed and the requirements are checked. The cadence has not been set.</p>
+
+        <div class="metrics block reveal">
+          <div class="metric">
+            <span class="m-label">Day</span>
+            <span class="m-value sm">[ day ]</span>
+            <span class="m-unit">recurring, same day each week</span>
+          </div>
+          <div class="metric">
+            <span class="m-label">Duration</span>
+            <span class="m-value sm">[ hours ]</span>
+            <span class="m-unit">held on the calendar, not optional</span>
+          </div>
+          <div class="metric">
+            <span class="m-label">Participants</span>
+            <span class="m-value sm">[ who ]</span>
+            <span class="m-unit">everyone holding a seat</span>
+          </div>
+          <div class="metric">
+            <span class="m-label">Owner</span>
+            <span class="m-value sm">[ owner ]</span>
+            <span class="m-unit">accountable for the block running</span>
+          </div>
+        </div>
+
+        <div class="comp-wrap reveal">
+          <table class="comp-table">
+            <thead>
+              <tr class="colhead-row">
+                <th class="type wrap">Work</th><th>Tool</th><th class="wrap">Frequency</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="type wrap">Start a recording at the beginning of the meeting</td><td>Granola</td><td class="wrap">Every meeting</td></tr>
+              <tr><td class="type wrap">File notes to the relevant project location</td><td>Granola</td><td class="wrap">Same day</td></tr>
+              <tr><td class="type wrap">Create, name, and archive project channels</td><td>Slack</td><td class="wrap">Maintenance block</td></tr>
+              <tr><td class="type wrap">Clear the open request and message queue</td><td>Slack</td><td class="wrap">Maintenance block</td></tr>
+              <tr><td class="type wrap">Tidy design files and promote components to the shared library</td><td>Figma</td><td class="wrap">Maintenance block</td></tr>
+              <tr><td class="type wrap">Enter agreed work as tasks with an owner and a due date, and clear the intake queue</td><td>Asana</td><td class="wrap">Maintenance block</td></tr>
+              <tr><td class="type wrap">Confirm repository development standards are current</td><td>Claude</td><td class="wrap">Maintenance block</td></tr>
+              <tr><td class="type wrap">Review seat usage against the license list and reclaim idle seats</td><td>All tools</td><td class="wrap">Quarterly</td></tr>
+            </tbody>
+          </table>
+        </div>
 
         <details class="disc reveal">
-          <summary>Cost of these requirements<span class="disc-hint"></span></summary>
+          <summary>Argument against a scheduled block, and what it does not solve<span class="disc-hint"></span></summary>
           <div class="disc-body">
-            <p><strong>Cost of the requirements.</strong> A standing recording requirement changes how people speak in meetings, and some conversation will move to settings that are not recorded. A 30-day idle rule will occasionally reclaim a seat from someone on leave. Both outcomes are predictable and are handled by exception rather than by revising the requirement. Neither the recording requirement nor the review has been costed in staff time.</p>
+            <p>The block costs project time every week, and a standing meeting is the first thing dropped when a deadline is close, which is precisely when upkeep is most likely to lapse. The alternative is to leave upkeep inside individual routines, which is the current arrangement and the reason this section exists.</p>
+            <p>Holding the time does not by itself create accountability. Without a named owner per tool, the block can run and still produce nothing. It also does not address the rest of the week: a recording either starts at the beginning of a meeting or it does not, and no later block recovers that conversation.</p>
+            <p>Neither the block nor the quarterly review has been costed in staff hours.</p>
           </div>
         </details>
 
         <div class="highlight reveal">
-          <span class="h-label">Policy</span>
-          <span class="h-value">Use of an approved tool is a requirement, not a preference. Usage is measured, reviewed quarterly, and seats without activity are reclaimed.</span>
+          <span class="h-label">Net risk</span>
+          <span class="h-value">The licenses are inexpensive relative to the work they support. The exposure is not the spend. It is paying for tools that end up half used, and finding out at renewal.</span>
         </div>
       </div>
 
@@ -1631,8 +1649,8 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
       lead:"Platform and code hosting, build and release method, access control, and vendor dependency."},
     {route:"toolstack",  nav:"toolstack",  eyebrow:"03 · Tool Stack",     t1:"Tool",             t2:"Stack",         label:"Pricing and Capability",
       lead:"Slack, Granola, Figma, and Asana. What each product does and where it is used, list pricing by tier, capability by tier, and the basis for each tier selected."},
-    {route:"standards",  nav:"standards",  eyebrow:"04 · Standards",      t1:"Software",         t2:"Standards",     label:"Use Requirements",
-      lead:"The required use for each licensed tool, and the quarterly review that verifies it."},
+    {route:"standards",  nav:"standards",  eyebrow:"04 · Risks",          t1:"Adoption",         t2:"Risks",         label:"What We Are Watching",
+      lead:"What the team expects to get in the way of consistent use, and the maintenance time proposed to prevent it."},
     {route:"ongoing",    nav:"ongoing",    eyebrow:"05 · Open Items",     t1:"Open",             t2:"Items",         label:"Discussed, Not Approved",
       lead:"Claude API credits and the AppFolio Database API. Both addressed verbally; figures recorded here."},
     {route:"appfolio",   nav:"appfolio",   eyebrow:"06 · AppFolio API",   t1:"AppFolio",         t2:"Database API",  label:"Data Access Method",
@@ -1668,7 +1686,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
     appfolio:'<rect x="4.5" y="3.5" width="15" height="17" rx="1"/><path d="M8 13.5v3.5M12 9.5v7.5M16 11.5v5.5"/>',
     seats:'<circle cx="12" cy="8" r="3.2"/><path d="M5.5 20c0-3.4 2.9-5.6 6.5-5.6s6.5 2.2 6.5 5.6"/>',
     toolstack:'<path d="M12 3.2l8.5 4.4-8.5 4.4-8.5-4.4z"/><path d="M3.5 12l8.5 4.4 8.5-4.4"/><path d="M3.5 16.4l8.5 4.4 8.5-4.4"/>',
-    standards:'<path d="M6 3.5h12v17l-6-3.1-6 3.1z"/><path d="M9.4 10.6l1.9 1.9 3.3-3.7"/>',
+    standards:'<path d="M12 4.2l8.6 15.1H3.4z"/><path d="M12 10v4"/><circle cx="12" cy="16.9" r=".7"/>',
     ongoing:'<circle cx="12" cy="12" r="8.2"/><path d="M12 7.2V12l3.2 2"/>'
   };
   function iconSVG(nav){
