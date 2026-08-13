@@ -1,69 +1,97 @@
-# AGM Real Estate Group — Product Design & Development · Team Overview
+# AGM Real Estate Group | Product Design & Development | Team Overview
 
-**INTERNAL — team overview material. Private repository. Do not make public.**
+**INTERNAL. Team overview material. Private repository. Do not make public.**
 
-A digital micro-site version of AGM Product Design & Development's *Team Overview* (July 2026).
-Each section is its own page in a single-file static site (`index.html`, no build step, no
-dependencies). Fonts load from Google Fonts; everything else is inline. This repo reuses the design
-system built for AGM's proposal micro-sites (multi-family, commercial, HOA).
+A micro-site version of the AGM Product Design & Development team overview (July 2026). Each
+section is a page in a single-file static site (`index.html`). There is no build step and no
+dependencies. Fonts load from Google Fonts; everything else is inline. The repository reuses the
+design system built for the AGM proposal micro-sites (multi-family, commercial, HOA).
 
-## What this is
-The overview's ten sections, rebuilt as an institutional, navigable micro-site:
+## Contents
+Ten sections:
 
-1. Overview (TL;DR) · 2. How We Work · 3. Tool Stack · 4. Software Standards · 5. Ongoing Asks ·
-6. The AppFolio Database API · 7. Claude Premium Seats · 8. Shipped · 9. In Flight · 10. Pipeline.
+1. Overview
+2. Operating Model
+3. Tool Stack
+4. Software Standards
+5. Open Items
+6. AppFolio Database API
+7. Claude Premium Seats
+8. In Production
+9. In Development
+10. Planned Work
 
-Sections 3–5 cover the tooling ask: per-tier pricing tables and the case for **Slack Pro**,
-**Granola Business**, and **Figma Professional** (§3); the software-use enforcement and
-adoption-review policy that keeps those licenses sticky (§4); and the two items already handled
-verbally — **Claude API credits** and the **AppFolio Database API** — put on screen with numbers
-attached (§5).
+Sections 3 through 5 carry the budget request. Section 3 states list pricing for every tier of
+Slack, Granola, and Figma, the capability differences between tiers, and the basis for the tier
+selected, each followed by the argument against it and by what the tier does not address. Section 4
+states the required use for each licensed tool and the quarterly review that verifies it. Section 5
+records the two items already discussed verbally: Claude API credits and the AppFolio Database API.
 
-Copy is adapted from the source team-overview document. The layout, palette (navy `#00202F`, brand
-blue `#3A8DDE`, serif/sans pairing), and rail-and-content structure follow the shared AGM micro-site
-design system. Each page adds whitespace and interaction — a per-page navy/blue summary rail,
-hover-reactive cards and pills, reveal-on-scroll, prev/next paging, a reading-progress bar, and a
-light/dark toggle.
+Copy is adapted from the source team overview document. Layout, palette (navy `#00202F`, brand blue
+`#3A8DDE`, serif and sans pairing), and the rail-and-content structure follow the shared AGM
+micro-site design system. Each page carries a per-page summary rail, reveal-on-scroll, prev and
+next paging, a reading-progress bar, and a light and dark toggle.
+
+## Editorial standard
+This deck is read by leadership for a budget decision and retained afterward as reference. Copy
+follows a fixed standard. Any edit should hold to it:
+
+- No em dashes.
+- Section labels name their subject. Headings are noun phrases with no verb, no colon and tagline,
+  and no implied argument.
+- Body copy states a fact and its source, then stops. Clauses that exist to land a point rather
+  than carry information are cut.
+- Tables use one unit per column, stated in the header. Feature strings separated by dots are split
+  into the dimensions being compared.
+- Measured, estimated, and assumed figures are distinguished explicitly. Costs are stated per seat
+  and annualized.
+- Vendor tier language is quoted and attributed to the vendor rather than adopted. "Unlimited" is
+  the vendor's word.
+- Every recommendation names its strongest counterargument and what it does not solve.
 
 ## No access gate
-Unlike the proposal micro-sites, **this overview is not password-protected**. There is no
-`functions/_middleware.js` cover/login screen — `index.html` is served directly as a static page.
-If access control is ever needed, front the Cloudflare Pages project with Cloudflare Zero Trust
-Access (email-verified, tied to AGM Google Workspace) rather than re-adding a shared-password gate.
+Unlike the proposal micro-sites, this overview is not password-protected. There is no
+`functions/_middleware.js` cover or login screen; `index.html` is served directly as a static page.
+If access control becomes necessary, front the Cloudflare Pages project with Cloudflare Zero Trust
+Access, which is email-verified and tied to AGM Google Workspace, rather than re-adding a
+shared-password gate.
 
 ## Local preview
-Open `index.html` in a browser. That's it. Deep-link a section with the URL hash, e.g.
-`index.html#appfolio`.
+Open `index.html` in a browser. Deep-link a section with the URL hash, for example
+`index.html#appfolio`. The hash is read on page load only; changing it without a reload does not
+switch sections.
 
-## Deploy — Cloudflare Pages (AGM standard pattern)
-1. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git** → select this repo.
-2. Settings: Framework preset **None** · Build command **(empty)** · Build output directory **/**
-3. Every push to `main` auto-deploys production; every branch/PR gets its own preview URL.
+## Deploy: Cloudflare Pages
+1. Cloudflare dashboard, then **Workers & Pages > Create > Pages > Connect to Git**, then select
+   this repository.
+2. Settings: Framework preset **None**, Build command **(empty)**, Build output directory **/**
+3. Every push to `main` deploys production. Every branch and pull request receives a preview URL.
 
-## Analytics (PostHog) — optional
-The site is instrumented for PostHog but **off by default**. To turn it on, paste your Project API
-Key into the marked block in `index.html`'s `<head>` (`window.AGM_POSTHOG_KEY`). Until a real key is
-set, no analytics requests are made. Events are tagged with `proposal: aiengineering-overview`.
+## Analytics (PostHog), optional
+The site is instrumented for PostHog and is off by default. To enable it, paste the Project API Key
+into the marked block in the `<head>` of `index.html` (`window.AGM_POSTHOG_KEY`). Until a real key
+is set, no analytics requests are made. Events are tagged with `proposal: aiengineering-overview`.
 
-What it tracks once the key is set:
-- **Visits** — a virtual `$pageview` per section (URL carries the `#section` hash).
-- **Tab navigation** — a `tab_click` event with `to`, `from`, and `method`.
-- **Time on each section** — a `section_time` event when a section is left.
-- Plus `autocapture`, session replays, and click/scroll heatmaps.
+Tracked once the key is set:
+- **Visits.** A virtual `$pageview` per section. The URL carries the `#section` hash.
+- **Tab navigation.** A `tab_click` event with `to`, `from`, and `method`.
+- **Time per section.** A `section_time` event when a section is left.
+- Autocapture, session replays, and click and scroll heatmaps.
 
 ## Operational notes
 - `_headers` enforces `noindex` and security headers at the edge.
-- Several figures carry bracketed placeholders (`[ estimate ]`, `[ decision date ]`,
-  `[ X hrs/mo ]`, `[ one-liner in progress ]`, `[ total ]`, `[ seat count ]`,
-  `[ monthly amount ]`, `[ top-off amount ]`) — fill these in as details are confirmed.
-  The Tool Stack and Ongoing Asks sections depend on final headcount and credit amounts.
-- Cost figures (AppFolio API pricing, Claude seat pricing) reflect the source document; update
-  per the latest quotes before circulating.
-- Third-party SaaS pricing in §3 (Slack, Granola, Figma) is list pricing gathered from public
-  sources and reflects annual billing unless noted. Figma Organization/Enterprise figures are
-  ranges — vendors quote these individually. **Confirm every figure against a live vendor quote
-  before this deck is presented for approval.**
-- Claude API model rates in §5 are per million tokens at list price. Sonnet 5 is shown at
-  standard pricing with its promotional rate noted; re-check the rate card at renewal.
+- Bracketed placeholders mark figures that are not yet filled in: `[ estimate ]`,
+  `[ decision date ]`, `[ hours per month ]`, `[ n ]`, `[ total ]`, `[ amount ]`. The Tool Stack
+  cost summary requires final seat counts. Section 5 requires a usage baseline for the monthly
+  Claude credit figure and the current balance for the top-off figure. Section 6 requires measured
+  hours of manual AppFolio entry.
+- Third-party pricing in section 3 is vendor list pricing compiled from public pricing summaries,
+  not from a quote. Sources disagreed on Slack Business+ and on Figma Organization; the more
+  commonly cited figure was used and Figma Organization is shown as a range. **Confirm every figure
+  against a vendor quote before this deck is presented for approval.**
+- Claude API rates in section 5 are list price per million tokens. Sonnet 5 is shown at standard
+  pricing with its promotional rate noted in the footnote. Re-check the rate card at renewal.
+- AppFolio and Claude seat costs reflect the source document. Update against current quotes before
+  circulating.
 - The footer logos are shared AGM brand assets at `/assets/agm-logo-black.svg` and
   `/assets/agm-logo-white.svg`.
