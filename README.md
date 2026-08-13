@@ -13,7 +13,7 @@ Ten sections:
 1. Overview
 2. Operating Model
 3. Tool Stack
-4. Software Standards
+4. Adoption Risks
 5. Open Items
 6. AppFolio Database API
 7. Claude Premium Seats
@@ -24,7 +24,7 @@ Ten sections:
 Sections 3 through 5 carry the budget request. Section 3 states list pricing for every tier of
 Slack, Granola, and Figma, the capability differences between tiers, and the basis for the tier
 selected, each followed by the argument against it and by what the tier does not address. Section 4
-states the required use for each licensed tool and the quarterly review that verifies it. Section 5
+states the risks to consistent use and the maintenance time proposed against them. Section 5
 records the two items already discussed verbally: Claude API credits and the AppFolio Database API.
 
 Copy is adapted from the source team overview document. Layout, palette (navy `#00202F`, brand blue
@@ -130,6 +130,9 @@ Tracked once the key is set:
   attribution was carried forward; the page was not restored.
 - The 31 July 2026 target dates in section 9 come from the source document and have passed. Four
   items need status reconfirmed before the deck is presented, which the note under the table says.
+- Section 4 carries four unfilled placeholders for the maintenance block: `[ day ]`, `[ hours ]`,
+  `[ who ]`, and `[ owner ]`. The cadence has not been agreed, and neither the block nor the
+  quarterly review has been costed in staff hours.
 - The access control table in section 8 has `[ add link ]` in every Live URL cell. Credentials are
   distributed separately and must not be committed here.
 - The footer logos are shared AGM brand assets at `/assets/agm-logo-black.svg` and
