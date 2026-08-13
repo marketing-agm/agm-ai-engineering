@@ -8,10 +8,16 @@ dependencies). Fonts load from Google Fonts; everything else is inline. This rep
 system built for AGM's proposal micro-sites (multi-family, commercial, HOA).
 
 ## What this is
-The overview's seven sections, rebuilt as an institutional, navigable micro-site:
+The overview's ten sections, rebuilt as an institutional, navigable micro-site:
 
-1. Overview (TL;DR) · 2. How We Work · 3. The AppFolio Database API · 4. Claude Premium Seats ·
-5. Shipped · 6. In Flight · 7. Pipeline.
+1. Overview (TL;DR) · 2. How We Work · 3. Tool Stack · 4. Software Standards · 5. Ongoing Asks ·
+6. The AppFolio Database API · 7. Claude Premium Seats · 8. Shipped · 9. In Flight · 10. Pipeline.
+
+Sections 3–5 cover the tooling ask: per-tier pricing tables and the case for **Slack Pro**,
+**Granola Business**, and **Figma Professional** (§3); the software-use enforcement and
+adoption-review policy that keeps those licenses sticky (§4); and the two items already handled
+verbally — **Claude API credits** and the **AppFolio Database API** — put on screen with numbers
+attached (§5).
 
 Copy is adapted from the source team-overview document. The layout, palette (navy `#00202F`, brand
 blue `#3A8DDE`, serif/sans pairing), and rail-and-content structure follow the shared AGM micro-site
@@ -48,8 +54,16 @@ What it tracks once the key is set:
 ## Operational notes
 - `_headers` enforces `noindex` and security headers at the edge.
 - Several figures carry bracketed placeholders (`[ estimate ]`, `[ decision date ]`,
-  `[ X hrs/mo ]`, `[ one-liner in progress ]`) — fill these in as details are confirmed.
+  `[ X hrs/mo ]`, `[ one-liner in progress ]`, `[ total ]`, `[ seat count ]`,
+  `[ monthly amount ]`, `[ top-off amount ]`) — fill these in as details are confirmed.
+  The Tool Stack and Ongoing Asks sections depend on final headcount and credit amounts.
 - Cost figures (AppFolio API pricing, Claude seat pricing) reflect the source document; update
   per the latest quotes before circulating.
+- Third-party SaaS pricing in §3 (Slack, Granola, Figma) is list pricing gathered from public
+  sources and reflects annual billing unless noted. Figma Organization/Enterprise figures are
+  ranges — vendors quote these individually. **Confirm every figure against a live vendor quote
+  before this deck is presented for approval.**
+- Claude API model rates in §5 are per million tokens at list price. Sonnet 5 is shown at
+  standard pricing with its promotional rate noted; re-check the rate card at renewal.
 - The footer logos are shared AGM brand assets at `/assets/agm-logo-black.svg` and
   `/assets/agm-logo-white.svg`.

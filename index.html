@@ -241,6 +241,7 @@ em{font-style:italic;}
 .metric:hover{background:var(--surface-2);}
 .metric .m-label{font-size:10.5px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--accent);}
 .metric .m-value{font-family:var(--serif); font-weight:600; font-size:29px; color:var(--ink); line-height:1; letter-spacing:-.01em;}
+.metric .m-value.sm{font-size:20px; line-height:1.2; letter-spacing:0;}
 .metric .m-unit{font-size:12.5px; color:var(--ink-65); font-family:var(--sans); line-height:1.5;}
 @media(max-width:820px){.metrics{grid-template-columns:repeat(2,1fr);} .metric:nth-child(2){border-right:none;}}
 @media(max-width:460px){.metrics{grid-template-columns:1fr;} .metric{border-right:none;}}
@@ -518,6 +519,9 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
       <div class="nav-tabs">
         <button class="nav-link" data-route="overview">Overview</button>
         <button class="nav-link" data-route="howwework">How We Work</button>
+        <button class="nav-link" data-route="toolstack">Tool Stack</button>
+        <button class="nav-link" data-route="standards">Standards</button>
+        <button class="nav-link" data-route="ongoing">Ongoing Asks</button>
         <button class="nav-link" data-route="appfolio">AppFolio API</button>
         <button class="nav-link" data-route="seats">Claude Seats</button>
         <button class="nav-link" data-route="shipped">Shipped</button>
@@ -652,7 +656,381 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         </div>
       </div>
 
-      <!-- ============ 03 · APPFOLIO DATABASE API ============ -->
+      <!-- ============ 03 · TOOL STACK ============ -->
+      <div class="page" id="page-toolstack">
+        <div class="metrics block reveal">
+          <div class="metric">
+            <span class="m-label">Slack Pro</span>
+            <span class="m-value">$7.25</span>
+            <span class="m-unit">per user / month, billed annually</span>
+          </div>
+          <div class="metric">
+            <span class="m-label">Granola Business</span>
+            <span class="m-value">$14</span>
+            <span class="m-unit">per user / month</span>
+          </div>
+          <div class="metric">
+            <span class="m-label">Figma Professional</span>
+            <span class="m-value">$16</span>
+            <span class="m-unit">per Full seat / month, billed annually</span>
+          </div>
+          <div class="metric">
+            <span class="m-label">Combined Ask</span>
+            <span class="m-value sm">[ total ]</span>
+            <span class="m-unit">per month at [ seat count ] seats &mdash; final on headcount</span>
+          </div>
+        </div>
+
+        <p class="lead reveal">Three tools the team uses every day. Each one is priced per seat, billed annually, and replaces something we currently do by hand or not at all. Recommended tier is highlighted in each table.</p>
+
+        <!-- ---------- SLACK ---------- -->
+        <div class="sec-head reveal"><h3>Slack Pro</h3><span class="pipe">|</span><span class="kick">Team Comms &middot; Integrations</span></div>
+        <div class="comp-wrap reveal">
+          <table class="comp-table">
+            <thead>
+              <tr class="colhead-row">
+                <th class="type">Plan</th><th>Annual</th><th>Monthly</th><th class="wrap">What It Unlocks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="type">Free</td><td>$0</td><td>$0</td>
+                <td class="wrap">90-day message and file history &middot; 10 app integrations &middot; 1:1 huddles &middot; 1:1 Slack Connect</td>
+              </tr>
+              <tr class="tint-current">
+                <td class="type grp-current">Pro &mdash; requested</td><td class="range">$7.25</td><td class="range">$8.75</td>
+                <td class="wrap">Full searchable message history &middot; unlimited apps and integrations &middot; group huddles with screen share &middot; Slack Connect with external orgs &middot; Workflow Builder with connectors &middot; AI conversation summaries and recaps &middot; custom retention &middot; 24/7 support</td>
+              </tr>
+              <tr>
+                <td class="type">Business+</td><td>$15</td><td>$18</td>
+                <td class="wrap">Everything in Pro, plus SAML SSO &middot; SCIM provisioning &middot; data-residency options &middot; 99.99% uptime SLA &middot; advanced Slack AI &middot; compliance exports</td>
+              </tr>
+              <tr>
+                <td class="type">Enterprise+</td><td>Quote</td><td>Quote</td>
+                <td class="wrap">Multi-workspace grid &middot; enterprise key management &middot; DLP &middot; HIPAA support &middot; priority support. Market data puts real deals near $26 per user per month</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="fee-footnote reveal">Prices are per active user, per month. Annual billing is the assumed path. Slack applies a scheduled uplift at renewal &mdash; lock the term before it applies.</p>
+
+        <div class="sec-head reveal" style="margin-top:36px;"><h3>Why Slack Pro</h3><span class="pipe">|</span><span class="kick">The Case</span></div>
+        <div class="cellgrid reveal">
+          <div class="cell">
+            <div class="kicker">Institutional Memory</div>
+            <div class="cell-title">Full History, Not a 90-Day Window</div>
+            <div class="cell-desc">On Free, every decision older than 90 days is deleted. That is the record of <em>why</em> a tool was built the way it was. Pro keeps it searchable permanently, which is the same reason the Corporate Library exists &mdash; institutional knowledge that survives turnover.</div>
+            <div class="pills"><span class="pill">Searchable Forever</span><span class="pill">Decision Trail</span></div>
+          </div>
+          <div class="cell">
+            <div class="kicker">App Flexibility</div>
+            <div class="cell-title">Our Tools Can Talk To Us</div>
+            <div class="cell-desc">Free caps us at 10 integrations &mdash; we would spend that on GitHub and Cloudflare alone. Pro is unlimited, which means KPI Dashboard alerts, deploy notifications, work-order digests, form submissions, and AppFolio events all land in the channel that owns them instead of an inbox nobody reads.</div>
+            <div class="pills"><span class="pill">Unlimited Apps</span><span class="pill">Webhooks</span><span class="pill">Alerting</span></div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Automation</div>
+            <div class="cell-title">Workflow Builder</div>
+            <div class="cell-desc">Forms, approvals, routing, and scheduled posts built without code, by the people who need them. Every workflow we build here is a small tool the dev team does not have to build, host, and maintain.</div>
+            <div class="pills"><span class="pill">No-Code Workflows</span><span class="pill">Connectors</span><span class="pill">Scheduled Triggers</span></div>
+          </div>
+          <div class="cell">
+            <div class="kicker">External Comms</div>
+            <div class="cell-title">Slack Connect &amp; Huddles</div>
+            <div class="cell-desc">One shared channel per vendor, owner, or contractor instead of a forwarded email chain. Group huddles with screen share replace scheduled calls for the five-minute questions that would otherwise become a meeting.</div>
+            <div class="pills"><span class="pill">Vendor Channels</span><span class="pill">Group Huddles</span><span class="pill">Screen Share</span></div>
+          </div>
+        </div>
+
+        <!-- ---------- GRANOLA ---------- -->
+        <div class="sec-head reveal" style="margin-top:52px;"><h3>Granola</h3><span class="pipe">|</span><span class="kick">Meeting Capture &middot; Notes</span></div>
+        <div class="comp-wrap reveal">
+          <table class="comp-table">
+            <thead>
+              <tr class="colhead-row">
+                <th class="type">Plan</th><th>Per User / Month</th><th class="wrap">What It Unlocks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="type">Basic (Free)</td><td>$0</td>
+                <td class="wrap">Unlimited meetings and AI-enhanced notes &middot; capped note history (rolling window, roughly 25 notes) &middot; no integrations &middot; no advanced AI models</td>
+              </tr>
+              <tr class="tint-current">
+                <td class="type grp-current">Business &mdash; requested</td><td class="range">$14</td>
+                <td class="wrap">Unlimited note history &middot; integrations with Slack, Notion, HubSpot, Attio, Affinity, and Zapier &middot; advanced AI models &middot; MCP and API access &middot; team sharing and shared folders &middot; centralized billing and user management</td>
+              </tr>
+              <tr>
+                <td class="type">Enterprise</td><td>from $35</td>
+                <td class="wrap">Everything in Business, plus SSO (Okta, Microsoft Entra, Google Workspace) &middot; org-wide opt-out of model training &middot; admin controls on link sharing and API access &middot; org-wide auto-deletion policies &middot; usage analytics &middot; priority support</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="fee-footnote reveal">No per-meeting or per-minute transcription charges on any tier. Business is the tier that makes the tool usable as a system of record; Free is effectively an extended trial.</p>
+
+        <div class="sec-head reveal" style="margin-top:36px;"><h3>Why Granola</h3><span class="pipe">|</span><span class="kick">The Case</span></div>
+        <div class="cellgrid reveal">
+          <div class="cell">
+            <div class="kicker">No Bot In The Room</div>
+            <div class="cell-title">Captures Without Joining</div>
+            <div class="cell-desc">Granola records from the laptop, so it works in a conference room, on a walk-through, on a phone call, and in a video call alike. No meeting bot to invite, no join link, nothing for an owner or vendor to consent to on a call they did not schedule.</div>
+            <div class="pills"><span class="pill">In-Person Meetings</span><span class="pill">Any Platform</span><span class="pill">No Join Link</span></div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Verbal to Written</div>
+            <div class="cell-title">Decisions Stop Evaporating</div>
+            <div class="cell-desc">Most of what leadership and operations decide is said out loud and never written down. Granola turns that into a searchable, dated, attributable record &mdash; the raw material the Corporate Library and our reporting tools are built to consume.</div>
+            <div class="pills"><span class="pill">Searchable Record</span><span class="pill">Attributable</span><span class="pill">Feeds the Library</span></div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Unlimited History</div>
+            <div class="cell-title">The Whole Point of the Paid Tier</div>
+            <div class="cell-desc">A rolling 25-note window deletes the project record halfway through the project. Business is what makes it a permanent record instead of a scratchpad &mdash; and the record is what protects us when expectations are disputed months later.</div>
+            <div class="pills"><span class="pill">Permanent</span><span class="pill">Full-Text Search</span></div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Machine Readable</div>
+            <div class="cell-title">MCP &amp; API Access</div>
+            <div class="cell-desc">Business exposes meeting context to our own tooling. Claude Code and our internal apps can read the meeting record directly, which means requirements captured in a conversation can move into a design doc or a ticket without anyone retyping them.</div>
+            <div class="pills"><span class="pill">MCP</span><span class="pill">API</span><span class="pill">Slack &amp; Notion Sync</span></div>
+          </div>
+        </div>
+
+        <!-- ---------- FIGMA ---------- -->
+        <div class="sec-head reveal" style="margin-top:52px;"><h3>Figma Professional</h3><span class="pipe">|</span><span class="kick">Design &middot; Handoff</span></div>
+        <div class="comp-wrap reveal">
+          <table class="comp-table">
+            <thead>
+              <tr class="colhead-row">
+                <th class="type">Plan</th><th>Full Seat</th><th>Dev Seat</th><th>Collab Seat</th><th class="wrap">What It Unlocks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="type">Starter (Free)</td><td>$0</td><td>&mdash;</td><td>&mdash;</td>
+                <td class="wrap">3 design files and 3 FigJam files &middot; unlimited personal drafts &middot; basic collaboration &middot; no shared team libraries, no version history</td>
+              </tr>
+              <tr class="tint-current">
+                <td class="type grp-current">Professional &mdash; requested</td><td class="range">$16</td><td class="range">$12</td><td class="range">$3</td>
+                <td class="wrap">Unlimited files and version history &middot; shared team libraries &middot; Dev Mode handoff &middot; private projects &middot; prototyping and audio &middot; AI / Figma Make credits &middot; seat types billed separately so only builders pay Full</td>
+              </tr>
+              <tr>
+                <td class="type">Organization</td><td>$45&ndash;$55</td><td>varies</td><td>varies</td>
+                <td class="wrap">Org-wide design systems &middot; design system analytics &middot; branching and merging &middot; unified admin across teams &middot; SSO &middot; private plugins and widgets</td>
+              </tr>
+              <tr>
+                <td class="type">Enterprise</td><td>~$90</td><td>varies</td><td>varies</td>
+                <td class="wrap">Advanced security and admin controls &middot; dedicated workspaces &middot; guest access controls &middot; idle-seat management</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="fee-footnote reveal">Full-seat prices shown at annual billing; monthly runs roughly 25% higher ($20 Full / $15 Dev / $5 Collab). Seat types are mixed and matched within one plan &mdash; the request is a small number of Full seats plus Dev and Collab seats for everyone else.</p>
+
+        <div class="sec-head reveal" style="margin-top:36px;"><h3>Why Figma Professional</h3><span class="pipe">|</span><span class="kick">The Case</span></div>
+        <div class="cellgrid reveal">
+          <div class="cell">
+            <div class="kicker">Cheaper to Change</div>
+            <div class="cell-title">Decide in the File, Not in Production</div>
+            <div class="cell-desc">A layout argument settled in Figma costs minutes. The same argument settled after the build costs a rework cycle. Every shipped product on our list &mdash; Report Studio, the KPI Dashboard, the proposal system, the property sites &mdash; has a user interface someone had to decide on.</div>
+            <div class="pills"><span class="pill">Fewer Rework Cycles</span><span class="pill">Faster Sign-Off</span></div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Handoff</div>
+            <div class="cell-title">Dev Mode</div>
+            <div class="cell-desc">Dev Mode hands developers exact spacing, color tokens, type scales, and exportable assets instead of a screenshot and a guess. It is also what our AI-assisted development reads from &mdash; a precise spec produces a correct first build far more often than a vague one.</div>
+            <div class="pills"><span class="pill">Exact Specs</span><span class="pill">Design Tokens</span><span class="pill">Asset Export</span></div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Brand Consistency</div>
+            <div class="cell-title">One Shared Library</div>
+            <div class="cell-desc">Proposals, dashboards, property marketing sites, and internal tools currently share a design system that lives in code and in people&rsquo;s heads. A shared Figma library makes it an actual artifact &mdash; components, colors, and type in one place, updated once, inherited everywhere.</div>
+            <div class="pills"><span class="pill">Components</span><span class="pill">Brand Assets</span><span class="pill">Version History</span></div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Cost Control</div>
+            <div class="cell-title">Seat Types Keep It Small</div>
+            <div class="cell-desc">Only the people creating designs need a Full seat. Developers reading specs take a Dev seat at $12, and stakeholders reviewing and commenting take a Collab seat at $3. The bill scales with who is building, not with who is looking.</div>
+            <div class="pills"><span class="pill">Full &middot; $16</span><span class="pill">Dev &middot; $12</span><span class="pill">Collab &middot; $3</span></div>
+          </div>
+        </div>
+
+        <div class="highlight reveal">
+          <span class="h-label">The Ask</span>
+          <span class="h-value">Slack Pro, Granola Business, and Figma Professional &mdash; all on annual billing, seat counts confirmed at purchase. Combined, they cost less per month than a single day of outside agency time.</span>
+        </div>
+      </div>
+
+      <!-- ============ 04 · SOFTWARE STANDARDS ============ -->
+      <div class="page" id="page-standards">
+        <p class="lead reveal">A license nobody opens is a bill, not a tool. Every tool we buy comes with a written standard of use, an owner, and a quarterly review. This is how we keep spend honest and keep the tools sticky enough that the value compounds instead of evaporating after the first month.</p>
+
+        <div class="sec-head reveal"><h3>How Adoption Works</h3><span class="pipe">|</span><span class="kick">Approve &middot; Enforce &middot; Review</span></div>
+        <div class="funnel-rail reveal">
+          <div class="funnel-stage"><div class="funnel-num">01</div><div><div class="funnel-stage-label">Approve</div><div class="funnel-stage-title">Every tool gets an owner and a written standard of use</div></div></div>
+          <div class="funnel-stage"><div class="funnel-num">02</div><div><div class="funnel-stage-label">Enforce</div><div class="funnel-stage-title">Using the tool is the expectation, not an option</div></div></div>
+          <div class="funnel-stage"><div class="funnel-num">03</div><div><div class="funnel-stage-label">Review</div><div class="funnel-stage-title">Quarterly usage check &mdash; idle seats are reclaimed</div></div></div>
+        </div>
+
+        <div class="sec-head reveal" style="margin-top:48px;"><h3>Standards by Tool</h3><span class="pipe">|</span><span class="kick">What Is Actually Expected</span></div>
+        <div class="cellgrid reveal">
+          <div class="cell">
+            <div class="kicker">Granola</div>
+            <div class="cell-title">Record Every Conversation</div>
+            <div class="cell-desc">Record <strong>every</strong> conversation &mdash; especially anything touching a large project or a general business concept we are trying to solve. No one walks around without their laptop and a running recording. This is not surveillance; it is how we prove we covered every expectation set by leadership and by internal teams, and how a decision made in a hallway in March is still findable in September.</div>
+            <div class="pills"><span class="pill">Laptop Always</span><span class="pill">Recording Always</span><span class="pill">Notes Filed Same Day</span></div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Slack</div>
+            <div class="cell-title">Work Happens in Channels</div>
+            <div class="cell-desc">Project work lives in a project channel, not in DMs and not in email. Decisions get written in the channel that owns them. Files are posted where the team can find them. Vendors and owners get a Slack Connect channel instead of a forwarded thread. If it happened in a DM, it did not happen.</div>
+            <div class="pills"><span class="pill">Channels Over DMs</span><span class="pill">Decisions in Writing</span><span class="pill">Vendors in Connect</span></div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Figma</div>
+            <div class="cell-title">No UI Without a File</div>
+            <div class="cell-desc">Every interface change starts as a Figma file and gets reviewed there before anyone writes code. Shared components come from the team library &mdash; no one-off colors, no one-off type. Developers work from Dev Mode, not from screenshots.</div>
+            <div class="pills"><span class="pill">Design First</span><span class="pill">Library Components</span><span class="pill">Dev Mode Handoff</span></div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Claude</div>
+            <div class="cell-title">Documented Standards, Metered Spend</div>
+            <div class="cell-desc">Every repository carries documented development standards our AI tools follow, so code quality stays consistent regardless of who &mdash; or what &mdash; wrote it. API and seat usage is tracked per user against admin spend limits set org-wide, so cost is visible before it is a surprise.</div>
+            <div class="pills"><span class="pill">Repo Standards</span><span class="pill">Per-User Limits</span><span class="pill">Spend Visibility</span></div>
+          </div>
+          <div class="cell">
+            <div class="kicker">AppFolio API</div>
+            <div class="cell-title">No New CSV Pipelines</div>
+            <div class="cell-desc">Once the Database API is live, the scheduled-report-to-inbox pattern is retired. Every new data requirement goes through the API. Existing CSV pipelines are migrated on a schedule rather than left to rot alongside the new path.</div>
+            <div class="pills"><span class="pill">API Only</span><span class="pill">Migrate Legacy</span></div>
+          </div>
+          <div class="cell">
+            <div class="kicker">All Tools</div>
+            <div class="cell-title">Quarterly License Review</div>
+            <div class="cell-desc">Every quarter we pull usage per seat. A seat that has not been used in 30 days is reclaimed, downgraded, or reassigned. A tool that is not being used by the team that asked for it is cancelled. Renewals are not automatic.</div>
+            <div class="pills"><span class="pill">30-Day Idle Rule</span><span class="pill">Reclaim &amp; Reassign</span><span class="pill">No Auto-Renew</span></div>
+          </div>
+        </div>
+
+        <div class="sec-head reveal" style="margin-top:48px;"><h3>Why Enforcement Matters</h3><span class="pipe">|</span><span class="kick">Stickiness &amp; Retention</span></div>
+        <ul class="mp-list reveal">
+          <li><strong>Partial adoption is worse than none</strong> &mdash; if half the team records meetings and half does not, the record has holes and nobody trusts it. A tool used by everyone is a system of record; a tool used by some people is a rumor.</li>
+          <li><strong>Compounding value</strong> &mdash; searchable history, shared libraries, and meeting records get more valuable every month they are used and worthless the month they are skipped. The payback curve only starts once usage is universal.</li>
+          <li><strong>Cost defensibility</strong> &mdash; we can defend every line of this budget when we can show the usage behind it. We cannot defend seats sitting idle.</li>
+          <li><strong>Coverage of expectations</strong> &mdash; a complete record of what leadership and internal teams asked for is the cheapest insurance we have against scope disputes and missed requirements.</li>
+          <li><strong>Onboarding</strong> &mdash; new team members inherit the record instead of the folklore. Turnover stops costing us institutional knowledge.</li>
+        </ul>
+
+        <div class="highlight reveal">
+          <span class="h-label">The Rule</span>
+          <span class="h-value">If a tool is approved, using it is the expectation &mdash; not a preference. Adoption is measured, reviewed quarterly, and unused seats are reclaimed.</span>
+        </div>
+      </div>
+
+      <!-- ============ 05 · ONGOING ASKS ============ -->
+      <div class="page" id="page-ongoing">
+        <p class="lead reveal">Two items already addressed verbally and internally &mdash; on screen here with the numbers attached so nothing depends on someone&rsquo;s recollection of a hallway conversation.</p>
+
+        <!-- ---------- CLAUDE API CREDITS ---------- -->
+        <div class="sec-head reveal"><h3>Claude API Credits</h3><span class="pipe">|</span><span class="kick">Top-Off &amp; Recurring</span></div>
+        <p class="lead reveal">Seats and credits are two different things. Seats cover people using Claude directly. <strong>API credits cover our software using Claude</strong> &mdash; the Corporate Library&rsquo;s cited research assistant, Reputation Portal draft generation, report assembly, and the Lease Population Tool all call the API on their own, with no person in the loop. When credits run out, those features go dark mid-month.</p>
+
+        <div class="fee-compact-grid reveal">
+          <div class="fee-compact-cell left">
+            <div class="fc-k">Recurring</div>
+            <div class="fc-n">Monthly Auto-Reload</div>
+            <div class="fc-a sm">[ monthly amount ]</div>
+            <div class="fc-nt">Auto-reloads when the balance drops below a set threshold, so no product goes offline waiting on an approval</div>
+          </div>
+          <div class="fee-compact-cell">
+            <div class="fc-k">One-Time</div>
+            <div class="fc-n">Immediate Top-Off</div>
+            <div class="fc-a sm">[ top-off amount ]</div>
+            <div class="fc-nt">Covers the current balance gap and near-term build work already in flight</div>
+          </div>
+          <div class="fee-compact-cell left no-bottom">
+            <div class="fc-k">In Context</div>
+            <div class="fc-n">Library AI Cost</div>
+            <div class="fc-a">~$1<span class="u">/ month</span></div>
+            <div class="fc-nt">What it currently costs to run the cited research assistant &mdash; metered usage is small until a product is heavily used, then it scales with the value it delivers</div>
+          </div>
+          <div class="fee-compact-cell no-bottom">
+            <div class="fc-k">Controls</div>
+            <div class="fc-n">Spend Limits</div>
+            <div class="fc-a sm">Per user &amp; org-wide</div>
+            <div class="fc-nt">Admin limits are set per user and across the organization; the business plan does not train on company data by default</div>
+          </div>
+        </div>
+
+        <div class="sec-head reveal" style="margin-top:44px;"><h3>What Credits Buy</h3><span class="pipe">|</span><span class="kick">Per Million Tokens</span></div>
+        <div class="comp-wrap reveal">
+          <table class="comp-table">
+            <thead>
+              <tr class="colhead-row">
+                <th class="type">Model</th><th>Input</th><th>Output</th><th class="wrap">Where We Use It</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="type">Claude Haiku 4.5</td><td>$1.00</td><td>$5.00</td><td class="wrap">High-volume, simple classification and extraction</td></tr>
+              <tr class="tint-current"><td class="type grp-current">Claude Sonnet 5</td><td class="range">$3.00</td><td class="range">$15.00</td><td class="wrap">The production workhorse &mdash; document search, summarization, drafting</td></tr>
+              <tr><td class="type">Claude Opus 5</td><td>$5.00</td><td>$25.00</td><td class="wrap">Complex reasoning and agentic development work</td></tr>
+              <tr><td class="type">Claude Fable 5</td><td>$10.00</td><td>$50.00</td><td class="wrap">Reserved for the hardest long-horizon problems</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="fee-footnote reveal">Prepaid credits are purchased up front and drawn down by usage. Two discounts apply automatically to how we build: prompt caching bills repeated context at roughly 10% of the input rate, and batch processing runs non-urgent jobs at 50% off. Sonnet 5 is at promotional pricing of $2 / $10 through August 31, 2026.</p>
+
+        <div class="sec-head reveal" style="margin-top:44px;"><h3>Why It Matters</h3><span class="pipe">|</span><span class="kick">Runtime, Not Headcount</span></div>
+        <div class="cellgrid reveal">
+          <div class="cell">
+            <div class="kicker">Uptime</div>
+            <div class="cell-title">A Zero Balance Is an Outage</div>
+            <div class="cell-desc">Shipped products call the API on a schedule and on demand. An empty balance is not a slowdown &mdash; it is a live feature returning an error to a user who does not know why. A recurring auto-reload removes that failure mode entirely.</div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Cost Shape</div>
+            <div class="cell-title">Pay for Use, Not for Access</div>
+            <div class="cell-desc">Credits are metered. A product nobody uses costs nothing; a product everybody uses costs in proportion to the work it is doing. That is the cheapest possible shape for a portfolio that is still finding its usage patterns.</div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Portability</div>
+            <div class="cell-title">Standard API, Re-Pointable</div>
+            <div class="cell-desc">The pieces that use AI call an industry-standard API that could be re-pointed to another provider with a modest code change. Most of the portfolio runs without AI at runtime at all. Credits buy capability, not lock-in.</div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Governance</div>
+            <div class="cell-title">Visible and Capped</div>
+            <div class="cell-desc">Spend limits are set per user and org-wide, API keys are centrally managed and never stored in code, and usage is attributable by product. Cost is reviewable before it is a surprise.</div>
+          </div>
+        </div>
+
+        <!-- ---------- APPFOLIO ---------- -->
+        <div class="sec-head reveal" style="margin-top:52px;"><h3>AppFolio Database API</h3><span class="pipe">|</span><span class="kick">Ongoing Topic</span></div>
+        <p class="lead reveal">Already discussed internally and covered in full in the next section. On screen here so the number is on the record alongside the rest of the tooling ask.</p>
+
+        <div class="fee-compact-grid reveal">
+          <div class="fee-compact-cell left no-bottom">
+            <div class="fc-k">Monthly</div>
+            <div class="fc-n">Read-Write API Add-On</div>
+            <div class="fc-a">$2,992<span class="u">/ month</span></div>
+            <div class="fc-nt">$1.00 per unit per month across the portfolio &mdash; an add-on to our existing Plus tier, no plan upgrade required</div>
+          </div>
+          <div class="fee-compact-cell no-bottom">
+            <div class="fc-k">One-Time</div>
+            <div class="fc-n">Onboarding Fee</div>
+            <div class="fc-a">$500</div>
+            <div class="fc-nt">One-time setup fee. Status: verbally addressed internally &mdash; awaiting written approval</div>
+          </div>
+        </div>
+
+        <div class="highlight reveal">
+          <span class="h-label">On the Record</span>
+          <span class="h-value">Claude API credits &mdash; a recurring monthly auto-reload plus a one-time top-off &mdash; and the AppFolio Read-Write API add-on at $2,992/mo plus $500 one-time. Both already discussed; both now on screen with numbers.</span>
+        </div>
+      </div>
+
+      <!-- ============ 06 · APPFOLIO DATABASE API ============ -->
       <div class="page" id="page-appfolio">
         <p class="lead reveal">Take the KPI Dashboard on the office TV. Every number on that screen exists because we ran the full six-step pipeline below &mdash; for every single metric. And it compounds: AppFolio reports are scoped per manager, so the first two steps repeat three to four times per KPI, and maintenance never ends. One number on that screen is a dozen-plus setup steps, a code change, and a permanent maintenance obligation.</p>
 
@@ -717,7 +1095,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         </div>
       </div>
 
-      <!-- ============ 04 · CLAUDE PREMIUM SEATS ============ -->
+      <!-- ============ 07 · CLAUDE PREMIUM SEATS ============ -->
       <div class="page" id="page-seats">
         <p class="lead reveal">A smaller constraint. Three team members do Premium-seat-level AI work &mdash; full-time AI-assisted development, the Corporate Library platform, and the AppFolio/BuildOps data pipeline &mdash; but we hold two Premium seats, so we rotate seats between people and projects. This costs coordination time and interrupts work when a seat has to move.</p>
 
@@ -754,7 +1132,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         </div>
       </div>
 
-      <!-- ============ 05 · SHIPPED ============ -->
+      <!-- ============ 08 · SHIPPED ============ -->
       <div class="page" id="page-shipped">
         <p class="lead reveal">Five products built in-house and live in daily use across the company &mdash; each one replacing manual work, a vendor tool, or both.</p>
         <div class="cellgrid reveal">
@@ -795,7 +1173,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         </div>
       </div>
 
-      <!-- ============ 06 · IN FLIGHT ============ -->
+      <!-- ============ 09 · IN FLIGHT ============ -->
       <div class="page" id="page-inflight">
         <p class="lead reveal">Work currently in development, with owner and status for each. Completion dates marked <em>[ estimate ]</em> are being finalized.</p>
         <div class="sec-head reveal"><h3>Active Projects</h3><span class="pipe">|</span><span class="kick">In Progress</span></div>
@@ -821,7 +1199,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         </div>
       </div>
 
-      <!-- ============ 07 · PIPELINE ============ -->
+      <!-- ============ 10 · PIPELINE ============ -->
       <div class="page" id="page-pipeline">
         <p class="lead reveal">What&rsquo;s queued next &mdash; high-priority builds already scoped, plus the medium- and lower-priority backlog.</p>
         <div class="sec-head reveal"><h3>High Priority</h3><span class="pipe">|</span><span class="kick">Scoped, Not Yet Started</span></div>
@@ -895,15 +1273,21 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
       lead:"AGM’s internal build team — custom software for problems where off-the-shelf tools don’t fit or cost too much, built specifically around how AGM operates."},
     {route:"howwework",  nav:"howwework",  eyebrow:"02 · How We Work", t1:"How We",            t2:"Work",                  label:"Operating Model",
       lead:"The stack, the philosophy, and the governance behind a small team that ships at the pace of a much larger one."},
-    {route:"appfolio",   nav:"appfolio",   eyebrow:"03 · AppFolio API",t1:"The AppFolio",      t2:"Database API",          label:"The One Thing That Speeds Everything Up",
+    {route:"toolstack",  nav:"toolstack",  eyebrow:"03 · Tool Stack",  t1:"The Tool",          t2:"Stack",                 label:"Pricing · Features · Why",
+      lead:"Slack Pro, Granola, and Figma Pro — every pricing tier, what each one unlocks, and why the team needs it."},
+    {route:"standards",  nav:"standards",  eyebrow:"04 · Standards",   t1:"Software",          t2:"Standards",             label:"Use What We Buy",
+      lead:"A license nobody opens is a bill, not a tool. Every approved tool comes with a standard of use — and a review that enforces it."},
+    {route:"ongoing",    nav:"ongoing",    eyebrow:"05 · Ongoing Asks",t1:"Ongoing",           t2:"Asks",                  label:"Already Discussed",
+      lead:"Claude API credits and the AppFolio API — already addressed verbally, now on screen with the numbers attached."},
+    {route:"appfolio",   nav:"appfolio",   eyebrow:"06 · AppFolio API",t1:"The AppFolio",      t2:"Database API",          label:"The One Thing That Speeds Everything Up",
       lead:"A single change that removes the most repeated constraint across the portfolio — replacing per-report CSV pipelines with live, read-write data."},
-    {route:"seats",      nav:"seats",      eyebrow:"04 · Claude Seats",t1:"Claude Premium",    t2:"Seats",                 label:"A Smaller Constraint",
+    {route:"seats",      nav:"seats",      eyebrow:"07 · Claude Seats",t1:"Claude Premium",    t2:"Seats",                 label:"A Smaller Constraint",
       lead:"Three people do Premium-seat-level AI work; we hold two seats. One more removes the rotation overhead."},
-    {route:"shipped",    nav:"shipped",    eyebrow:"05 · Shipped",     t1:"What We’ve",        t2:"Shipped",               label:"Shipped Products",
+    {route:"shipped",    nav:"shipped",    eyebrow:"08 · Shipped",     t1:"What We’ve",        t2:"Shipped",               label:"Shipped Products",
       lead:"Five products built in-house and live in daily use — each replacing manual work, a vendor tool, or both."},
-    {route:"inflight",   nav:"inflight",   eyebrow:"06 · In Flight",   t1:"In",                t2:"Flight",                label:"Active Development",
+    {route:"inflight",   nav:"inflight",   eyebrow:"09 · In Flight",   t1:"In",                t2:"Flight",                label:"Active Development",
       lead:"Projects currently in development across the team, with owner and status for each."},
-    {route:"pipeline",   nav:"pipeline",   eyebrow:"07 · Pipeline",    t1:"The",               t2:"Pipeline",              label:"What’s Next",
+    {route:"pipeline",   nav:"pipeline",   eyebrow:"10 · Pipeline",    t1:"The",               t2:"Pipeline",              label:"What’s Next",
       lead:"What’s queued next — high-priority builds already scoped, plus the medium- and lower-priority backlog."}
   ];
   var IDX = {};
@@ -926,7 +1310,10 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
     pipeline:'<path d="M4 20V10M9.5 20V5M15 20V13M20.5 20V8"/><path d="M3 20.5h18"/>',
     howwework:'<circle cx="9" cy="8.5" r="2.8"/><path d="M3.5 19.5c0-3 2.6-4.8 5.5-4.8s5.5 1.8 5.5 4.8"/><path d="M16 6a2.8 2.8 0 0 1 0 5.4"/><path d="M17 14.9c2.2.5 3.5 2.1 3.5 4.6"/>',
     appfolio:'<rect x="4.5" y="3.5" width="15" height="17" rx="1"/><path d="M8 13.5v3.5M12 9.5v7.5M16 11.5v5.5"/>',
-    seats:'<circle cx="12" cy="8" r="3.2"/><path d="M5.5 20c0-3.4 2.9-5.6 6.5-5.6s6.5 2.2 6.5 5.6"/>'
+    seats:'<circle cx="12" cy="8" r="3.2"/><path d="M5.5 20c0-3.4 2.9-5.6 6.5-5.6s6.5 2.2 6.5 5.6"/>',
+    toolstack:'<path d="M12 3.2l8.5 4.4-8.5 4.4-8.5-4.4z"/><path d="M3.5 12l8.5 4.4 8.5-4.4"/><path d="M3.5 16.4l8.5 4.4 8.5-4.4"/>',
+    standards:'<path d="M6 3.5h12v17l-6-3.1-6 3.1z"/><path d="M9.4 10.6l1.9 1.9 3.3-3.7"/>',
+    ongoing:'<circle cx="12" cy="12" r="8.2"/><path d="M12 7.2V12l3.2 2"/>'
   };
   function iconSVG(nav){
     var paths = ICONS[nav] || ICONS.overview;
