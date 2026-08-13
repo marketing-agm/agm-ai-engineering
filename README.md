@@ -92,12 +92,16 @@ Tracked once the key is set:
 - Figma is costed at the Full seat rate only. Figma also sells Dev and Collab seats at lower rates
   within the same plan, which is disclosed in the section 3 Figma footnote and flagged in the
   scenario note as a reason the 35-seat Figma figure runs high.
-- Third-party pricing in section 3 is vendor list pricing compiled from public pricing summaries,
-  not from a quote. Sources disagreed on Slack Business+ and on Figma Organization; the more
-  commonly cited figure was used and Figma Organization is shown as a range. **Confirm every figure
-  against a vendor quote before this deck is presented for approval.**
-- Claude API rates in section 5 are list price per million tokens. Sonnet 5 is shown at standard
-  pricing with its promotional rate noted in the footnote. Re-check the rate card at renewal.
+- Third-party pricing in section 3 is vendor list pricing, verified 13 August 2026 against vendor
+  pricing pages and cross-checked against independent pricing summaries. Every tool section links
+  its vendor pricing page in the footnote, and section 3 closes with a consolidated source list
+  recording what was confirmed and what was not. Re-verify at renewal and before any presentation.
+- Claude API rates in section 5 come from the Anthropic rate card rather than a summary. Sonnet 5
+  is $2.00 input and $10.00 output; the previously scheduled increase to $3.00 and $15.00 was
+  cancelled and the introductory rate is now standard.
+- The least corroborated figures in the deck are the two Granola Basic-plan limits, 30-day rolling
+  note access and a 25-meeting lifetime cap. Both come from third-party summaries and are marked as
+  such in the Granola footnote.
 - AppFolio and Claude seat costs reflect the source document. Update against current quotes before
   circulating.
 - The footer logos are shared AGM brand assets at `/assets/agm-logo-black.svg` and
