@@ -21,9 +21,12 @@ Ten sections:
 9. In Development
 10. Planned Work
 
-Sections 3 through 5 carry the budget request. Section 3 states list pricing for every tier of
-Slack, Granola, and Figma, the capability differences between tiers, and the basis for the tier
-selected, each followed by the argument against it and by what the tier does not address. Section 4
+Sections 3 through 5 carry the budget request. Section 3 opens each tool with what the product does
+and where it is used today, then states list pricing for every tier of Slack, Granola, Figma, and
+Asana, the capability differences between tiers, and the basis for the tier selected, each followed
+by the argument against it and by what the tier does not address. The Slack request additionally
+carries a comparison with Microsoft Teams and a table of the systems connected to the workspace.
+Section 4
 states the required use for each licensed tool and the quarterly review that verifies it. Section 5
 records the two items already discussed verbally: Claude API credits and the AppFolio Database API.
 
@@ -98,11 +101,25 @@ Tracked once the key is set:
   `[ decision date ]`, `[ hours per month ]`, `[ amount ]`. Section 5 requires a usage baseline for
   the monthly Claude credit figure and the current balance for the top-off figure. Section 6
   requires measured hours of manual AppFolio entry.
-- Section 3 costs the three licenses at 5, 10, and 35 seats. Only the 5-seat case corresponds to a
+- Section 3 costs the four licenses at 5, 10, and 35 seats. Only the 5-seat case corresponds to a
   known list of users, being current development team headcount; the other two are comparison
   scenarios with no agreed scope. Totals are the per-seat rate multiplied by seat count. If a rate
   changes after a vendor quote, both the annual and the monthly table need updating, along with the
   month-to-month comparison in the footnote beneath them.
+- The Function and Current use pair that opens each tool in section 3 distinguishes measured use
+  from prospective use. Slack and Granola are in use and are described as such. Figma is in use for
+  marketing and business development only, and Asana has no seats in use; both say so, and their
+  stated value is marked prospective. Move a tool out of prospective wording only when it is
+  actually deployed.
+- The Slack "Connected systems" table was read from the AGM workspace on 13 August 2026. The
+  AppFolio row is recorded from the team's own description when the channel was created on 15 July
+  2026, not from an observed message, which its disclosure states. Move the Monday.com and
+  Cloudflare rows from Planned to Live as they are configured. The table deliberately quantifies
+  nothing: no baseline was captured before the channels existed, so time saved cannot be stated.
+- The Slack and Microsoft Teams comparison names no seat counts, deliberately. The workspace held 6
+  members on 13 August 2026 while section 3 costs 5 seats as current development team headcount.
+  Reconcile those two figures before presenting, and keep any headcount out of the comparison so
+  the seat basis is stated in one place only.
 - Figma is costed at the Full seat rate only. Figma also sells Dev and Collab seats at lower rates
   within the same plan, which is disclosed in the section 3 Figma footnote and flagged in the
   scenario note as a reason the 35-seat Figma figure runs high.

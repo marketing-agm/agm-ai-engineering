@@ -735,7 +735,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
 
       <!-- ============ 03 · TOOL STACK ============ -->
       <div class="page" id="page-toolstack">
-        <p class="lead reveal">Four tool licenses are requested: Slack Pro, Granola Business, Figma Professional, and Asana Starter. This section costs the four licenses at 5, 10, and 35 seats, then states published list pricing for every tier of each product, the capability differences between tiers, and the basis for the tier selected. Each recommendation is followed by the strongest argument against it and by what the selected tier does not address.</p>
+        <p class="lead reveal">Four tool licenses are requested: Slack Pro, Granola Business, Figma Professional, and Asana Starter. This section costs the four licenses at 5, 10, and 35 seats, then states what each product does and where it is used today, published list pricing for every tier, the capability differences between tiers, and the basis for the tier selected. Each recommendation is followed by the strongest argument against it and by what the selected tier does not address. The Slack request is accompanied by a comparison with Microsoft Teams and by the list of systems connected to the workspace.</p>
 
         <div class="sec-head reveal"><h3>Cost by rollout size</h3><span class="pipe">|</span><span class="kick">Annual billing</span></div>
         <p class="lead reveal">Three rollout sizes are costed: 5 seats covering the internal development team, 10 seats covering the development team and adjacent roles, and 35 seats covering the full company. All figures are vendor list pricing at annual billing.</p>
@@ -809,6 +809,19 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         <!-- ---------- SLACK ---------- -->
         <div class="sec-head reveal" style="margin-top:52px;"><h3>Slack</h3><span class="pipe">|</span><span class="kick">Messaging</span></div>
 
+        <div class="cellgrid no-num reveal">
+          <div class="cell">
+            <div class="kicker">Function</div>
+            <div class="cell-title">Team messaging organized by channel</div>
+            <div class="cell-desc">Persistent channels carry day to day coordination in place of internal email threads. Message history is searchable by anyone in the workspace, and external systems post into channels through integrations rather than into a mailbox.</div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Current use</div>
+            <div class="cell-title">Development team workspace since 8 July 2026</div>
+            <div class="cell-desc">Carries team coordination and leadership updates. Channels also receive automated notices from GitHub, from vendor release feeds, and from AppFolio, listed under Connected systems below.</div>
+          </div>
+        </div>
+
         <div class="comp-wrap reveal">
           <table class="comp-table">
             <thead>
@@ -864,8 +877,87 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
           </div>
         </details>
 
+
+        <div class="sec-head reveal" style="margin-top:44px;"><h3>Slack and Microsoft Teams</h3><span class="pipe">|</span><span class="kick">Platform overlap</span></div>
+        <p class="lead reveal">AGM runs Microsoft Teams under Microsoft 365 licensing it already holds. The request is for Slack alongside Teams for the development team, not for a company migration. What separates the two platforms here is what connects to them, not their messaging features.</p>
+        <div class="compare reveal">
+          <div class="col left">
+            <div class="kicker">Microsoft Teams</div>
+            <div class="cmp-title">Company communication</div>
+            <ul class="mp-list">
+              <li><strong>Cost.</strong> Included in the Microsoft 365 licenses AGM already holds. No additional per seat charge.</li>
+              <li><strong>Coverage.</strong> Every employee has an account. It remains the route to anyone outside the development team.</li>
+              <li><strong>Adjacent systems.</strong> Meetings, calls, and files sit alongside SharePoint and Outlook, which hold AGM documents today.</li>
+              <li><strong>External systems.</strong> Connections are built as Power Automate flows and maintained by hand, one per source. The AppFolio update feed is built this way.</li>
+            </ul>
+          </div>
+          <div class="col">
+            <div class="kicker">Slack</div>
+            <div class="cmp-title">Development team workspace</div>
+            <ul class="mp-list">
+              <li><strong>Cost.</strong> $87.00 per seat per year at Pro on annual billing, as priced in the tables above.</li>
+              <li><strong>Coverage.</strong> Requested for the development team. Leadership accounts already exist in the workspace for oversight.</li>
+              <li><strong>Adjacent systems.</strong> GitHub, Cloudflare, and the release feeds the team builds against publish first party Slack apps, which are configured rather than built.</li>
+              <li><strong>External systems.</strong> Sources post into channels today with no maintained flow behind them. Listed under Connected systems below.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="highlight reveal">
+          <span class="h-label">Recommendation</span>
+          <span class="h-value">Slack for the development team, with Teams retained for company communication. A company-wide move to Slack is not recommended. It would be charged per seat across a population whose requirement Teams already meets under licensing AGM has paid for.</span>
+        </div>
+        <details class="disc reveal">
+          <summary>Argument against running both, and what it does not address<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <p><strong>Argument against running both.</strong> Teams can receive the same notifications. GitHub publishes a Teams app, and AGM already routes AppFolio updates into a channel through Power Automate, so the difference is configuration effort rather than capability. Running two platforms also splits the written record. A decision made in Slack is not searchable from Teams, and staff outside the development team cannot follow a discussion they have no account to reach. That cost is real and grows with the number of people who need visibility.</p>
+            <p><strong>Not addressed by running both.</strong> Slack Pro does not provide SAML single sign-on, so Slack accounts are administered separately from Microsoft 365 identities and are not deprovisioned by the same process. Nothing here removes Teams or reduces its cost, because it is bundled. The comparison also assumes the notification channels stay confined to the development team. If other departments come to depend on them, both the seat count and the platform question reopen.</p>
+          </div>
+        </details>
+
+        <div class="sec-head reveal" style="margin-top:44px;"><h3>Connected systems</h3><span class="pipe">|</span><span class="kick">Development tracking</span></div>
+        <p class="lead reveal">Sources that post into the workspace, and the manual step each one removes.</p>
+        <div class="comp-wrap reveal">
+          <table class="comp-table">
+            <thead>
+              <tr class="colhead-row">
+                <th class="type">Channel</th><th class="wrap">Source</th><th class="wrap">Content</th><th class="wrap">Manual step removed</th><th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="tint-current"><td class="type">#alerts-builds</td><td class="wrap">GitHub app. Report Studio, Dev Resources, Corporate Library, Security Deposits</td><td class="wrap">Every pull request, review, and merge, posted as it happens. Automated notices only, no discussion.</td><td class="wrap">Asking the team what changed, or reading the repository to find out</td><td class="range">Live</td></tr>
+              <tr><td class="type">#alerts-vendors</td><td class="wrap">Release feeds. Cloudflare Wrangler and Doppler CLI</td><td class="wrap">Version notes for the tools the team builds and deploys with</td><td class="wrap">Discovering a breaking tool change during a build</td><td class="range">Live</td></tr>
+              <tr><td class="type">#alerts-vendors</td><td class="wrap">AppFolio What&rsquo;s New. Monitored inbox routed by Power Automate</td><td class="wrap">Notice of AppFolio changes before they affect reporting pipelines</td><td class="wrap">A CSV pipeline failing without warning</td><td class="range">Live</td></tr>
+              <tr><td class="type">Any channel</td><td class="wrap">Claude in Slack</td><td class="wrap">A written summary of recent team activity, produced on request in the channel</td><td class="wrap">A status request routed through the team</td><td class="range">Live</td></tr>
+              <tr><td class="type">#learnings</td><td class="wrap">Team entries</td><td class="wrap">Fixes and failure causes recorded after the fact</td><td class="wrap">Solving a second time a problem already solved once</td><td class="range">Live</td></tr>
+              <tr><td class="type">Not configured</td><td class="wrap">Monday.com</td><td class="wrap">Priority and status changes</td><td class="wrap">Reading status in a second application</td><td>Planned</td></tr>
+              <tr><td class="type">Not configured</td><td class="wrap">Cloudflare</td><td class="wrap">Deployment outcome for each change</td><td class="wrap">Checking the dashboard after each release</td><td>Planned</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="fee-footnote reveal">Claude in Slack is billed against a capped usage budget set by the team rather than per seat, so it is not included in the seat costs above. The Free plan permits 10 app integrations in total, which is the constraint stated under Basis for Pro.</p>
+        <details class="disc reveal">
+          <summary>How this table was verified, and what it does not measure<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <p><strong>Verification.</strong> Channels, sources, and status were read from the AGM workspace on 13 August 2026. #alerts-builds carried GitHub notices on that date and #alerts-vendors carried release notes on that date. The AppFolio route was described by the team when the channel was created on 15 July 2026 and is recorded on that basis rather than from an observed message.</p>
+            <p><strong>Not measured.</strong> Nothing in this table quantifies time saved. The manual steps named are the steps each notice removes, not a measured saving. No baseline was recorded before the channels were created, so a saving cannot be calculated after the fact. The two planned rows have no configuration in place and no target date.</p>
+          </div>
+        </details>
+
         <!-- ---------- GRANOLA ---------- -->
         <div class="sec-head reveal" style="margin-top:52px;"><h3>Granola</h3><span class="pipe">|</span><span class="kick">Meeting capture</span></div>
+
+        <div class="cellgrid no-num reveal">
+          <div class="cell">
+            <div class="kicker">Function</div>
+            <div class="cell-title">Meeting recording and written notes</div>
+            <div class="cell-desc">Captures audio from the laptop, produces a written summary against a template, and retains a searchable transcript. It records without joining the call as a participant, so it covers in person and phone conversations as well as video calls.</div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Current use</div>
+            <div class="cell-title">Meeting record for internal and leadership syncs</div>
+            <div class="cell-desc">Note links are posted to Slack after each meeting and are used to trace decisions and deliverables between syncs. Seats were authorized in July 2026 and are not yet issued to every member of the team.</div>
+          </div>
+        </div>
         <div class="comp-wrap reveal">
           <table class="comp-table">
             <thead>
@@ -926,6 +1018,19 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
 
         <!-- ---------- FIGMA ---------- -->
         <div class="sec-head reveal" style="margin-top:52px;"><h3>Figma</h3><span class="pipe">|</span><span class="kick">Interface design</span></div>
+
+        <div class="cellgrid no-num reveal">
+          <div class="cell">
+            <div class="kicker">Function</div>
+            <div class="cell-title">Interface design and developer specification</div>
+            <div class="cell-desc">Screens are drawn and revised in a shared file before code is written. Spacing, color, and type values are read from the file by whoever builds it, and shared components are defined once and inherited by the files that use them.</div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Current use</div>
+            <div class="cell-title">Marketing and business development output</div>
+            <div class="cell-desc">In use for marketing and business development work. Extension to feature design ahead of development is intended and is not yet standard practice, so the value stated for that use is prospective.</div>
+          </div>
+        </div>
         <div class="comp-wrap reveal">
           <table class="comp-table">
             <thead>
@@ -994,6 +1099,19 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
 
         <!-- ---------- ASANA ---------- -->
         <div class="sec-head reveal" style="margin-top:52px;"><h3>Asana</h3><span class="pipe">|</span><span class="kick">Work management</span></div>
+
+        <div class="cellgrid no-num reveal">
+          <div class="cell">
+            <div class="kicker">Function</div>
+            <div class="cell-title">Task ownership and work intake</div>
+            <div class="cell-desc">Work items carry an owner, a due date, and a status. Requests arrive through a form and are routed by rule, so intake does not depend on direct messages.</div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Current use</div>
+            <div class="cell-title">Requested, not yet deployed</div>
+            <div class="cell-desc">Project level tracking runs on Monday.com today, and the request covers the operational task layer beneath it. No seats are in use, so the value stated here is prospective.</div>
+          </div>
+        </div>
         <div class="comp-wrap reveal">
           <table class="comp-table">
             <thead>
@@ -1512,7 +1630,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
     {route:"howwework",  nav:"howwework",  eyebrow:"02 · Operating Model",t1:"Operating",        t2:"Model",         label:"Infrastructure, Method, Governance",
       lead:"Platform and code hosting, build and release method, access control, and vendor dependency."},
     {route:"toolstack",  nav:"toolstack",  eyebrow:"03 · Tool Stack",     t1:"Tool",             t2:"Stack",         label:"Pricing and Capability",
-      lead:"Slack, Granola, Figma, and Asana. List pricing by tier, capability by tier, and the basis for each tier selected."},
+      lead:"Slack, Granola, Figma, and Asana. What each product does and where it is used, list pricing by tier, capability by tier, and the basis for each tier selected."},
     {route:"standards",  nav:"standards",  eyebrow:"04 · Standards",      t1:"Software",         t2:"Standards",     label:"Use Requirements",
       lead:"The required use for each licensed tool, and the quarterly review that verifies it."},
     {route:"ongoing",    nav:"ongoing",    eyebrow:"05 · Open Items",     t1:"Open",             t2:"Items",         label:"Discussed, Not Approved",
