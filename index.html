@@ -672,6 +672,30 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
           </div>
         </div>
 
+        <div class="sec-head reveal" style="margin-top:48px;"><h3>Supporting services</h3><span class="pipe">|</span><span class="kick">In use, no license request</span></div>
+        <div class="cellgrid reveal">
+          <div class="cell">
+            <div class="kicker">Doppler</div>
+            <div class="cell-title">Secrets management</div>
+            <div class="cell-desc">API keys and credentials are held in Doppler and injected at deploy time rather than stored in source code or on individual machines. Report Studio, the Brokerage CRM, and the Corporate Library each hold their production secrets in a dedicated Doppler project, which is the source of truth named in each repository&rsquo;s documentation.</div>
+          </div>
+          <div class="cell">
+            <div class="kicker">SharePoint</div>
+            <div class="cell-title">Document backup</div>
+            <div class="cell-desc">The Corporate Library mirrors its documents one way into a SharePoint document library through the Microsoft Graph API, and a scheduled job reconciles the mirror nightly. SharePoint is the archive copy; the Library remains the working system.</div>
+          </div>
+          <div class="cell">
+            <div class="kicker">GitHub Actions</div>
+            <div class="cell-title">Scheduled jobs and deploys</div>
+            <div class="cell-desc">Worker deployments and the nightly SharePoint reconciliation run as scheduled GitHub Actions, so recurring jobs execute on a fixed schedule rather than depending on a person or an individual machine.</div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Hello Data</div>
+            <div class="cell-title">Market rent comparables</div>
+            <div class="cell-desc">Rent-comparable exports from Hello Data are uploaded into Report Studio for market sections. Coverage is multifamily only.</div>
+          </div>
+        </div>
+
         <div class="sec-head reveal" style="margin-top:48px;"><h3>Current tooling spend</h3><span class="pipe">|</span><span class="kick">All line items</span></div>
         <div class="comp-wrap reveal">
           <table class="comp-table">
@@ -693,7 +717,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
           <summary>Spend table notes and what sits outside it<span class="disc-hint"></span></summary>
           <div class="disc-body">
             <p>Figures are taken from the source team overview document. The annual column is the monthly figure multiplied by twelve; the annual total of $7,440 to $8,040 is computed from the line items rather than quoted, and the figure of approximately $8,000 per year used elsewhere in this deck is the upper end of that range.</p>
-            <p>Two items sit outside this table. The additional Claude Premium seat requested in the Claude Seats section would add approximately $125 per month, or $1,500 per year. The three tool licenses in the Tool Stack section are not included here at any rollout size.</p>
+            <p>Two items sit outside this table. The additional Claude Premium seat requested in the Claude Seats section would add approximately $125 per month, or $1,500 per year. The four tool licenses in the Tool Stack section are not included here at any rollout size.</p>
             <p>Hosting is recorded at approximately zero because usage falls inside the Cloudflare free allowance at current volume. It is not a negotiated rate and will become a line item if traffic grows.</p>
           </div>
         </details>
@@ -711,7 +735,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
 
       <!-- ============ 03 · TOOL STACK ============ -->
       <div class="page" id="page-toolstack">
-        <p class="lead reveal">Three tool licenses are requested: Slack Pro, Granola Business, and Figma Professional. This section costs the three licenses at 5, 10, and 35 seats, then states published list pricing for every tier of each product, the capability differences between tiers, and the basis for the tier selected. Each recommendation is followed by the strongest argument against it and by what the selected tier does not address.</p>
+        <p class="lead reveal">Four tool licenses are requested: Slack Pro, Granola Business, Figma Professional, and Asana Starter. This section costs the four licenses at 5, 10, and 35 seats, then states published list pricing for every tier of each product, the capability differences between tiers, and the basis for the tier selected. Each recommendation is followed by the strongest argument against it and by what the selected tier does not address.</p>
 
         <div class="sec-head reveal"><h3>Cost by rollout size</h3><span class="pipe">|</span><span class="kick">Annual billing</span></div>
         <p class="lead reveal">Three rollout sizes are costed: 5 seats covering the internal development team, 10 seats covering the development team and adjacent roles, and 35 seats covering the full company. All figures are vendor list pricing at annual billing.</p>
@@ -719,23 +743,23 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         <div class="metrics block reveal" style="margin-bottom:36px;">
           <div class="metric">
             <span class="m-label">5 seats</span>
-            <span class="m-value">$2,235</span>
+            <span class="m-value">$2,894</span>
             <span class="m-unit">per year. Internal development team</span>
           </div>
           <div class="metric">
             <span class="m-label">10 seats</span>
-            <span class="m-value">$4,470</span>
+            <span class="m-value">$5,789</span>
             <span class="m-unit">per year. Development team and adjacent roles</span>
           </div>
           <div class="metric">
             <span class="m-label">35 seats</span>
-            <span class="m-value">$15,645</span>
+            <span class="m-value">$20,261</span>
             <span class="m-unit">per year. Full company</span>
           </div>
           <div class="metric">
             <span class="m-label">Per seat</span>
-            <span class="m-value">$447</span>
-            <span class="m-unit">per year. All three licenses combined</span>
+            <span class="m-value">$579</span>
+            <span class="m-unit">per year. All four licenses combined</span>
           </div>
         </div>
 
@@ -750,7 +774,8 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
               <tr><td class="type">Slack Pro</td><td>87.00</td><td>435.00</td><td>870.00</td><td>3,045.00</td></tr>
               <tr><td class="type">Granola Business</td><td>168.00</td><td>840.00</td><td>1,680.00</td><td>5,880.00</td></tr>
               <tr><td class="type">Figma Professional, Full seat</td><td>192.00</td><td>960.00</td><td>1,920.00</td><td>6,720.00</td></tr>
-              <tr class="total"><td class="type">Combined</td><td class="fig">447.00</td><td class="fig">2,235.00</td><td class="fig">4,470.00</td><td class="fig">15,645.00</td></tr>
+              <tr><td class="type">Asana Starter</td><td>131.88</td><td>659.40</td><td>1,318.80</td><td>4,615.80</td></tr>
+              <tr class="total"><td class="type">Combined</td><td class="fig">578.88</td><td class="fig">2,894.40</td><td class="fig">5,788.80</td><td class="fig">20,260.80</td></tr>
             </tbody>
           </table>
         </div>
@@ -766,17 +791,18 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
               <tr><td class="type">Slack Pro</td><td>7.25</td><td>36.25</td><td>72.50</td><td>253.75</td></tr>
               <tr><td class="type">Granola Business</td><td>14.00</td><td>70.00</td><td>140.00</td><td>490.00</td></tr>
               <tr><td class="type">Figma Professional, Full seat</td><td>16.00</td><td>80.00</td><td>160.00</td><td>560.00</td></tr>
-              <tr class="total"><td class="type">Combined</td><td class="fig">37.25</td><td class="fig">186.25</td><td class="fig">372.50</td><td class="fig">1,303.75</td></tr>
+              <tr><td class="type">Asana Starter</td><td>10.99</td><td>54.95</td><td>109.90</td><td>384.65</td></tr>
+              <tr class="total"><td class="type">Combined</td><td class="fig">48.24</td><td class="fig">241.20</td><td class="fig">482.40</td><td class="fig">1,688.40</td></tr>
             </tbody>
           </table>
         </div>
         <details class="disc reveal">
           <summary>Billing terms, scenario basis, and limits at 35 seats<span class="disc-hint"></span></summary>
           <div class="disc-body">
-            <p>Monthly figures are the annual-billing rate stated per month, not the month-to-month price. Month-to-month billing is higher for two of the three products: Slack Pro is $8.75 per seat per month and Figma Professional Full is $20.00. Granola Business publishes a single rate of $14.00, and no separate annual rate appears in public pricing summaries. At 35 seats, month-to-month billing raises the combined figure from $1,303.75 to $1,496.25 per month, and from $15,645.00 to $17,955.00 per year.</p>
+            <p>Monthly figures are the annual-billing rate stated per month, not the month-to-month price. Month-to-month billing is higher for three of the four products: Slack Pro is $8.75 per seat per month, Figma Professional Full is $20.00, and Asana Starter is $13.49. Granola Business publishes a single rate of $14.00, and no separate annual rate appears in public pricing summaries. At 35 seats, month-to-month billing raises the combined figure from $1,688.40 to $1,968.40 per month, and from $20,260.80 to $23,620.80 per year.</p>
             <p><strong>Basis of the scenarios.</strong> The 5-seat figure matches current development team headcount and is the only one tied to a known list of users. The 10-seat and 35-seat figures are rollout scenarios for comparison; neither scope has been agreed and no named user list exists for either. Prices are vendor list pricing compiled from public pricing summaries rather than from a quote. Confirm every figure against a vendor quote before approval.</p>
             <p>
-          <strong>The three products are not equally justified at 35 seats.</strong> Slack is general company communication and scales to full rollout by design. Granola at full rollout assumes the recording requirement applies to every role, which has not been decided. Figma priced at a Full seat for all 35 people overstates a realistic company-wide cost, because Figma sells review-only and developer access below the Full seat rate and most of a 35-person rollout would not need to edit.</p>
+          <strong>The four products are not equally justified at 35 seats.</strong> Slack is general company communication and scales to full rollout by design. Granola at full rollout assumes the recording requirement applies to every role, which has not been decided. Figma priced at a Full seat for all 35 people overstates a realistic company-wide cost, because Figma sells review-only and developer access below the Full seat rate and most of a 35-person rollout would not need to edit. Asana at full rollout assumes every team files and reads its work in it; without that commitment, seats outside the requesting teams sit idle and are reclaimed at the quarterly review.</p>
           </div>
         </details>
 
@@ -966,6 +992,71 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
           </div>
         </details>
 
+        <!-- ---------- ASANA ---------- -->
+        <div class="sec-head reveal" style="margin-top:52px;"><h3>Asana</h3><span class="pipe">|</span><span class="kick">Work management</span></div>
+        <div class="comp-wrap reveal">
+          <table class="comp-table">
+            <thead>
+              <tr class="colhead-row">
+                <th class="type">Plan</th><th class="wrap">USD per seat, month, monthly billing</th><th class="wrap">USD per seat, month, annual billing</th><th class="wrap">USD per seat, year, annual billing</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="type">Personal</td><td>0.00</td><td>0.00</td><td>0.00</td></tr>
+              <tr class="tint-current"><td class="type grp-current">Starter</td><td class="range">13.49</td><td class="range">10.99</td><td class="range">131.88</td></tr>
+              <tr><td class="type">Advanced</td><td>30.49</td><td>24.99</td><td>299.88</td></tr>
+              <tr><td class="type">Enterprise</td><td>Quoted</td><td>Quoted</td><td>Quoted</td></tr>
+              <tr><td class="type">Enterprise+</td><td>Quoted</td><td>Quoted</td><td>Quoted</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="comp-wrap reveal" style="margin-top:26px;">
+          <table class="comp-table narrow">
+            <thead>
+              <tr class="colhead-row">
+                <th class="type">Plan</th><th class="wrap">Users</th><th class="wrap">Planning views</th><th class="wrap">Automation and intake</th><th class="wrap">Reporting and portfolio</th><th class="wrap">Administration</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="type">Personal</td><td class="wrap">Up to 2</td><td class="wrap">List, board, calendar</td><td>None</td><td>None</td><td>None</td>
+              </tr>
+              <tr class="tint-current">
+                <td class="type grp-current">Starter</td><td class="range">No cap</td><td class="range wrap">Adds timeline and Gantt</td><td class="range wrap">Automation, forms, custom fields, custom templates</td><td class="range wrap">Dashboards</td><td>None</td>
+              </tr>
+              <tr>
+                <td class="type">Advanced</td><td class="wrap">No cap</td><td class="wrap">As Starter</td><td class="wrap">Adds approvals, proofing, time tracking, formulas</td><td class="wrap">Adds portfolios, goals, workload</td><td>None</td>
+              </tr>
+              <tr>
+                <td class="type">Enterprise</td><td class="wrap">No cap</td><td class="wrap">As Advanced</td><td class="wrap">As Advanced</td><td class="wrap">Adds capacity planning</td><td class="wrap">SAML, SCIM, service accounts, view-only licenses</td>
+              </tr>
+              <tr>
+                <td class="type">Enterprise+</td><td class="wrap">No cap</td><td class="wrap">As Advanced</td><td class="wrap">As Advanced</td><td class="wrap">As Enterprise</td><td class="wrap">Adds SIEM integrations, data residency, audit logs, managed workspaces</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <details class="disc reveal">
+          <summary>Asana pricing notes and source<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <p>Pricing is per seat. Third-party pricing summaries state a two-seat minimum on paid plans, which is immaterial at the rollout sizes costed here. The Personal plan is capped at two users on the current vendor page; older summaries state a ten-user cap, and the two figures should not be conflated. Each paid tier carries a monthly allowance of Asana AI credits (50,000 on Starter, 75,000 on Advanced, 200,000 on Enterprise); the allowances are not a factor in the tier selection. Enterprise and Enterprise+ are quoted individually and publish no list rate. List pricing published at <a href="https://asana.com/pricing">asana.com/pricing</a>, checked 13 August 2026.</p>
+          </div>
+        </details>
+
+        <div class="sec-head reveal" style="margin-top:36px;"><h3>Basis for Starter</h3><span class="pipe">|</span><span class="kick">Task ownership and intake</span></div>
+        <p class="lead reveal">Asana was requested by the team for day-to-day task and work management: individual ownership of work items, due dates, and a view of what each person and team is carrying that does not depend on asking. Development projects are already tracked at the project level; the request covers the operational task layer beneath that.</p>
+        <p class="lead reveal">The Personal plan is capped at two users and has no timeline view, no intake forms, and no automation, which rules it out for team use. Starter is the tier at which timeline and Gantt views, forms, automation rules, and reporting dashboards appear. Those are the components of task intake without re-entry: work arrives through a form, is routed by a rule, and status is read from a dashboard rather than requested in a message.</p>
+
+        <details class="disc reveal">
+          <summary>Argument against Starter, and what it does not address<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <p><strong>Argument against Starter.</strong> Advanced at $24.99 per seat per month is 2.3 times the cost and adds portfolios, goals, workload management, approvals, and time tracking. If leadership intends to read cross-project status out of Asana rather than out of individual projects, portfolios and goals are the features that provide it, and Advanced becomes the required tier. Separately, task tracking overlaps with the project tracking the team already performs; a second tracking system holds only if the boundary between the two is written down, and that boundary is a policy decision rather than a product feature.</p>
+            <p>
+          <strong>Not addressed by Starter.</strong> Starter has no SAML single sign-on and no SCIM provisioning; sign-in is by password or Google authentication rather than through a central identity provider. Task hygiene is not a product feature: an unmaintained board misstates status as confidently as an unmaintained spreadsheet, which is why the use requirement in the Standards section exists.</p>
+          </div>
+        </details>
+
         <details class="disc reveal" style="margin-top:44px;">
           <summary>Pricing sources and verification, checked 13 August 2026<span class="disc-hint"></span></summary>
           <div class="disc-body">
@@ -973,6 +1064,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
           <li><strong>Slack.</strong> <a href="https://slack.com/pricing">slack.com/pricing</a>. Pro and Business+ per-seat rates for both billing terms confirmed against the vendor page and two independent pricing summaries. One summary lists Business+ at $12.50; it disagrees with the vendor page and with every other source checked, and was not used.</li>
           <li><strong>Granola.</strong> <a href="https://www.granola.ai/pricing">granola.ai/pricing</a>. Business at $14.00 and Enterprise from $35.00 are consistent across sources. The two Basic-plan limits are drawn from third-party summaries and are the least well corroborated figures in this section.</li>
           <li><strong>Figma.</strong> <a href="https://www.figma.com/pricing/">figma.com/pricing</a>. Professional Full seat at $16.00 annual and $20.00 month to month is consistent across sources. Organization at $55.00 and Enterprise at $90.00 are annual-billing only.</li>
+          <li><strong>Asana.</strong> <a href="https://asana.com/pricing">asana.com/pricing</a>. Starter at $10.99 annual and $13.49 month to month, and Advanced at $24.99 and $30.49, are consistent between the vendor page and independent pricing summaries. The two-seat minimum on paid plans is drawn from third-party summaries. Enterprise and Enterprise+ publish no list rate.</li>
           <li><strong>Anthropic.</strong> <a href="https://platform.claude.com/docs/en/about-claude/pricing">platform.claude.com/docs/en/about-claude/pricing</a>. Model rates in the Open Items section are taken from the vendor rate card rather than from a summary.</li>
           <li><strong>AppFolio.</strong> <a href="https://www.appfolio.com/pricing">appfolio.com/pricing</a>. The Database API add-on is not listed publicly. The figures in this deck come from the source team overview document and require confirmation against an AppFolio quote.</li>
         </ul>
@@ -1008,6 +1100,11 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
             <div class="kicker">Figma</div>
             <div class="cell-title">Design file requirement</div>
             <div class="cell-desc">Interface changes begin as a Figma file and are reviewed there before code is written. Shared components are drawn from the team library rather than defined per file. Developers work from Dev Mode rather than from screenshots.</div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Asana</div>
+            <div class="cell-title">Task tracking requirement</div>
+            <div class="cell-desc">Work items are entered as tasks with a named owner and a due date at the time they are agreed, not reconstructed afterward. Status is read from the task rather than requested in a message. A task whose scope changes is edited, so the record reflects what is currently agreed. Requests from other teams arrive through an intake form rather than a direct message.</div>
           </div>
           <div class="cell">
             <div class="kicker">Claude</div>
@@ -1415,7 +1512,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
     {route:"howwework",  nav:"howwework",  eyebrow:"02 · Operating Model",t1:"Operating",        t2:"Model",         label:"Infrastructure, Method, Governance",
       lead:"Platform and code hosting, build and release method, access control, and vendor dependency."},
     {route:"toolstack",  nav:"toolstack",  eyebrow:"03 · Tool Stack",     t1:"Tool",             t2:"Stack",         label:"Pricing and Capability",
-      lead:"Slack, Granola, and Figma. List pricing by tier, capability by tier, and the basis for each tier selected."},
+      lead:"Slack, Granola, Figma, and Asana. List pricing by tier, capability by tier, and the basis for each tier selected."},
     {route:"standards",  nav:"standards",  eyebrow:"04 · Standards",      t1:"Software",         t2:"Standards",     label:"Use Requirements",
       lead:"The required use for each licensed tool, and the quarterly review that verifies it."},
     {route:"ongoing",    nav:"ongoing",    eyebrow:"05 · Open Items",     t1:"Open",             t2:"Items",         label:"Discussed, Not Approved",
