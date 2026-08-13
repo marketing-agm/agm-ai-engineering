@@ -32,6 +32,12 @@ Copy is adapted from the source team overview document. Layout, palette (navy `#
 micro-site design system. Each page carries a per-page summary rail, reveal-on-scroll, prev and
 next paging, a reading-progress bar, and a light and dark toggle.
 
+Pricing footnotes, source lists, and counterarguments are collapsed into labeled `<details>`
+disclosures (`.disc`) so the main line of each section stays readable. They are native elements
+with no JavaScript behind the toggle. A `beforeprint` handler expands every one of them and an
+`afterprint` handler restores the previous state, so printing or exporting to PDF captures the full
+document rather than the summary labels alone.
+
 ## Editorial standard
 This deck is read by leadership for a budget decision and retained afterward as reference. Copy
 follows a fixed standard. Any edit should hold to it:
@@ -48,6 +54,11 @@ follows a fixed standard. Any edit should hold to it:
 - Vendor tier language is quoted and attributed to the vendor rather than adopted. "Unlimited" is
   the vendor's word.
 - Every recommendation names its strongest counterargument and what it does not solve.
+- Supporting detail sits in collapsible disclosures rather than inline blocks. The summary label
+  states what is inside, so a counterargument is visible as present without being read. Labels
+  therefore have to be literal: "Argument against Pro, and what it does not address", never a
+  neutral word like "Details" or "More". A disclosure that hides the existence of a counterargument
+  breaks the rule above.
 
 ## No access gate
 Unlike the proposal micro-sites, this overview is not password-protected. There is no

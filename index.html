@@ -320,6 +320,32 @@ em{font-style:italic;}
 .portal-feat .pf-desc{font-size:13px; line-height:1.66; color:var(--ink-72);}
 @media(max-width:900px){.portal{grid-template-columns:1fr; gap:30px;}}
 
+/* ---------- collapsible detail (notes, sources, counterarguments) ---------- */
+.disc{border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); margin:22px 0 0;}
+.disc + .disc{margin-top:10px;}
+.disc > summary{list-style:none; cursor:pointer; display:flex; align-items:center; gap:13px; padding:14px 20px; font-size:11.5px; font-weight:600; letter-spacing:.11em; text-transform:uppercase; color:var(--ink-65); border-radius:var(--radius); transition:background .16s var(--ease), color .16s var(--ease);}
+.disc > summary::-webkit-details-marker{display:none;}
+.disc > summary::before{content:""; flex:0 0 auto; width:7px; height:7px; margin-left:3px; border-right:1.5px solid var(--accent); border-bottom:1.5px solid var(--accent); transform:rotate(-45deg) translate(-1px,-1px); transition:transform .2s var(--ease);}
+.disc > summary:hover{background:var(--surface-2); color:var(--ink);}
+.disc > summary:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+.disc[open] > summary{color:var(--ink); border-bottom:1px solid var(--line-soft); border-radius:var(--radius) var(--radius) 0 0;}
+.disc[open] > summary::before{transform:rotate(45deg) translate(-1px,-1px);}
+.disc-hint{margin-left:auto; font-size:10.5px; font-weight:600; letter-spacing:.1em; color:var(--ink-42);}
+.disc > summary .disc-hint::after{content:"OPEN";}
+.disc[open] > summary .disc-hint::after{content:"CLOSE";}
+.disc-body{padding:20px 22px 22px; font-size:12.5px; line-height:1.75; color:var(--ink-72);}
+.disc-body p{margin:0 0 14px;}
+.disc-body p:last-child{margin-bottom:0;}
+.disc-body strong{font-weight:600; color:var(--ink-80);}
+.disc-body a{text-decoration:underline; text-underline-offset:2px;}
+.disc-body .mp-list{margin:0;}
+.disc-body .mp-list li:last-child{margin-bottom:0;}
+@media print{
+  .disc{break-inside:avoid;}
+  .disc > summary{color:var(--ink);}
+  .disc > summary::before,.disc-hint{display:none;}
+}
+
 /* prev / next pager — closes the content column */
 .pager{display:flex; justify-content:space-between; gap:16px; margin-top:64px; padding-top:36px; border-top:1px solid var(--line-strong);}
 .pager button{display:flex; flex-direction:column; gap:5px; align-items:flex-start; text-align:left; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:16px 22px; cursor:pointer; font-family:var(--sans); min-width:0; max-width:48%; transition:border-color .16s var(--ease), background .16s var(--ease), transform .16s var(--ease);}
@@ -718,12 +744,15 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
             </tbody>
           </table>
         </div>
-        <p class="fee-footnote reveal">Monthly figures are the annual-billing rate stated per month, not the month-to-month price. Month-to-month billing is higher for two of the three products: Slack Pro is $8.75 per seat per month and Figma Professional Full is $20.00. Granola Business publishes a single rate of $14.00, and no separate annual rate appears in public pricing summaries. At 35 seats, month-to-month billing raises the combined figure from $1,303.75 to $1,496.25 per month, and from $15,645.00 to $17,955.00 per year.</p>
-
-        <div class="statute-note reveal">
-          <strong>Basis of the scenarios.</strong> The 5-seat figure matches current development team headcount and is the only one tied to a known list of users. The 10-seat and 35-seat figures are rollout scenarios for comparison; neither scope has been agreed and no named user list exists for either. Prices are vendor list pricing compiled from public pricing summaries rather than from a quote. Confirm every figure against a vendor quote before approval.<br><br>
-          <strong>The three products are not equally justified at 35 seats.</strong> Slack is general company communication and scales to full rollout by design. Granola at full rollout assumes the recording requirement applies to every role, which has not been decided. Figma priced at a Full seat for all 35 people overstates a realistic company-wide cost, because Figma sells review-only and developer access below the Full seat rate and most of a 35-person rollout would not need to edit.
-        </div>
+        <details class="disc reveal">
+          <summary>Billing terms, scenario basis, and limits at 35 seats<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <p>Monthly figures are the annual-billing rate stated per month, not the month-to-month price. Month-to-month billing is higher for two of the three products: Slack Pro is $8.75 per seat per month and Figma Professional Full is $20.00. Granola Business publishes a single rate of $14.00, and no separate annual rate appears in public pricing summaries. At 35 seats, month-to-month billing raises the combined figure from $1,303.75 to $1,496.25 per month, and from $15,645.00 to $17,955.00 per year.</p>
+            <p><strong>Basis of the scenarios.</strong> The 5-seat figure matches current development team headcount and is the only one tied to a known list of users. The 10-seat and 35-seat figures are rollout scenarios for comparison; neither scope has been agreed and no named user list exists for either. Prices are vendor list pricing compiled from public pricing summaries rather than from a quote. Confirm every figure against a vendor quote before approval.</p>
+            <p>
+          <strong>The three products are not equally justified at 35 seats.</strong> Slack is general company communication and scales to full rollout by design. Granola at full rollout assumes the recording requirement applies to every role, which has not been decided. Figma priced at a Full seat for all 35 people overstates a realistic company-wide cost, because Figma sells review-only and developer access below the Full seat rate and most of a 35-person rollout would not need to edit.</p>
+          </div>
+        </details>
 
         <!-- ---------- SLACK ---------- -->
         <div class="sec-head reveal" style="margin-top:52px;"><h3>Slack</h3><span class="pipe">|</span><span class="kick">Messaging</span></div>
@@ -759,7 +788,12 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
             </tbody>
           </table>
         </div>
-        <p class="fee-footnote reveal">Slack describes the Pro history and app limits as "unlimited". That is Slack's term. The entries above state the published behavior. Pricing is per active user. Slack applies a scheduled price increase at renewal that is not reflected in these figures. Business+ and Enterprise+ carry a published 99.99% uptime commitment; Free and Pro carry none. Workflow Builder on paid tiers includes connectors to external services. "External orgs" denotes Slack Connect channels shared with organizations outside AGM. Third-party procurement data places negotiated Enterprise+ agreements near $26 per user per month, which is a market observation and not a Slack quote. List pricing published at <a href="https://slack.com/pricing">slack.com/pricing</a>, checked 13 August 2026.</p>
+        <details class="disc reveal">
+          <summary>Slack pricing notes and source<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <p>Slack describes the Pro history and app limits as "unlimited". That is Slack's term. The entries above state the published behavior. Pricing is per active user. Slack applies a scheduled price increase at renewal that is not reflected in these figures. Business+ and Enterprise+ carry a published 99.99% uptime commitment; Free and Pro carry none. Workflow Builder on paid tiers includes connectors to external services. "External orgs" denotes Slack Connect channels shared with organizations outside AGM. Third-party procurement data places negotiated Enterprise+ agreements near $26 per user per month, which is a market observation and not a Slack quote. List pricing published at <a href="https://slack.com/pricing">slack.com/pricing</a>, checked 13 August 2026.</p>
+          </div>
+        </details>
 
         <div class="sec-head reveal" style="margin-top:36px;"><h3>Basis for Pro</h3><span class="pipe">|</span><span class="kick">Constraints on the Free plan</span></div>
         <ul class="mp-list reveal">
@@ -769,10 +803,14 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
           <li><strong>Workflow Builder.</strong> Available from Pro. Forms, approvals, routing, and scheduled posts can be built by the team that needs them rather than by the development team.</li>
         </ul>
 
-        <div class="statute-note reveal">
-          <strong>Argument against Pro.</strong> Business+ at $15.00 per seat per month is double the cost and adds SAML SSO, SCIM provisioning, data residency selection, compliance export, and a 99.99% uptime commitment. AGM currently authenticates internal applications through Cloudflare Zero Trust against Google Workspace, so single sign-on is handled outside Slack. If Slack is later designated a system of record for compliance purposes, Business+ becomes the required tier and the per-seat cost doubles.<br><br>
-          <strong>Not addressed by Pro.</strong> Pro does not provide compliance export, data residency selection, or data loss prevention. Retention makes messages findable; it does not reduce their volume, and it does not establish which channel a given record belongs in. That is covered by the use requirements in the next section.
-        </div>
+        <details class="disc reveal">
+          <summary>Argument against Pro, and what it does not address<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <p><strong>Argument against Pro.</strong> Business+ at $15.00 per seat per month is double the cost and adds SAML SSO, SCIM provisioning, data residency selection, compliance export, and a 99.99% uptime commitment. AGM currently authenticates internal applications through Cloudflare Zero Trust against Google Workspace, so single sign-on is handled outside Slack. If Slack is later designated a system of record for compliance purposes, Business+ becomes the required tier and the per-seat cost doubles.</p>
+            <p>
+          <strong>Not addressed by Pro.</strong> Pro does not provide compliance export, data residency selection, or data loss prevention. Retention makes messages findable; it does not reduce their volume, and it does not establish which channel a given record belongs in. That is covered by the use requirements in the next section.</p>
+          </div>
+        </details>
 
         <!-- ---------- GRANOLA ---------- -->
         <div class="sec-head reveal" style="margin-top:52px;"><h3>Granola</h3><span class="pipe">|</span><span class="kick">Meeting capture</span></div>
@@ -814,16 +852,25 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
             </tbody>
           </table>
         </div>
-        <p class="fee-footnote reveal">Granola describes Business and Enterprise note history as "unlimited". That is Granola's term. The Basic plan carries two separate limits that are frequently conflated: notes older than 30 days cannot be opened in the app, and the account is capped at 25 meetings for its lifetime rather than per month. Both figures come from third-party pricing summaries and have not been confirmed against Granola's own documentation. Enterprise administration covers single sign-on, an organization-wide opt-out from model training, admin control of link sharing and API access, an organization-wide auto-deletion policy, and usage analytics. Enterprise is quoted individually and starts at $35.00 per user per month. No per-meeting or per-minute transcription charge applies on any tier. List pricing published at <a href="https://www.granola.ai/pricing">granola.ai/pricing</a>, checked 13 August 2026.</p>
+        <details class="disc reveal">
+          <summary>Granola pricing notes and source<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <p>Granola describes Business and Enterprise note history as "unlimited". That is Granola's term. The Basic plan carries two separate limits that are frequently conflated: notes older than 30 days cannot be opened in the app, and the account is capped at 25 meetings for its lifetime rather than per month. Both figures come from third-party pricing summaries and have not been confirmed against Granola's own documentation. Enterprise administration covers single sign-on, an organization-wide opt-out from model training, admin control of link sharing and API access, an organization-wide auto-deletion policy, and usage analytics. Enterprise is quoted individually and starts at $35.00 per user per month. No per-meeting or per-minute transcription charge applies on any tier. List pricing published at <a href="https://www.granola.ai/pricing">granola.ai/pricing</a>, checked 13 August 2026.</p>
+          </div>
+        </details>
 
         <div class="sec-head reveal" style="margin-top:36px;"><h3>Basis for Business</h3><span class="pipe">|</span><span class="kick">Capture method and retention</span></div>
         <p class="lead reveal">Granola captures audio from the laptop rather than joining a call as a participant. It therefore records in-person meetings, phone calls, and video calls without an invitation and without a join link. That is the operative requirement for owner, vendor, and contractor conversations that AGM does not schedule.</p>
         <p class="lead reveal">The Basic tier stops opening notes older than 30 days and stops recording after 25 meetings, both of which fall inside the span of a single project. Business is the tier at which note history is retained, and it is the tier that exposes note content over MCP and the API, which is the path by which meeting content reaches the Corporate Library and internal tooling without re-entry.</p>
 
-        <div class="statute-note reveal">
-          <strong>Argument against Business.</strong> Enterprise at $35.00 per seat per month adds single sign-on and an organization-wide opt-out from model training. Business does not include that opt-out. If meeting content is judged to require that control, Enterprise is the required tier at 2.5 times the cost.<br><br>
-          <strong>Not addressed by Business.</strong> Granola records and transcribes. It does not file, distribute, or act on the result; filing to the correct location remains manual unless an integration is configured for it. Consent to record is a policy question and is not governed by any product setting.
-        </div>
+        <details class="disc reveal">
+          <summary>Argument against Business, and what it does not address<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <p><strong>Argument against Business.</strong> Enterprise at $35.00 per seat per month adds single sign-on and an organization-wide opt-out from model training. Business does not include that opt-out. If meeting content is judged to require that control, Enterprise is the required tier at 2.5 times the cost.</p>
+            <p>
+          <strong>Not addressed by Business.</strong> Granola records and transcribes. It does not file, distribute, or act on the result; filing to the correct location remains manual unless an integration is configured for it. Consent to record is a policy question and is not governed by any product setting.</p>
+          </div>
+        </details>
 
         <!-- ---------- FIGMA ---------- -->
         <div class="sec-head reveal" style="margin-top:52px;"><h3>Figma</h3><span class="pipe">|</span><span class="kick">Interface design</span></div>
@@ -858,7 +905,12 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
             </tbody>
           </table>
         </div>
-        <p class="fee-footnote reveal">Figures shown are annual billing. Professional is also sold month to month at $20.00 per Full seat. Organization and Enterprise are billed annually only; Figma publishes no month-to-month option for those tiers. Figma also sells Dev and Collab seat types at lower rates within the same plan; those are excluded here, so every figure above assumes a Full seat for each user. File limit entries of "No limit" reflect no published cap. List pricing published at <a href="https://www.figma.com/pricing/">figma.com/pricing</a>, checked 13 August 2026.</p>
+        <details class="disc reveal">
+          <summary>Figma pricing notes and source<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <p>Figures shown are annual billing. Professional is also sold month to month at $20.00 per Full seat. Organization and Enterprise are billed annually only; Figma publishes no month-to-month option for those tiers. Figma also sells Dev and Collab seat types at lower rates within the same plan; those are excluded here, so every figure above assumes a Full seat for each user. File limit entries of "No limit" reflect no published cap. List pricing published at <a href="https://www.figma.com/pricing/">figma.com/pricing</a>, checked 13 August 2026.</p>
+          </div>
+        </details>
 
         <div class="sec-head reveal" style="margin-top:36px;"><h3>Basis for Professional</h3><span class="pipe">|</span><span class="kick">Revision point, handoff, shared components</span></div>
         <div class="cellgrid reveal">
@@ -879,23 +931,28 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
           </div>
         </div>
 
-        <div class="statute-note reveal">
-          <strong>Argument against Professional.</strong> Organization at $45.00 to $55.00 per Full seat adds organization-wide libraries, design system analytics, branching, and single sign-on. At current headcount the shared component set fits in one team library, so those features address a scale AGM has not reached. That will not hold indefinitely.<br><br>
-          <strong>Not addressed by Professional.</strong> Professional has no branching and no organization-wide design system analytics. As the number of people editing shared components grows, conflicting edits to the same component have no merge path on this tier.
-        </div>
+        <details class="disc reveal">
+          <summary>Argument against Professional, and what it does not address<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <p><strong>Argument against Professional.</strong> Organization at $45.00 to $55.00 per Full seat adds organization-wide libraries, design system analytics, branching, and single sign-on. At current headcount the shared component set fits in one team library, so those features address a scale AGM has not reached. That will not hold indefinitely.</p>
+            <p>
+          <strong>Not addressed by Professional.</strong> Professional has no branching and no organization-wide design system analytics. As the number of people editing shared components grows, conflicting edits to the same component have no merge path on this tier.</p>
+          </div>
+        </details>
 
-        <div class="sec-head reveal" style="margin-top:52px;"><h3>Pricing sources</h3><span class="pipe">|</span><span class="kick">Checked 13 August 2026</span></div>
-        <ul class="mp-list reveal">
+        <details class="disc reveal" style="margin-top:44px;">
+          <summary>Pricing sources and verification, checked 13 August 2026<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <ul class="mp-list">
           <li><strong>Slack.</strong> <a href="https://slack.com/pricing">slack.com/pricing</a>. Pro and Business+ per-seat rates for both billing terms confirmed against the vendor page and two independent pricing summaries. One summary lists Business+ at $12.50; it disagrees with the vendor page and with every other source checked, and was not used.</li>
           <li><strong>Granola.</strong> <a href="https://www.granola.ai/pricing">granola.ai/pricing</a>. Business at $14.00 and Enterprise from $35.00 are consistent across sources. The two Basic-plan limits are drawn from third-party summaries and are the least well corroborated figures in this section.</li>
           <li><strong>Figma.</strong> <a href="https://www.figma.com/pricing/">figma.com/pricing</a>. Professional Full seat at $16.00 annual and $20.00 month to month is consistent across sources. Organization at $55.00 and Enterprise at $90.00 are annual-billing only.</li>
           <li><strong>Anthropic.</strong> <a href="https://platform.claude.com/docs/en/about-claude/pricing">platform.claude.com/docs/en/about-claude/pricing</a>. Model rates in the Open Items section are taken from the vendor rate card rather than from a summary.</li>
           <li><strong>AppFolio.</strong> <a href="https://www.appfolio.com/pricing">appfolio.com/pricing</a>. The Database API add-on is not listed publicly. The figures in this deck come from the source team overview document and require confirmation against an AppFolio quote.</li>
         </ul>
-
-        <div class="statute-note reveal">
-          Every figure in this section is vendor list pricing. None reflects a quote issued to AGM, and none includes tax, negotiated discount, or a mid-term price change. Slack applies a scheduled increase at renewal. Confirm all figures against vendor quotes before approval.
-        </div>
+            <p style="margin-top:16px;">Every figure in this section is vendor list pricing. None reflects a quote issued to AGM, and none includes tax, negotiated discount, or a mid-term price change. Slack applies a scheduled increase at renewal. Confirm all figures against vendor quotes before approval.</p>
+          </div>
+        </details>
       </div>
 
       <!-- ============ 04 · SOFTWARE STANDARDS ============ -->
@@ -951,9 +1008,12 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
           <li><strong>Handover.</strong> Staff joining a project inherit the recorded material rather than reconstructing it from conversation.</li>
         </ul>
 
-        <div class="statute-note reveal">
-          <strong>Cost of the requirements.</strong> A standing recording requirement changes how people speak in meetings, and some conversation will move to settings that are not recorded. A 30-day idle rule will occasionally reclaim a seat from someone on leave. Both outcomes are predictable and are handled by exception rather than by revising the requirement. Neither the recording requirement nor the review has been costed in staff time.
-        </div>
+        <details class="disc reveal">
+          <summary>Cost of these requirements<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <p><strong>Cost of the requirements.</strong> A standing recording requirement changes how people speak in meetings, and some conversation will move to settings that are not recorded. A 30-day idle rule will occasionally reclaim a seat from someone on leave. Both outcomes are predictable and are handled by exception rather than by revising the requirement. Neither the recording requirement nor the review has been costed in staff time.</p>
+          </div>
+        </details>
 
         <div class="highlight reveal">
           <span class="h-label">Policy</span>
@@ -1013,7 +1073,12 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
             </tbody>
           </table>
         </div>
-        <p class="fee-footnote reveal">Credits are purchased in advance and drawn down by usage. Two reductions apply to the rates above: a prompt-caching read is charged at 10 percent of the base input rate, and requests submitted through the Batch API are charged at 50 percent of both input and output. Cache writes cost more than base input: 1.25 times for a five-minute cache and 2 times for a one-hour cache. The Sonnet 5 rate of $2.00 and $10.00 was announced as introductory pricing through 31 August 2026 and has since been made standard; the increase to $3.00 and $15.00 will not take place. Rates published at <a href="https://platform.claude.com/docs/en/about-claude/pricing">platform.claude.com/docs/en/about-claude/pricing</a>, checked 13 August 2026.</p>
+        <details class="disc reveal">
+          <summary>Rate card notes and source<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <p>Credits are purchased in advance and drawn down by usage. Two reductions apply to the rates above: a prompt-caching read is charged at 10 percent of the base input rate, and requests submitted through the Batch API are charged at 50 percent of both input and output. Cache writes cost more than base input: 1.25 times for a five-minute cache and 2 times for a one-hour cache. The Sonnet 5 rate of $2.00 and $10.00 was announced as introductory pricing through 31 August 2026 and has since been made standard; the increase to $3.00 and $15.00 will not take place. Rates published at <a href="https://platform.claude.com/docs/en/about-claude/pricing">platform.claude.com/docs/en/about-claude/pricing</a>, checked 13 August 2026.</p>
+          </div>
+        </details>
 
         <div class="sec-head reveal" style="margin-top:44px;"><h3>Basis for a recurring reload</h3><span class="pipe">|</span><span class="kick">Availability and cost behavior</span></div>
         <ul class="mp-list reveal">
@@ -1022,10 +1087,14 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
           <li><strong>Controls.</strong> Spend limits are set per user and organization-wide. API keys are held centrally and are not stored in source code. Usage is attributable by product.</li>
         </ul>
 
-        <div class="statute-note reveal">
-          <strong>Argument against a recurring reload.</strong> It commits spend before the work that consumes it is scoped. The alternative is manual top-off, which was the prior arrangement and produced at least one service interruption. Because the reload threshold and ceiling are configurable, exposure is bounded by the ceiling rather than open-ended.<br><br>
-          <strong>Not addressed.</strong> Credits do not cap consumption by any individual product. Attribution by product is available after the fact and is not enforced in advance. A defect that causes repeated API calls would draw down the balance until the ceiling is reached.
-        </div>
+        <details class="disc reveal">
+          <summary>Argument against a recurring reload, and what it does not address<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <p><strong>Argument against a recurring reload.</strong> It commits spend before the work that consumes it is scoped. The alternative is manual top-off, which was the prior arrangement and produced at least one service interruption. Because the reload threshold and ceiling are configurable, exposure is bounded by the ceiling rather than open-ended.</p>
+            <p>
+          <strong>Not addressed.</strong> Credits do not cap consumption by any individual product. Attribution by product is available after the fact and is not enforced in advance. A defect that causes repeated API calls would draw down the balance until the ceiling is reached.</p>
+          </div>
+        </details>
 
         <!-- ---------- APPFOLIO ---------- -->
         <div class="sec-head reveal" style="margin-top:52px;"><h3>AppFolio Database API</h3><span class="pipe">|</span><span class="kick">Recorded figure</span></div>
@@ -1111,10 +1180,14 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         <div class="sec-head reveal" style="margin-top:44px;"><h3>Scope of the change</h3><span class="pipe">|</span><span class="kick">Affected products</span></div>
         <p class="lead reveal">The CSV pipeline is rebuilt for each way AppFolio data is drawn on each project. It is in use by Report Studio, the Lease Population Tool, the Corporate Library, Leasing Strategy Reports, and the Work Order Digest, in addition to the KPI Dashboard. The API replaces that pattern for all of them, and returns data current at read time rather than as of the last scheduled email. Because access is read-write, charges, records, and field updates can also be posted back programmatically.</p>
 
-        <div class="statute-note reveal">
-          <strong>Argument against approval at this time.</strong> $2,992 per month is $35,904 per year and recurs whether or not further integrations are built. The case rests on labor reduction, and the labor figure has not been measured on either side: neither the hours of manual AppFolio entry the API would remove, nor the hours currently spent building and maintaining CSV pipelines. A decision resting on labor savings should follow those measurements rather than precede them.<br><br>
-          <strong>Not addressed.</strong> The API does not migrate the existing pipelines. Each one remains in place until it is rewritten, and that work is not scoped.
-        </div>
+        <details class="disc reveal">
+          <summary>Argument against approval at this time, and what it does not address<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <p><strong>Argument against approval at this time.</strong> $2,992 per month is $35,904 per year and recurs whether or not further integrations are built. The case rests on labor reduction, and the labor figure has not been measured on either side: neither the hours of manual AppFolio entry the API would remove, nor the hours currently spent building and maintaining CSV pipelines. A decision resting on labor savings should follow those measurements rather than precede them.</p>
+            <p>
+          <strong>Not addressed.</strong> The API does not migrate the existing pipelines. Each one remains in place until it is rewritten, and that work is not scoped.</p>
+          </div>
+        </details>
 
         <div class="highlight reveal">
           <span class="h-label">Request</span>
@@ -1548,6 +1621,19 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
     progress.style.width = pct+"%";
   }
   window.addEventListener("scroll", onScroll, {passive:true});
+
+  // print: expand every collapsed detail so nothing is lost on paper / PDF
+  var printOpened = [];
+  window.addEventListener("beforeprint", function(){
+    printOpened = [];
+    document.querySelectorAll("details.disc:not([open])").forEach(function(d){
+      printOpened.push(d); d.open = true;
+    });
+  });
+  window.addEventListener("afterprint", function(){
+    printOpened.forEach(function(d){ d.open = false; });
+    printOpened = [];
+  });
 
   // boot
   var start = (location.hash||"").replace("#","");
