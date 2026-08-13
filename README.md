@@ -81,10 +81,17 @@ Tracked once the key is set:
 ## Operational notes
 - `_headers` enforces `noindex` and security headers at the edge.
 - Bracketed placeholders mark figures that are not yet filled in: `[ estimate ]`,
-  `[ decision date ]`, `[ hours per month ]`, `[ n ]`, `[ total ]`, `[ amount ]`. The Tool Stack
-  cost summary requires final seat counts. Section 5 requires a usage baseline for the monthly
-  Claude credit figure and the current balance for the top-off figure. Section 6 requires measured
-  hours of manual AppFolio entry.
+  `[ decision date ]`, `[ hours per month ]`, `[ amount ]`. Section 5 requires a usage baseline for
+  the monthly Claude credit figure and the current balance for the top-off figure. Section 6
+  requires measured hours of manual AppFolio entry.
+- Section 3 costs the three licenses at 5, 10, and 35 seats. Only the 5-seat case corresponds to a
+  known list of users, being current development team headcount; the other two are comparison
+  scenarios with no agreed scope. Totals are the per-seat rate multiplied by seat count. If a rate
+  changes after a vendor quote, both the annual and the monthly table need updating, along with the
+  month-to-month comparison in the footnote beneath them.
+- Figma is costed at the Full seat rate only. Figma also sells Dev and Collab seats at lower rates
+  within the same plan, which is disclosed in the section 3 Figma footnote and flagged in the
+  scenario note as a reason the 35-seat Figma figure runs high.
 - Third-party pricing in section 3 is vendor list pricing compiled from public pricing summaries,
   not from a quote. Sources disagreed on Slack Business+ and on Figma Organization; the more
   commonly cited figure was used and Figma Organization is shown as a range. **Confirm every figure
