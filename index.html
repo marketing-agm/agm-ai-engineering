@@ -503,6 +503,45 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
 .fee-compact-cell .fc-a.sm{font-size:19px; line-height:1.25; letter-spacing:0;}
 .fee-compact-cell .fc-nt{font-size:12px; line-height:1.55; color:var(--ink-65);}
 @media(max-width:680px){.fee-compact-grid{grid-template-columns:1fr;} .fee-compact-cell.left{border-right:none;}}
+
+/* ---- Corporate Library: file-name pattern, folder trees, tag columns ---- */
+/* one shared mono stack: the pattern, the trees and the tag lists all read as
+   record text rather than prose, so they line up column-wise on any screen */
+.mono{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-variant-ligatures:none;}
+.pattern{margin-top:6px; padding:26px 28px; background:var(--surface-2); border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:0 var(--radius) var(--radius) 0; overflow-x:auto;}
+.pattern .pat{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:15px; line-height:1.5; color:var(--ink); white-space:nowrap; letter-spacing:-.01em;}
+.pattern .pat b{font-weight:600; color:var(--accent);}
+.pattern .ex{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:12px; line-height:1.9; color:var(--ink-65); margin-top:16px; white-space:nowrap;}
+.pattern .pn{font-size:12px; line-height:1.7; color:var(--ink-72); margin:16px 0 0;}
+/* folder tree: indentation carries the level, the chip carries the retention code */
+.tree{margin:0; padding:0; list-style:none; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:12.5px; line-height:1.85;}
+.tree li{position:relative; color:var(--ink-80); padding-left:0;}
+.tree li.l1{font-weight:600; color:var(--ink); margin-top:14px;}
+.tree li.l1:first-child{margin-top:0;}
+.tree li.l2{padding-left:22px; color:var(--ink-72);}
+.tree li.l3{padding-left:44px; color:var(--ink-65);}
+.tree .rc{color:var(--accent); font-weight:600;}
+.tree .add{color:#8a5300;}
+.tree .res{color:#a32222; font-weight:600;}
+:root:not([data-theme="light"]) .tree .add{color:#e0a340;}
+:root:not([data-theme="light"]) .tree .res{color:#e88f8f;}
+:root[data-theme="dark"] .tree .add{color:#e0a340;}
+:root[data-theme="dark"] .tree .res{color:#e88f8f;}
+/* tag lists run long: columns keep them scannable without a scroll region */
+.tag-cols{column-count:2; column-gap:34px; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:12px; line-height:1.85; color:var(--ink-72);}
+.tag-cols div{break-inside:avoid;}
+.tag-cols b{color:var(--accent); font-weight:600;}
+.tag-cols i{font-style:normal; color:var(--ink-55);}
+@media(max-width:900px){.tag-cols{column-count:1;} .tree li.l3{padding-left:30px;}}
+/* legend chips for what changed per division */
+.legend{display:flex; flex-wrap:wrap; gap:10px; margin-top:20px;}
+.legend span{font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; padding:6px 12px; border-radius:100px; border:1px solid var(--line-strong); color:var(--ink-72);}
+.legend span.a{color:#8a5300; border-color:#d9a94a;}
+.legend span.r{color:#a32222; border-color:#d98a8a;}
+:root:not([data-theme="light"]) .legend span.a{color:#e0a340;}
+:root:not([data-theme="light"]) .legend span.r{color:#e88f8f;}
+:root[data-theme="dark"] .legend span.a{color:#e0a340;}
+:root[data-theme="dark"] .legend span.r{color:#e88f8f;}
 </style>
 
 <!-- ===================== PostHog product analytics =====================
@@ -549,6 +588,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
       <div class="nav-tabs">
         <button class="nav-link" data-route="overview">Overview</button>
         <button class="nav-link" data-route="howwework">Operating Model</button>
+        <button class="nav-link" data-route="library">Library</button>
         <button class="nav-link" data-route="toolstack">Tool Stack</button>
         <button class="nav-link" data-route="standards">Risks</button>
         <button class="nav-link" data-route="ongoing">Open Items</button>
@@ -733,7 +773,795 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         </div>
       </div>
 
-      <!-- ============ 03 · TOOL STACK ============ -->
+      <!-- ============ 03 · CORPORATE LIBRARY ============ -->
+      <div class="page" id="page-library">
+
+        <p class="lead reveal">The team has drafted a records standard for the Corporate Library covering three things: the folder structure every property and association is filed under, a document tagging system, and a file naming convention. This section states the proposal in full and the two decisions required to begin implementation. Nothing here has been built. The structure below is a proposal for review.</p>
+
+        <div class="metrics block reveal">
+          <div class="metric">
+            <span class="m-label">Regulated lines of business</span>
+            <span class="m-value">4</span>
+            <span class="m-unit">brokerage, commercial, residential, association</span>
+          </div>
+          <div class="metric">
+            <span class="m-label">Retention codes</span>
+            <span class="m-value">13</span>
+            <span class="m-unit">each with a different trigger event</span>
+          </div>
+          <div class="metric">
+            <span class="m-label">Document tags</span>
+            <span class="m-value">120</span>
+            <span class="m-unit">entries across six controlled lists</span>
+          </div>
+          <div class="metric">
+            <span class="m-label">Decisions requested</span>
+            <span class="m-value">2</span>
+            <span class="m-unit">naming depth, and the tag list</span>
+          </div>
+        </div>
+
+        <!-- ---------- THE CASE ---------- -->
+        <div class="sec-head reveal"><h3>Basis for the change</h3><span class="pipe">|</span><span class="kick">Four clocks</span></div>
+        <p class="lead reveal">AGM operates brokerage, commercial management, residential management, and association management at once. Each answers to a different regulator on a different clock, and the clocks do not start on the same day. A brokerage transaction file must survive a Department of Licensing audit for three years from the conclusion of the transaction. An association architectural decision runs seven years from the date the decision was made. A payroll register answers to Revenue for five years from the close of the tax period. A building&rsquo;s basis records run until four years after the building is sold, which on a thirty-year hold is thirty-four years.</p>
+        <p class="lead reveal">A folder structure cannot express four clocks at once. The proposal stops asking it to, and instead carries the retention rule and the destruction-eligible year inside the file name, where they travel with the document when it is downloaded, emailed, exported to a new system, or handed to an association on termination. A folder cannot do that. Metadata does not survive the same journey.</p>
+
+        <div class="cellgrid reveal">
+          <div class="cell">
+            <div class="kicker">What changes</div>
+            <div class="cell-title">Purge becomes a search</div>
+            <div class="cell-desc">An annual purge becomes a search on one token. An audit response becomes a saved filter. An owner records request becomes a copy operation rather than a redaction project. Nobody has to reconstruct from memory why a document was kept or destroyed.</div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Exposure closed</div>
+            <div class="cell-title">Defensible destruction</div>
+            <div class="cell-desc">Records destroyed on a published schedule before any claim arose are defensible. The same records destroyed with no schedule and no log carry the appearance of spoliation. That distinction is the difference between a routine document request and an adverse inference at trial.</div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Scope</div>
+            <div class="cell-title">Structure, tags, naming</div>
+            <div class="cell-desc">Three components, proposed together because they depend on each other. The folder tree files the document, the tag identifies what it is, and the name carries the retention consequence. Any one of the three on its own does not produce a defensible purge.</div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Not claimed</div>
+            <div class="cell-title">No measured saving</div>
+            <div class="cell-desc">No baseline has been recorded for time spent filing, searching, or responding to records requests today, so no saving is quantified in this section. The case rests on capability the firm does not currently have and on exposure it currently carries, not on a labor figure.</div>
+          </div>
+        </div>
+
+        <p class="statute-note reveal">The retention periods cited here are the team&rsquo;s reading of Washington statute and rule, recorded against each code in the tables below. They are an interpretation and have not been reviewed by counsel. Legal sign-off on the retention schedule is a prerequisite to any automated destruction, and is listed among the open items at the end of this section.</p>
+
+        <!-- ---------- SECTION 1 · STRUCTURE ---------- -->
+        <div class="sec-head reveal" style="margin-top:52px;"><h3>Folder structure</h3><span class="pipe">|</span><span class="kick">Four levels</span></div>
+        <p class="lead reveal">Every document sits four levels deep, and no deeper. The depth is fixed because SharePoint imposes a path length limit that a fifth level would breach on the longest real paths.</p>
+
+        <div class="cellgrid no-num reveal">
+          <div class="cell"><div class="kicker">Level 1</div><div class="cell-title">Property</div><div class="cell-desc">One folder per asset or association, prefixed by division: <span class="mono">RM-</span> residential, <span class="mono">CM-</span> commercial, <span class="mono">HA-</span> association.</div></div>
+          <div class="cell"><div class="kicker">Level 2</div><div class="cell-title">Category</div><div class="cell-desc">Numbered <span class="mono">01</span> through <span class="mono">07</span>, plus a segregated folder for holds and restricted material required on every asset.</div></div>
+          <div class="cell"><div class="kicker">Level 3</div><div class="cell-title">Sub-category</div><div class="cell-desc">The functional grouping inside a category. Due Diligence, Trust Accounting, Meetings &amp; Elections, and so on.</div></div>
+          <div class="cell"><div class="kicker">Level 4</div><div class="cell-title">Document folder</div><div class="cell-desc">Where files sit. Each carries the document tags expected in it and the retention code that governs them.</div></div>
+        </div>
+
+        <div class="sec-head reveal" style="margin-top:48px;"><h3>Division variants</h3><span class="pipe">|</span><span class="kick">One spine, three trees</span></div>
+        <p class="lead reveal">The residential tree is the existing structure, kept intact. Commercial and association are near-identical variants of it rather than separate systems, so a person moving between divisions is reading the same shape.</p>
+
+        <div class="cellgrid no-num reveal">
+          <div class="cell">
+            <div class="kicker">RM-&lt;ASSET&gt;</div>
+            <div class="cell-title">Multifamily</div>
+            <div class="cell-desc">The current tree, unchanged except for two additions: a Trust Accounting sub-category under Financial, and the segregated hold folder. Seven categories from Acquisition through Marketing &amp; Leasing.</div>
+          </div>
+          <div class="cell">
+            <div class="kicker">CM-&lt;ASSET&gt;</div>
+            <div class="cell-title">Commercial</div>
+            <div class="cell-desc">Same spine, with the folders commercial leasing requires: CAM &amp; Recoveries, Tenant Improvements, leasing commission agreements, vendor bids, and lease-support documents including letters of intent, guaranties, estoppels and SNDAs.</div>
+          </div>
+          <div class="cell">
+            <div class="kicker">HA-&lt;ASSET&gt;</div>
+            <div class="cell-title">Association</div>
+            <div class="cell-desc">Two categories are replaced rather than extended. Governing Documents replaces Acquisition, and Owners &amp; Resale replaces Marketing &amp; Leasing. Reserves, Assessments, Meetings &amp; Elections, and Enforcement are added.</div>
+          </div>
+        </div>
+
+        <div class="legend reveal">
+          <span class="a">Amber &middot; added</span>
+          <span>Grey &middot; unchanged</span>
+          <span class="r">Red &middot; restricted</span>
+        </div>
+
+        <div class="sec-head reveal" style="margin-top:48px;"><h3>Categories by division</h3><span class="pipe">|</span><span class="kick">Level 2</span></div>
+        <div class="comp-wrap reveal">
+          <table class="comp-table narrow">
+            <thead>
+              <tr class="colhead-row">
+                <th class="type">Level 2</th><th class="wrap">Multifamily &middot; RM</th><th class="wrap">Commercial &middot; CM</th><th class="wrap">Association &middot; HA</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="type">01</td><td class="wrap">Acquisition</td><td class="wrap">Acquisition</td><td class="wrap"><strong>Governing Documents</strong>, replaces Acquisition</td></tr>
+              <tr><td class="type">02</td><td class="wrap">Legal</td><td class="wrap">Legal, plus leasing commission agreements</td><td class="wrap">Legal, plus Enforcement</td></tr>
+              <tr><td class="type">03</td><td class="wrap">Financial, plus Trust Accounting</td><td class="wrap">Financial, plus Trust Accounting and CAM &amp; Recoveries</td><td class="wrap">Financial, plus Reserves and Assessments</td></tr>
+              <tr><td class="type">04</td><td class="wrap">Operations</td><td class="wrap">Operations, plus vendor bids</td><td class="wrap">Operations, plus Meetings &amp; Elections</td></tr>
+              <tr><td class="type">05</td><td class="wrap">Construction</td><td class="wrap">Construction, plus Tenant Improvements</td><td class="wrap">Construction</td></tr>
+              <tr><td class="type">06</td><td class="wrap">Insurance</td><td class="wrap">Insurance</td><td class="wrap">Insurance, plus warranties to the association</td></tr>
+              <tr><td class="type">07</td><td class="wrap">Marketing &amp; Leasing</td><td class="wrap">Marketing &amp; Leasing, plus lease support</td><td class="wrap"><strong>Owners &amp; Resale</strong>, replaces Marketing &amp; Leasing</td></tr>
+              <tr class="tint-current"><td class="type">_HOLD / _RESTRICTED</td><td class="wrap">Required</td><td class="wrap">Required</td><td class="wrap">Required</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="fee-footnote reveal">The segregated folder is new on every asset in every division. It holds two things: material under litigation hold, which every purge routine skips, and permission-limited material that is never placed in a production set without the Records Owner.</p>
+
+        <details class="disc reveal">
+          <summary>Multifamily tree in full, RM-&lt;ASSET&gt;<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <ul class="tree">
+              <li class="l1">01 Acquisition</li>
+              <li class="l2">Due Diligence</li>
+              <li class="l3">Title &amp; Survey <span class="rc">TITL</span> &middot; Environmental (Phase I/II) &middot; Property Condition Report <span class="rc">PINS</span> &middot; Zoning &amp; Entitlements</li>
+              <li class="l2">Purchase &amp; Sale</li>
+              <li class="l3">LOI &amp; PSA <span class="rc">LOIN PSA</span> &middot; Amendments &amp; Extensions <span class="rc">ADDM</span> &middot; Seller Disclosures <span class="rc">SDIS</span> &middot; Escrow &amp; Closing <span class="rc">ESCR CLST</span></li>
+              <li class="l2">Underwriting</li>
+              <li class="l3">Pro Forma Models &middot; Market &amp; Comp Studies &middot; Investment Memo</li>
+              <li class="l1">02 Legal</li>
+              <li class="l2">Entity &amp; Ownership</li>
+              <li class="l3">Formation Documents <span class="rc">ARTC RPRM</span> &middot; Operating Agreement &middot; Cap Table &amp; Member Records</li>
+              <li class="l2">Title &amp; Deeds</li>
+              <li class="l3">Recorded Deed <span class="rc">RPRM</span> &middot; Title Policy <span class="rc">TITL RPRM</span> &middot; Easements &amp; CC&amp;Rs <span class="rc">RPRM</span></li>
+              <li class="l2">Contracts</li>
+              <li class="l3">Property Mgmt Agreement <span class="rc">MGMT R06C</span> &middot; Brokerage Agreements <span class="rc">BUYA R03T</span> &middot; Vendor Master Agreements <span class="rc">VEND R06C</span></li>
+              <li class="l2">Litigation &amp; Claims</li>
+              <li class="l3"><span class="res">Active Matters</span> <span class="rc">LITG R10J</span> &middot; <span class="res">Closed Matters</span> <span class="rc">LITG R10J</span></li>
+              <li class="l1">03 Financial</li>
+              <li class="l2">Debt &amp; Financing</li>
+              <li class="l3">Loan Documents <span class="rc">R06C</span> &middot; Draw Packages <span class="rc">R06C</span> &middot; Payoff &amp; Refinance <span class="rc">RBAS</span></li>
+              <li class="l2">Accounting</li>
+              <li class="l3">General Ledger <span class="rc">GLDG R05X</span> &middot; AP / AR <span class="rc">INVC R05X</span> &middot; Bank &amp; Reserve Statements <span class="rc">BNKS R05X</span></li>
+              <li class="l2"><span class="add">Trust Accounting, added</span></li>
+              <li class="l3">Client &amp; Owner Ledgers <span class="rc">TRLD R03T</span> &middot; Tenant Ledgers <span class="rc">TRTL R06C</span> &middot; Three-Way Reconciliation <span class="rc">TRRE</span> monthly &middot; Trust Bank Statements <span class="rc">TRBS R05X</span></li>
+              <li class="l2">Reporting</li>
+              <li class="l3">Monthly Operating Reports &middot; Annual Budgets <span class="rc">BUDG R05X</span> &middot; Investor Distributions <span class="rc">OWNS R05X</span></li>
+              <li class="l2">Tax</li>
+              <li class="l3">Property Tax <span class="rc">TAXP RBAS</span> &middot; Returns &amp; K-1s <span class="rc">FTAX R07A</span> &middot; 1031 Exchange <span class="rc">EXCH RBAS</span></li>
+              <li class="l1">04 Operations</li>
+              <li class="l2">Property Management</li>
+              <li class="l3">Service Contracts <span class="rc">VEND R06C</span> &middot; Maintenance &amp; Work Orders <span class="rc">WKOR R05X</span> &middot; Capital Reserve Studies <span class="rc">RSVS RPRM</span></li>
+              <li class="l2">Utilities</li>
+              <li class="l3">Accounts &amp; Invoices <span class="rc">UTIL R05X</span> &middot; Meter &amp; Usage Data</li>
+              <li class="l2">Compliance &amp; Permits</li>
+              <li class="l3">Business Licenses &middot; Inspections &amp; Certificates &middot; Code &amp; Regulatory Notices <span class="rc">NTCE R06C</span></li>
+              <li class="l1">05 Construction</li>
+              <li class="l2">Design &amp; Plans</li>
+              <li class="l3">Architectural Drawings <span class="rc">PLAN RPRM</span> &middot; Civil / MEP <span class="rc">PLAN RPRM</span> &middot; As-Builts <span class="rc">PLAN RPRM</span></li>
+              <li class="l2">Project Records</li>
+              <li class="l3">GC Contract <span class="rc">CAPX R06S</span> &middot; Change Orders &middot; Draw Schedules &middot; Progress Photos &middot; Punch List &amp; Closeout &middot; <span class="add">Substantial Completion Cert <span class="rc">SUBC RPRM</span>, added</span></li>
+              <li class="l1">06 Insurance</li>
+              <li class="l2">Policies</li>
+              <li class="l3">Property &amp; Casualty <span class="rc">INSR R06C</span> &middot; General Liability &middot; Builder&rsquo;s Risk</li>
+              <li class="l2">Certificates</li>
+              <li class="l3">Vendor COIs <span class="rc">INSR R06C</span> &middot; Tenant COIs <span class="rc">INSR R06C</span></li>
+              <li class="l2">Claims</li>
+              <li class="l3">Open Claims <span class="rc">CLAM R06C</span> &middot; Closed Claims <span class="rc">CLAM R06C</span></li>
+              <li class="l1">07 Marketing &amp; Leasing</li>
+              <li class="l2">Leases</li>
+              <li class="l3">Executed Leases <span class="rc">LEAS R06C</span> &middot; Amendments &amp; Renewals <span class="rc">LEAM R06C</span> &middot; Lease Abstracts</li>
+              <li class="l2">Tenants</li>
+              <li class="l3"><span class="res">Applications &amp; Screening</span> <span class="rc">APPL SCRN R05F</span> restricted &middot; Correspondence &amp; Notices <span class="rc">NTCE R06C</span> &middot; Security Deposits <span class="rc">DEPR DEPD R06C</span></li>
+              <li class="l2">Marketing Assets</li>
+              <li class="l3">Photos &amp; Media &middot; Listings &amp; Flyers <span class="rc">MKTG R03T</span> &middot; Floor Plans &amp; Site Maps</li>
+              <li class="l2">Rent Roll</li>
+              <li class="l3">Current Rent Roll <span class="rc">RENT R05X</span> &middot; Historical Rent Roll <span class="rc">RENT R05X</span></li>
+              <li class="l1"><span class="add">_HOLD / _RESTRICTED, added, required on every asset</span></li>
+              <li class="l2">Segregated</li>
+              <li class="l3"><span class="res">_HOLD</span> purge routines skip <span class="rc">DHOLD</span> &middot; <span class="res">_RESTRICTED</span> never in a production set, permission-limited</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="disc reveal">
+          <summary>Commercial tree, what differs from multifamily<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <p>The commercial tree carries the same seven categories and the same sub-categories as multifamily. Five additions cover what commercial leasing requires and nothing is removed.</p>
+            <ul class="tree">
+              <li class="l1">02 Legal &middot; Contracts</li>
+              <li class="l3"><span class="add">Leasing Commission Agreements <span class="rc">COMR R03T</span></span></li>
+              <li class="l1">03 Financial</li>
+              <li class="l2"><span class="add">CAM &amp; Recoveries, added</span></li>
+              <li class="l3">CAM Reconciliations <span class="rc">CAMR R06C</span> &middot; Estimate Worksheets &amp; True-Ups <span class="rc">CAMR R06C</span></li>
+              <li class="l1">04 Operations &middot; Property Management</li>
+              <li class="l3"><span class="add">Vendor Bids &amp; Proposals <span class="rc">BIDP R06C</span></span></li>
+              <li class="l1">05 Construction</li>
+              <li class="l2"><span class="add">Tenant Improvements, added</span></li>
+              <li class="l3">TI Work Letters &amp; Allowances <span class="rc">TIAL R06S</span> &middot; TI Project Files <span class="rc">TIAL R06S</span></li>
+              <li class="l1">07 Marketing &amp; Leasing</li>
+              <li class="l2">Leases</li>
+              <li class="l3"><span class="add">Letters of Intent <span class="rc">LOIN R06C</span> &middot; Guaranties <span class="rc">GUAR R06C</span> &middot; Estoppels &amp; SNDAs <span class="rc">ESTP SNDA R06C</span></span></li>
+              <li class="l2">Tenants</li>
+              <li class="l3"><span class="add">Tenant Contacts &amp; Notices <span class="rc">NTCE R06C</span></span> &middot; Security Deposits <span class="rc">DEPR R06C</span></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="disc reveal">
+          <summary>Association tree, two categories replaced and four sub-categories added<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <ul class="tree">
+              <li class="l1">01 Governing Documents, replaces 01 Acquisition</li>
+              <li class="l2">Core Documents</li>
+              <li class="l3">Declaration &amp; CC&amp;Rs <span class="rc">DECL RPRM</span> &middot; Bylaws <span class="rc">BYLW RPRM</span> &middot; Rules &amp; Regulations <span class="rc">RULE RPRM</span> &middot; Amendments <span class="rc">AMND RPRM</span> &middot; Plat &amp; Survey <span class="rc">PLAT RPRM</span></li>
+              <li class="l2">Declarant Turnover</li>
+              <li class="l3">Turnover Package <span class="rc">TURN RPRM</span> &middot; Transfer Certificates <span class="rc">TURN RPRM</span></li>
+              <li class="l1">02 Legal</li>
+              <li class="l2"><span class="add">Enforcement, added</span></li>
+              <li class="l3">Violation Notices &amp; Decisions <span class="rc">ENFC R07A</span> &middot; <span class="res">Liens &amp; Collections</span> <span class="rc">LIEN R10J</span> restricted</li>
+              <li class="l1">03 Financial</li>
+              <li class="l2"><span class="add">Reserves, added</span></li>
+              <li class="l3">Reserve Study, full <span class="rc">RSVS RPRM</span> &middot; Annual Updates <span class="rc">RSVU RPRM</span> &middot; Reserve Account Records <span class="rc">RSVA R07A</span></li>
+              <li class="l2"><span class="add">Assessments, added</span></li>
+              <li class="l3">Assessment Roll &amp; Ledger <span class="rc">ASMT R07A</span> &middot; Audit / Review / Compilation <span class="rc">AUDT</span> at the $100k threshold</li>
+              <li class="l1">04 Operations</li>
+              <li class="l2"><span class="add">Meetings &amp; Elections, added</span></li>
+              <li class="l3">Agendas &amp; Packets <span class="rc">AGND R07A</span> &middot; Board Minutes <span class="rc">MINB RPRM</span> &middot; Owner Meeting Minutes <span class="rc">MINM RPRM</span> &middot; Ballots &amp; Proxies <span class="rc">BALL R01V</span> statutory floor only &middot; <span class="res">Executive Session Minutes</span> <span class="rc">MINX</span> restricted</li>
+              <li class="l1">06 Insurance &middot; Policies</li>
+              <li class="l3"><span class="add">Warranties to the Association <span class="rc">WARR RPRM</span></span></li>
+              <li class="l1">07 Owners &amp; Resale, replaces 07 Marketing &amp; Leasing</li>
+              <li class="l2">Owners</li>
+              <li class="l3">Owner Roster &amp; Vote Allocation <span class="rc">ROST RPRM</span> redacted per ch. 40.24 &middot; Owner Records Requests, ten-day clock under RCW 64.90.495(2)</li>
+              <li class="l2">Resale</li>
+              <li class="l3">Resale Certificates <span class="rc">RSLC R06C</span> $275 cap &middot; Supporting Records, 45-day financials and twelve months of minutes</li>
+              <li class="l2">Architectural</li>
+              <li class="l3">Requests &amp; Submittals <span class="rc">ARCH R07A</span> &middot; Decision Records <span class="rc">ARCH</span> seven years from the decision</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- ---------- SECTION 2 · NAMING ---------- -->
+        <div class="sec-head reveal" style="margin-top:52px;"><h3>File naming</h3><span class="pipe">|</span><span class="kick">Eight fields</span></div>
+        <div class="pattern reveal">
+          <div class="pat">DIV-ASSET[_SUB]-<b>DOCTYPE</b>-YYYYMMDD-Descriptor-<b>RETCODE</b>-<b>DTOKEN</b>[-vNN].ext</div>
+          <div class="ex">CM-SOUTHCTR-CAMR-20260228-FY2025-R06C-D2033.xlsx<br>RM-BALLARD12_U204-LEAS-20260801-Jorgensen-R06C-DOPEN.pdf</div>
+          <p class="pn">A hyphen separates fields. An underscore separates sub-fields. CamelCase runs inside a sub-field. There is no fourth kind of punctuation.</p>
+        </div>
+
+        <div class="comp-wrap reveal" style="margin-top:30px;">
+          <table class="comp-table narrow">
+            <thead>
+              <tr class="colhead-row">
+                <th class="type">Field</th><th>Format</th><th class="wrap">Rule</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="type">1 &middot; DIV</td><td class="range">2 letters</td><td class="wrap">BR brokerage, CM commercial, RM residential, HA association, CO corporate.</td></tr>
+              <tr><td class="type">2 &middot; ASSET</td><td class="range">3&ndash;12 A-Z0-9</td><td class="wrap">Permanent. Never reused and never renamed, not on a rebrand and not on a change of owner. Derived from street and number, or from the recorded association name. A sub-unit uses an underscore: <span class="mono">BALLARD12_U204</span>.</td></tr>
+              <tr><td class="type">3 &middot; DOCTYPE</td><td class="range">4 characters</td><td class="wrap">Selected from the controlled list below. Nothing outside the list is permitted.</td></tr>
+              <tr><td class="type">4 &middot; YYYYMMDD</td><td class="range">8 digits</td><td class="wrap">The date on the document, not the scan date and not the upload date. Where the day is unknown, 01 is used and the descriptor says so.</td></tr>
+              <tr><td class="type">5 &middot; Descriptor</td><td class="range">CamelCase, &le;30</td><td class="wrap">Counterparty, unit, project, or period. Omitted rather than padded. Never a date and never a code.</td></tr>
+              <tr class="tint-current"><td class="type">6 &middot; RETCODE</td><td class="range">4 characters</td><td class="wrap">The retention rule. Where two rules cover one record, the longer period governs and its code is the one used.</td></tr>
+              <tr class="tint-current"><td class="type">7 &middot; DTOKEN</td><td class="range">D + 4</td><td class="wrap">The destruction-eligible year, or one of three states: DOPEN, DHOLD, DPERM.</td></tr>
+              <tr><td class="type">8 &middot; vNN</td><td class="range">v + 2 digits</td><td class="wrap">Drafts only. The final record carries no version, so there is exactly one unversioned file per record.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cellgrid no-num reveal" style="margin-top:36px;">
+          <div class="cell">
+            <div class="kicker">Characters</div>
+            <div class="cell-title">No spaces, ever</div>
+            <div class="cell-desc">SharePoint encodes each space as %20. Also excluded: <span class="mono">&quot; * : &lt; &gt; ? / \ | # % &amp; { } ~</span> and any leading or trailing space or period. File names run to 90 characters or fewer and the full URL stays under 400.</div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Path budget</div>
+            <div class="cell-title">Constraint created by four levels</div>
+            <div class="cell-desc">Tenant, site, and library consume 150 to 200 characters before a folder is added, and four levels can consume another 120 to 150. The target is a deepest folder path under 250 characters. The longest real path is to be validated before build begins: Construction, Project Records, Substantial Completion Cert.</div>
+          </div>
+          <div class="cell">
+            <div class="kicker">One record, one file</div>
+            <div class="cell-title">No bundling</div>
+            <div class="cell-desc">Unrelated records are never combined into a single PDF. A bundle inherits the longest retention period inside it, which defeats the purge for everything else in the file.</div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Direction of travel</div>
+            <div class="cell-title">Never renamed to shorten retention</div>
+            <div class="cell-desc">Extending a period is always permitted. Shortening one requires the Records Owner in writing and is entered in the destruction log. New codes are additive and inexpensive; redefining an existing code silently reinterprets every file already named with it, so the old code is retired and a new one issued instead.</div>
+          </div>
+        </div>
+
+        <div class="sec-head reveal" style="margin-top:48px;"><h3>Field ownership</h3><span class="pipe">|</span><span class="kick">Machine, AI, person</span></div>
+        <p class="lead reveal">Five fields are set by the system. Three are proposed by AI and confirmed by a person. The retention code and the destruction year are never touched by either AI or the person filing the document.</p>
+        <div class="comp-wrap reveal">
+          <table class="comp-table narrow">
+            <thead>
+              <tr class="colhead-row">
+                <th class="type">Field</th><th>Set by</th><th class="wrap">How it is determined</th><th>AI may change it</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="type">DIV</td><td class="range">System</td><td class="wrap">The site the file was dropped into</td><td>No</td></tr>
+              <tr><td class="type">ASSET</td><td class="range">System</td><td class="wrap">The asset folder it landed in</td><td>No</td></tr>
+              <tr><td class="type">DOCTYPE</td><td class="range">AI, confirmed</td><td class="wrap">Selected from the closed list</td><td>Yes, on confirmation</td></tr>
+              <tr><td class="type">YYYYMMDD</td><td class="range">AI, confirmed</td><td class="wrap">Which date to take is fixed per document type</td><td>Yes, on confirmation</td></tr>
+              <tr><td class="type">Descriptor</td><td class="range">AI, confirmed</td><td class="wrap">Per-type pattern: surname, unit, period, project</td><td>Yes, freely edited</td></tr>
+              <tr class="tint-current"><td class="type">RETCODE</td><td class="range">System</td><td class="wrap">Lookup from DOCTYPE against the rule table</td><td>No, never</td></tr>
+              <tr class="tint-current"><td class="type">DTOKEN</td><td class="range">System</td><td class="wrap">Calculated from the trigger date</td><td>No, never</td></tr>
+              <tr><td class="type">vNN</td><td class="range">Person</td><td class="wrap">Drafts only; the final record carries none</td><td>No</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="statute-note reveal"><strong>The line that matters.</strong> AI identifies what a document is and when it happened. The legal consequence of those two facts is a deterministic lookup against a versioned, approved table. That boundary is what keeps the system auditable: a model error can produce a mis-filed document, but it cannot produce an indefensible destruction. Where no code in the list applies, AI is not permitted to invent one. It returns no match and routes to the Records Owner, who issues a new code.</p>
+
+        <details class="disc reveal">
+          <summary>Which date goes in the name, and where the clock actually starts<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <p>For most record types these are two different dates, and the gap between them is where filing systems fail. The name carries the date on the document. The clock runs from the event that concludes it.</p>
+            <div class="comp-wrap">
+              <table class="comp-table narrow">
+                <thead>
+                  <tr class="colhead-row"><th class="type">Type</th><th class="wrap">Date written into the name</th><th class="wrap">Retention clock starts at</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td class="type">LEAS</td><td class="wrap">Commencement date</td><td class="wrap">Termination of the tenancy</td></tr>
+                  <tr><td class="type">LEAM</td><td class="wrap">Effective date</td><td class="wrap">Termination of the tenancy</td></tr>
+                  <tr><td class="type">LOIN</td><td class="wrap">Date of the letter</td><td class="wrap">Termination of the resulting lease</td></tr>
+                  <tr><td class="type">MGMT</td><td class="wrap">Effective date</td><td class="wrap">Termination, not signature</td></tr>
+                  <tr class="tint-current"><td class="type">LSTG</td><td class="wrap">The listing date</td><td class="wrap">Expiry, or termination if unsold</td></tr>
+                  <tr><td class="type">PSA</td><td class="wrap">Date of mutual acceptance</td><td class="wrap">Closing, or conclusion of services</td></tr>
+                  <tr><td class="type">CLST</td><td class="wrap">The closing date</td><td class="wrap">Close of the tax period</td></tr>
+                  <tr><td class="type">CAMR</td><td class="wrap">Date the statement was issued</td><td class="wrap">Close of the lease year it covers</td></tr>
+                  <tr><td class="type">TRRE</td><td class="wrap">Period end, the month it covers</td><td class="wrap">Date of the reconciliation</td></tr>
+                  <tr><td class="type">INVC</td><td class="wrap">Invoice date</td><td class="wrap">Close of the tax period</td></tr>
+                  <tr><td class="type">MICL</td><td class="wrap">Date signed by both parties</td><td class="wrap">End of the tenancy</td></tr>
+                  <tr><td class="type">DEPD</td><td class="wrap">Date of the statement</td><td class="wrap">End of the tenancy</td></tr>
+                  <tr><td class="type">SCRN</td><td class="wrap">Date of the decision</td><td class="wrap">Date of the decision</td></tr>
+                  <tr><td class="type">CAPX</td><td class="wrap">Contract date</td><td class="wrap">Substantial completion</td></tr>
+                  <tr><td class="type">SUBC</td><td class="wrap">Date of substantial completion</td><td class="wrap">Never, permanent</td></tr>
+                  <tr><td class="type">INSR</td><td class="wrap">Policy inception date</td><td class="wrap">Expiry or termination</td></tr>
+                  <tr><td class="type">CLAM</td><td class="wrap">Date of loss</td><td class="wrap">Close of the claim</td></tr>
+                  <tr><td class="type">ARCH</td><td class="wrap">Date the decision was made</td><td class="wrap">Date the decision was made</td></tr>
+                  <tr><td class="type">ENFC</td><td class="wrap">Date the decision was made</td><td class="wrap">Date the decision was made</td></tr>
+                  <tr><td class="type">BALL</td><td class="wrap">Date of the vote</td><td class="wrap">The vote</td></tr>
+                  <tr><td class="type">MINB</td><td class="wrap">Date of the meeting</td><td class="wrap">Never, permanent</td></tr>
+                  <tr><td class="type">RSVU</td><td class="wrap">Date of the update</td><td class="wrap">Never, permanent</td></tr>
+                  <tr><td class="type">EI9</td><td class="wrap">Date of hire</td><td class="wrap">Later of hire plus three years or separation plus one</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p><strong>The case most often got wrong.</strong> A listing that expires unsold carries its listing date in the name, but the three-year clock runs from expiry. The name and the clock point at different years on the same file.</p>
+            <p><strong>Why the table is built once.</strong> It is both the specification the AI extracts against and the trigger definition the retention engine runs on. One table, two uses, one place to change when the law moves. Building it twice is how the name and the clock drift apart.</p>
+          </div>
+        </details>
+
+        <div class="sec-head reveal" style="margin-top:48px;"><h3>Intake</h3><span class="pipe">|</span><span class="kick">What the person does</span></div>
+        <ol class="step-list reveal">
+          <li><strong>Drop the file</strong> into the asset folder. That single act sets the division and the asset. Nothing is typed.</li>
+          <li><strong>AI reads it</strong> and proposes three things: what the document is, the date the rule table says matters for that type, and a descriptor following the pattern for that type.</li>
+          <li><strong>One confirmation screen</strong> shows the complete proposed file name, AI-proposed parts highlighted, machine-set parts locked, with confidence shown per field.</li>
+          <li><strong>Accept or correct.</strong> One click accepts. Correcting the document type recomputes the retention code and destruction token automatically; a person never edits those directly.</li>
+          <li><strong>Below the threshold</strong> one-click accept is disabled. The upload still completes, but the file enters a review queue and its clock is marked unverified until a person confirms it.</li>
+        </ol>
+        <p class="sub-note reveal"><strong>Two operating rules.</strong> A file is named at the moment it is filed, never afterwards; a document that arrives as Scan0042.pdf and is renamed later is renamed wrong, or never. And where the retention clock has not started, on a live lease or an open transaction, the file is marked DOPEN rather than given a guessed year. DOPEN is a work queue. A monthly sweep of it is the single control that keeps the system honest.</p>
+
+        <div class="sec-head reveal" style="margin-top:48px;"><h3>Decision one</h3><span class="pipe">|</span><span class="kick">Naming depth</span></div>
+        <div class="cellgrid reveal">
+          <div class="cell">
+            <div class="kicker">Option A</div>
+            <div class="cell-title">Minimal</div>
+            <div class="cell-desc"><span class="mono">DIV-ASSET-DOCTYPE-YYYYMMDD-Descriptor.ext</span><br><br>No retention code and no destruction year. Lowest adoption friction and the version most likely to be followed on day one. Cost: the annual purge remains a manual project, and remains undefensible.</div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Option B</div>
+            <div class="cell-title">Full standard</div>
+            <div class="cell-desc">The eight-field name in full. The purge becomes a search and audit response becomes a filter. Cost: whoever files a document has to know two codes, mitigated by having the intake form select both from the document type so the only choice a person makes is what kind of document it is.</div>
+          </div>
+          <div class="cell">
+            <div class="kicker">Option C</div>
+            <div class="cell-title">Phased</div>
+            <div class="cell-desc">Launch on Option A&rsquo;s shape. An automated flow appends the retention code and destruction year from the document type and the date, so people never type a code and the system writes the tail. Cost: the document type list has to be locked first, plus back-fill for anything already uploaded.</div>
+          </div>
+        </div>
+        <div class="highlight reveal">
+          <span class="h-label">Recommendation</span>
+          <span class="h-value">Option C, targeting Option B. The standard is correct, but an eight-field name entered by hand will not hold consistently across four divisions and dozens of contributors. Automating the retention tail turns adoption from a discipline problem into a build problem, which is the problem this team is equipped to solve.</span>
+        </div>
+
+        <!-- ---------- SECTION 3 · TAGS ---------- -->
+        <div class="sec-head reveal" style="margin-top:52px;"><h3>Document tags</h3><span class="pipe">|</span><span class="kick">Definition</span></div>
+        <p class="lead reveal">A tag is a four-character code identifying what kind of record a document is. It is stored in two places at once: inside the file name, and in a SharePoint metadata column populated from that name on upload. The duplication is deliberate. The column drives views, filters, dashboards, and automation inside SharePoint. The name is what allows the record to be understood after it leaves SharePoint, whether downloaded, emailed to an owner, exported on termination of a management agreement, or migrated to a successor system. Metadata is stripped at that boundary; the file name is not.</p>
+
+        <div class="sec-head reveal" style="margin-top:44px;"><h3>Return beyond search</h3><span class="pipe">|</span><span class="kick">Ten uses</span></div>
+        <ul class="mp-list reveal">
+          <li><strong>Defensible destruction.</strong> The destruction-year token is the purge query: search the token, exclude holds, delete, log it. An annual project becomes a scheduled task.</li>
+          <li><strong>Statute-of-limitations exposure.</strong> A second tag dimension, recorded in metadata only, answering how long the firm can still be sued over a record rather than when it may be deleted.</li>
+          <li><strong>Litigation hold.</strong> A single tag freezes a document against every automated process, with no manual search for what to preserve.</li>
+          <li><strong>Records production.</strong> An owner records request becomes this association minus the restricted tags. The statutory clock is ten days and never more than twenty-one; segregating by permission at filing time makes that a copy operation rather than a redaction project.</li>
+          <li><strong>Critical-date alerting.</strong> Tag plus date drives automated reminders: lease expiry, insurance renewal, reserve study due, the resale certificate 45-day financial window, the 30-day deposit disposition deadline.</li>
+          <li><strong>Open-item visibility.</strong> A DOPEN file sitting on a lease that has ended or a transaction that has closed surfaces as an exception rather than going unnoticed.</li>
+          <li><strong>Audit readiness.</strong> A Department of Licensing audit may be unannounced and expects the initial package within two business days. Tagged trust records and a tagged contract log make that a saved filter.</li>
+          <li><strong>Completeness reporting.</strong> The inverse query is the valuable one: which tags are missing. No completion certificate on a finished capital project, no move-in checklist on a tenancy holding a deposit. That is a portfolio risk report the firm cannot produce today in any form.</li>
+          <li><strong>Retrieval quality.</strong> The Library research assistant answers materially better when it can scope to a record type rather than search everything. A question about CAM methodology should read reconciliation files, not every PDF on the site.</li>
+          <li><strong>Turnover manifests.</strong> On termination of a management agreement, the manifest of every record class, count, and date range is generated from the tags rather than assembled by hand, inside the five business days allowed for electronic records.</li>
+        </ul>
+
+        <div class="sec-head reveal" style="margin-top:48px;"><h3>Retention codes</h3><span class="pipe">|</span><span class="kick">Period and trigger</span></div>
+        <div class="comp-wrap reveal">
+          <table class="comp-table narrow">
+            <thead>
+              <tr class="colhead-row">
+                <th class="type">Code</th><th>Period</th><th class="wrap">Record class</th><th class="wrap">The clock starts at</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="type">R01V</td><td class="range">1 year</td><td class="wrap">Ballots and proxies</td><td class="wrap">The election, action, or vote</td></tr>
+              <tr><td class="type">R03E</td><td class="range">3 years</td><td class="wrap">Employment records</td><td class="wrap">End of the calendar year</td></tr>
+              <tr><td class="type">R03I</td><td class="range">3 years</td><td class="wrap">Form I-9</td><td class="wrap">Hire plus three years, or separation plus one, whichever is later</td></tr>
+              <tr><td class="type">R03T</td><td class="range">3 years</td><td class="wrap">Brokerage transaction</td><td class="wrap">Conclusion of the transaction</td></tr>
+              <tr><td class="type">R04E</td><td class="range">4 years</td><td class="wrap">Employment tax</td><td class="wrap">Year the employment occurred</td></tr>
+              <tr><td class="type">R05F</td><td class="range">5 years</td><td class="wrap">Screening files</td><td class="wrap">The application decision</td></tr>
+              <tr><td class="type">R05X</td><td class="range">5 years</td><td class="wrap">Accounting and excise</td><td class="wrap">Close of the tax period</td></tr>
+              <tr><td class="type">R06C</td><td class="range">6 years</td><td class="wrap">Contract and tenancy</td><td class="wrap">Termination or expiration</td></tr>
+              <tr><td class="type">R06S</td><td class="range">6 years</td><td class="wrap">Construction</td><td class="wrap">Later of substantial completion or termination of services</td></tr>
+              <tr><td class="type">R07A</td><td class="range">7 years</td><td class="wrap">Association records</td><td class="wrap">Date of the record, or of the decision</td></tr>
+              <tr><td class="type">R10J</td><td class="range">10 years</td><td class="wrap">Judgments, renewable once to 20</td><td class="wrap">Entry of judgment</td></tr>
+              <tr><td class="type">RBAS</td><td class="range">Asset life</td><td class="wrap">Basis records</td><td class="wrap">Disposition of the asset, plus four years</td></tr>
+              <tr class="tint-current"><td class="type">RPRM</td><td class="range">Permanent</td><td class="wrap">Never destroyed</td><td class="wrap">Not applicable</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="fee-compact-grid reveal" style="margin-top:36px;">
+          <div class="fee-compact-cell left">
+            <div class="fc-k">Token</div>
+            <div class="fc-a sm mono">D2033</div>
+            <div class="fc-nt">A real year. Destroyable on or after 1 January of it, subject to the hold check.</div>
+          </div>
+          <div class="fee-compact-cell">
+            <div class="fc-k">Token</div>
+            <div class="fc-a sm mono">DOPEN</div>
+            <div class="fc-nt">The clock has not started: live lease, open transaction, current employee. A work queue, not a resting state.</div>
+          </div>
+          <div class="fee-compact-cell left no-bottom">
+            <div class="fc-k">Token</div>
+            <div class="fc-a sm mono">DHOLD</div>
+            <div class="fc-nt">Litigation hold. Purge routines skip it entirely, and release is in writing only.</div>
+          </div>
+          <div class="fee-compact-cell no-bottom">
+            <div class="fc-k">Token</div>
+            <div class="fc-a sm mono">DPERM</div>
+            <div class="fc-nt">Permanent. Paired with RPRM and never proposed for destruction.</div>
+          </div>
+        </div>
+        <p class="statute-note reveal" style="margin-top:30px;"><strong>How the year is set.</strong> Destruction year equals trigger year plus retention years plus one. It is computed once, when the trigger event occurs, and written into the name. Rounding to year end and adding one always lands later than the bare statutory period, never earlier.</p>
+
+        <details class="disc reveal">
+          <summary>Brokerage tag list, BR, 20 entries<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <div class="tag-cols">
+              <div><b>XLOG</b> R03T &nbsp;Log of all brokerage service agreements and contracts</div>
+              <div><b>BUYA</b> R03T &nbsp;Buyer or tenant representation agreement</div>
+              <div><b>AGCY</b> R03T &nbsp;Agency disclosure, as a separate writing</div>
+              <div><b>LSTG</b> R03T &nbsp;Listing agreement</div>
+              <div><b>PSA</b> &nbsp;R03T &nbsp;Purchase and sale agreement</div>
+              <div><b>ADDM</b> R03T &nbsp;Addendum, counteroffer, or amendment</div>
+              <div><b>EMRC</b> R03T &nbsp;Earnest money receipt</div>
+              <div><b>SDIS</b> R03T &nbsp;Seller disclosure statement, Form 17, and delivery receipt</div>
+              <div><b>TITL</b> R03T &nbsp;Title commitment, report, and exceptions</div>
+              <div><b>INSP</b> R03T &nbsp;Inspection report, response, and resolution</div>
+              <div><b>APPR</b> R03T &nbsp;Appraisal</div>
+              <div><b>BPOP</b> R03T &nbsp;Broker price opinion</div>
+              <div><b>ESCR</b> R03T &nbsp;Escrow instructions and correspondence</div>
+              <div><b>CLST</b> R05X &nbsp;Closing or settlement statement</div>
+              <div><b>EXCH</b> RBAS &nbsp;1031 exchange documentation</div>
+              <div><b>COMP</b> R05X &nbsp;Commission itemization of receipts and disbursements</div>
+              <div><b>REFL</b> R03T &nbsp;Referral agreement</div>
+              <div><b>BRVW</b> R03T &nbsp;Managing-broker review of contracts</div>
+              <div><b>CORR</b> R03T &nbsp;Material correspondence, including email and texts</div>
+              <div><b>MKTG</b> R03T &nbsp;Marketing and advertising piece</div>
+            </div>
+          </div>
+        </details>
+
+        <details class="disc reveal">
+          <summary>Property management tag list, CM and RM, 32 entries<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <div class="tag-cols">
+              <div><b>MGMT</b> R06C &nbsp;Property management agreement</div>
+              <div><b>OWNS</b> R05X &nbsp;Owner statement or distribution report</div>
+              <div><b>COMR</b> R03T &nbsp;Leasing commission agreement</div>
+              <div><b>LOIN</b> R06C &nbsp;Letter of intent</div>
+              <div><b>LEAS</b> R06C &nbsp;Lease or rental agreement, executed</div>
+              <div><b>LEAM</b> R06C &nbsp;Lease amendment, renewal, or assignment</div>
+              <div><b>GUAR</b> R06C &nbsp;Guaranty</div>
+              <div><b>ESTP</b> R06C &nbsp;Estoppel certificate</div>
+              <div><b>SNDA</b> R06C &nbsp;Subordination, non-disturbance, and attornment agreement</div>
+              <div><b>BUDG</b> R05X &nbsp;Operating budget</div>
+              <div><b>FSTM</b> R05X &nbsp;Financial statement</div>
+              <div><b>GLDG</b> R05X &nbsp;General ledger, journals, and entries</div>
+              <div><b>RENT</b> R05X &nbsp;Rent roll</div>
+              <div><b>CAMR</b> R06C &nbsp;CAM or operating expense reconciliation</div>
+              <div><b>TAXP</b> RBAS &nbsp;Property tax statement or appeal</div>
+              <div><b>UNCL</b> R06C &nbsp;Unclaimed property report and supporting records</div>
+              <div><b>VEND</b> R06C &nbsp;Vendor or service contract</div>
+              <div><b>BIDP</b> R06C &nbsp;Bid or proposal</div>
+              <div><b>INVC</b> R05X &nbsp;Vendor invoice or receipt</div>
+              <div><b>WKOR</b> R05X &nbsp;Work order or maintenance ticket</div>
+              <div><b>UTIL</b> R05X &nbsp;Utility account, bill, or transfer</div>
+              <div><b>PINS</b> R06C &nbsp;Property condition inspection report</div>
+              <div><b>CAPX</b> R06S &nbsp;Capital project file: contracts, plans, permits, punch list</div>
+              <div><b>TIAL</b> R06S &nbsp;Tenant improvement file</div>
+              <div><b>SUBC</b> RPRM &nbsp;Certificate of substantial completion</div>
+              <div><b>PRMT</b> RPRM &nbsp;Building permit or certificate of occupancy</div>
+              <div><b>PLAN</b> RPRM &nbsp;Plans, specifications, and as-builts</div>
+              <div><b>INSR</b> R06C &nbsp;Insurance policy or certificate of insurance</div>
+              <div><b>CLAM</b> R06C &nbsp;Insurance claim file</div>
+              <div><b>NTCE</b> R06C &nbsp;Statutory or contractual notice served</div>
+              <div><b>LEGL</b> R06C &nbsp;Legal correspondence or opinion &nbsp;<i>restricted</i></div>
+              <div><b>LITG</b> R10J &nbsp;Litigation file &nbsp;<i>restricted</i></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="disc reveal">
+          <summary>Association tag list, HA, 29 entries<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <div class="tag-cols">
+              <div><b>DECL</b> RPRM &nbsp;Declaration or CC&amp;Rs, original or restated</div>
+              <div><b>BYLW</b> RPRM &nbsp;Bylaws and organizational documents</div>
+              <div><b>RULE</b> RPRM &nbsp;Rules and regulations currently in effect</div>
+              <div><b>AMND</b> RPRM &nbsp;Amendment to governing documents</div>
+              <div><b>PLAT</b> RPRM &nbsp;Plat, survey, or site plan</div>
+              <div><b>TURN</b> RPRM &nbsp;Declarant turnover package</div>
+              <div><b>MINB</b> RPRM &nbsp;Board meeting minutes</div>
+              <div><b>MINM</b> RPRM &nbsp;Owner or membership meeting minutes</div>
+              <div><b>MINX</b> RPRM &nbsp;Executive session minutes &nbsp;<i>restricted</i></div>
+              <div><b>AGND</b> R07A &nbsp;Meeting agenda and packet</div>
+              <div><b>NOTM</b> R07A &nbsp;Meeting notice or owner notice</div>
+              <div><b>BALL</b> R01V &nbsp;Ballots, proxies, and absentee ballots</div>
+              <div><b>ELEC</b> R01V &nbsp;Election tally and results</div>
+              <div><b>BUDG</b> R07A &nbsp;Association budget and budget summary</div>
+              <div><b>FSTM</b> R07A &nbsp;Association financial statement</div>
+              <div><b>AUDT</b> R07A &nbsp;Audit, review, or compilation</div>
+              <div><b>TAXR</b> R07A &nbsp;Association tax return</div>
+              <div><b>ASMT</b> R07A &nbsp;Assessment roll, ledger, receipts, and expenditures</div>
+              <div><b>RSVS</b> RPRM &nbsp;Reserve study, full, Level I, II, or III</div>
+              <div><b>RSVU</b> RPRM &nbsp;Reserve study annual update</div>
+              <div><b>RSVA</b> R07A &nbsp;Reserve account statement and disbursement record</div>
+              <div><b>ARCH</b> R07A &nbsp;Architectural request and the materials relied on, seven years from the decision</div>
+              <div><b>ENFC</b> R07A &nbsp;Violation and enforcement file and decision materials</div>
+              <div><b>LIEN</b> R10J &nbsp;Lien, collection, and preforeclosure file &nbsp;<i>restricted</i></div>
+              <div><b>CTRA</b> R07A &nbsp;Association contract</div>
+              <div><b>INSR</b> RPRM &nbsp;Insurance policy naming the association as insured</div>
+              <div><b>WARR</b> RPRM &nbsp;Warranty provided to the association</div>
+              <div><b>RSLC</b> R06C &nbsp;Resale certificate and supporting records</div>
+              <div><b>ROST</b> RPRM &nbsp;Owner roster, addresses, and vote allocation</div>
+            </div>
+          </div>
+        </details>
+
+        <details class="disc reveal">
+          <summary>Trust accounting and residential tag lists, 18 entries<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <p><strong>Trust accounting</strong>, valid in any division. These are the records a Department of Licensing auditor asks for first.</p>
+            <div class="tag-cols">
+              <div><b>TRRC</b> R03T &nbsp;Trust receipts journal or duplicate receipt book</div>
+              <div><b>TRDS</b> R03T &nbsp;Trust disbursements journal, check register, and stubs</div>
+              <div><b>TRDP</b> R03T &nbsp;Validated duplicate deposit slips, daily verified deposit</div>
+              <div><b>TRLD</b> R03T &nbsp;Client or owner trust accounting ledger</div>
+              <div><b>TRTL</b> R06C &nbsp;Tenant ledger, including security deposit ledger</div>
+              <div><b>TRRE</b> R03T &nbsp;Monthly three-way reconciliation and trial balance</div>
+              <div><b>TRBS</b> R05X &nbsp;Trust bank statement and cancelled checks</div>
+              <div><b>TRVC</b> R03T &nbsp;Voided check record, permanently defaced</div>
+              <div><b>TRSD</b> R03T &nbsp;Dated source-document or index file supporting changes</div>
+            </div>
+            <p style="margin-top:20px;"><strong>Residential only.</strong></p>
+            <div class="tag-cols">
+              <div><b>APPL</b> R05F &nbsp;Rental application &nbsp;<i>restricted</i></div>
+              <div><b>SCRN</b> R05F &nbsp;Screening criteria disclosure, report, and adverse action notice &nbsp;<i>restricted</i></div>
+              <div><b>MICL</b> R06C &nbsp;Move-in condition checklist, signed and dated</div>
+              <div><b>MOCL</b> R06C &nbsp;Move-out inspection and checklist</div>
+              <div><b>DEPR</b> R06C &nbsp;Security deposit receipt and written depository notice</div>
+              <div><b>DEPD</b> R06C &nbsp;Deposit disposition statement with substantiating estimates, invoices, and labor statements</div>
+              <div><b>EVIC</b> R10J &nbsp;Unlawful detainer or eviction file &nbsp;<i>restricted</i></div>
+              <div><b>JDGM</b> R10J &nbsp;Judgment &nbsp;<i>restricted</i></div>
+              <div><b>LDIS</b> RPRM &nbsp;Limited dissemination order &nbsp;<i>restricted</i></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="disc reveal">
+          <summary>Corporate tag list, CO, 21 entries<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <div class="tag-cols">
+              <div><b>ARTC</b> RPRM &nbsp;Articles, operating agreement, entity and governance records</div>
+              <div><b>LICN</b> RPRM &nbsp;Firm and licensee licenses, renewals, branch registrations</div>
+              <div><b>BRCL</b> RPRM &nbsp;Designated broker closing firm or branch affidavit</div>
+              <div><b>BNKS</b> R05X &nbsp;Corporate, non-trust bank statement</div>
+              <div><b>GLDG</b> R05X &nbsp;Corporate general ledger and journals</div>
+              <div><b>EXCS</b> R05X &nbsp;Washington excise tax return and workpapers</div>
+              <div><b>FTAX</b> R07A &nbsp;Federal tax return and workpapers</div>
+              <div><b>TRNG</b> R03E &nbsp;Training and continuing education records</div>
+              <div><b>PAYR</b> R05X &nbsp;Payroll register &nbsp;<i>restricted</i></div>
+              <div><b>TIME</b> R04E &nbsp;Timecards and hours-worked records &nbsp;<i>restricted</i></div>
+              <div><b>PERS</b> R04E &nbsp;Personnel file &nbsp;<i>restricted</i></div>
+              <div><b>EI9</b> &nbsp;R03I &nbsp;Form I-9, in a separate restricted library, never inside the personnel file &nbsp;<i>restricted</i></div>
+              <div><b>BENF</b> R06C &nbsp;Benefit plan records, ERISA &nbsp;<i>restricted</i></div>
+              <div><b>LNIC</b> R03E &nbsp;Labor and Industries or workers compensation records &nbsp;<i>restricted</i></div>
+              <div><b>ESDR</b> R04E &nbsp;Employment Security or unemployment insurance records &nbsp;<i>restricted</i></div>
+              <div><b>INSC</b> RPRM &nbsp;Corporate insurance policy</div>
+              <div><b>CONT</b> R06C &nbsp;Corporate contract: vendor, office lease, software</div>
+              <div><b>POLI</b> RPRM &nbsp;Policy, procedure, standard operating procedure</div>
+              <div><b>DEST</b> RPRM &nbsp;Certificate of destruction and purge log</div>
+              <div><b>HOLD</b> RPRM &nbsp;Litigation hold notice and hold register</div>
+              <div><b>ITSC</b> R03E &nbsp;IT access log and security incident documentation &nbsp;<i>restricted</i></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="disc reveal">
+          <summary>The limitations tag, a second and optional dimension<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <p>The retention code answers one question: when is the firm permitted to delete this. It does not answer the question the business asks, which is how long the firm can still be sued over it. The two are related but not identical, and treating them as the same is how an organization destroys something it should have preserved. A second tag, carried in metadata only, separates them.</p>
+            <div class="tag-cols">
+              <div><b>SOL-CONTRACT-6</b> &nbsp;Written contract, lease, tenancy &nbsp;<i>RCW 4.16.040(1)</i></div>
+              <div><b>SOL-REPOSE-6</b> &nbsp;Construction defect, from substantial completion &nbsp;<i>RCW 4.16.310</i></div>
+              <div><b>SOL-JUDGMENT-10</b> &nbsp;From entry of judgment, renewable once to 20 years &nbsp;<i>RCW 6.17.020</i></div>
+              <div><b>SOL-DOL-3</b> &nbsp;From conclusion of the transaction or services &nbsp;<i>WAC 308-124I-020(2)</i></div>
+              <div><b>SOL-DOR-5</b> &nbsp;Close of the tax period, unlimited if never registered &nbsp;<i>RCW 82.32.070(1)</i></div>
+              <div><b>SOL-ASSOC-7</b> &nbsp;Association records and decisions &nbsp;<i>RCW 64.90.495</i></div>
+              <div><b>SOL-FCRA-5</b> &nbsp;Tenant screening and adverse action &nbsp;<i>15 USC 1681p, AGM policy</i></div>
+              <div><b>SOL-EMPLOY-3</b> &nbsp;Employment records &nbsp;<i>WAC 296-128-020</i></div>
+              <div><b>SOL-NONE</b> &nbsp;No limitations clock: permanent, or policy only</div>
+            </div>
+            <p style="margin-top:20px;"><strong>What it produces.</strong> Filtering an asset by limitations tag returns its open legal exposure on a single screen: every document still inside a live limitations window, and which window it sits in. At disposition that is the disclosure schedule. At renewal it is the insurance conversation. At acquisition it is diligence. The same tagging work, directed at risk rather than at storage.</p>
+          </div>
+        </details>
+
+        <!-- ---------- SECTION 4 · RETENTION CLOCK ---------- -->
+        <div class="sec-head reveal" style="margin-top:52px;"><h3>Retention clock</h3><span class="pipe">|</span><span class="kick">Stored facts, calculated dates</span></div>
+        <p class="lead reveal">A stored countdown is wrong the following morning. A stored fact stays true until the world changes. So the proposal records facts against each document and computes every date at the moment someone looks at it.</p>
+
+        <div class="compare reveal">
+          <div class="col left">
+            <div class="kicker">Stored</div>
+            <div class="cmp-title">Facts recorded against the document</div>
+            <ul class="mp-list">
+              <li>Document type, the tag</li>
+              <li>Trigger event, what starts the clock</li>
+              <li>Trigger date, or not occurred</li>
+              <li>Source of that date, document or system</li>
+              <li>Extraction confidence, 0 to 1</li>
+              <li>Hold status and hold reference</li>
+              <li>Rule version applied</li>
+            </ul>
+          </div>
+          <div class="col">
+            <div class="kicker">Calculated</div>
+            <div class="cmp-title">Computed on read, never written</div>
+            <ul class="mp-list">
+              <li>Retention rule that applies</li>
+              <li>Destruction-eligible date</li>
+              <li>Time remaining, to the day</li>
+              <li>Clock state, one of four</li>
+              <li>Limitations window, open or closed</li>
+              <li>Days until that window closes</li>
+            </ul>
+          </div>
+        </div>
+        <p class="sub-note reveal"><strong>Why it matters operationally.</strong> When the law changes, and four chapters of it change on 1 January 2028, a rule table is re-run rather than forty thousand documents re-read. The facts are already correct; only the arithmetic moves. <strong>Why it matters legally.</strong> Every date on screen is traceable to this document, this extracted fact, this rule, and this version of the schedule approved on this date. That audit trail is what makes a destruction defensible rather than merely explainable.</p>
+
+        <div class="sec-head reveal" style="margin-top:48px;"><h3>Two clocks</h3><span class="pipe">|</span><span class="kick">Worked example</span></div>
+        <p class="lead reveal">The retention clock answers when the firm may destroy a record, and drives storage, the annual purge, and defensibility. The limitations clock answers how long the firm can still be sued over it, and drives disclosure at sale, insurance at renewal, and diligence at acquisition. They diverge. A roof replacement substantially complete on 5 September 2026 produces two documents from the same job with two different answers.</p>
+        <div class="comp-wrap reveal">
+          <table class="comp-table narrow">
+            <thead>
+              <tr class="colhead-row">
+                <th class="type">Document</th><th>Tag</th><th class="wrap">Retention clock</th><th class="wrap">Limitations clock</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="tint-current"><td class="type">Certificate of substantial completion</td><td class="range">SUBC</td><td class="wrap">Permanent, never destroyed</td><td class="wrap">Not applicable</td></tr>
+              <tr><td class="type">Capital project file</td><td class="range">CAPX</td><td class="wrap">Six years from substantial completion. Destroy-eligible 1 January 2033</td><td class="wrap">Construction-defect repose to 2032</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="highlight reveal">
+          <span class="h-label">Why the example matters</span>
+          <span class="h-value">The project file becomes destructible roughly a year after the repose bar runs, deliberately. The certificate never becomes destructible at all, because it is the only document that proves when the repose clock started. Neither answer is visible from the folder the documents sit in. That is the case for calculating rather than remembering.</span>
+        </div>
+
+        <div class="sec-head reveal" style="margin-top:48px;"><h3>Pipeline</h3><span class="pipe">|</span><span class="kick">Arrival to destruction</span></div>
+        <ol class="step-list reveal">
+          <li><strong>Intake.</strong> The document is filed and named. Naming happens at filing, never afterwards.</li>
+          <li><strong>Extraction.</strong> AI reads the document and returns document type, trigger event, trigger date, and a confidence score.</li>
+          <li><strong>Review gate.</strong> Anything below the confidence threshold goes to a queue for a person. Nothing passes silently.</li>
+          <li><strong>Rule engine.</strong> A deterministic lookup maps type to retention rule and to what starts the clock. No AI judgment at this step.</li>
+          <li><strong>Operational join.</strong> AppFolio, transaction, and HR records supply trigger dates the document cannot know: lease ended, deal closed, employee separated.</li>
+          <li><strong>Live compute.</strong> State and countdown are rendered on read and recomputed nightly. Never written to storage.</li>
+          <li><strong>Approval gate.</strong> The system proposes the purge list, the Records Owner approves it, and every file is logged. Nothing deletes itself.</li>
+        </ol>
+        <p class="sub-note reveal"><strong>Consequence of the operational join.</strong> Once it is in place, the monthly open-clock reconciliation stops being a manual task: a tenancy ends in AppFolio and the clock starts on its own. That reconciliation is currently the single point at which the whole system fails if a person forgets. It is also the reason the AppFolio Database API in the next section is a dependency of this work rather than a parallel request.</p>
+
+        <div class="sec-head reveal" style="margin-top:48px;"><h3>Clock states</h3><span class="pipe">|</span><span class="kick">Four, and what each owes</span></div>
+        <div class="fee-compact-grid reveal">
+          <div class="fee-compact-cell left">
+            <div class="fc-k">State</div>
+            <div class="fc-n">Clock not started</div>
+            <div class="fc-nt">The trigger has not happened: lease live, deal open, employee current. A work queue, not a resting state.</div>
+          </div>
+          <div class="fee-compact-cell">
+            <div class="fc-k">State</div>
+            <div class="fc-n">Counting</div>
+            <div class="fc-nt">Trigger recorded and the clock running. The destroy-eligible date is calculated live. No action required.</div>
+          </div>
+          <div class="fee-compact-cell left no-bottom">
+            <div class="fc-k">State</div>
+            <div class="fc-n">Eligible now</div>
+            <div class="fc-nt">Past the destruction date. Enters the next proposed purge list and waits on Records Owner approval.</div>
+          </div>
+          <div class="fee-compact-cell no-bottom">
+            <div class="fc-k">State</div>
+            <div class="fc-n">On hold</div>
+            <div class="fc-nt">Litigation hold, which overrides every rule. Does not count down, is never proposed, and is released in writing only.</div>
+          </div>
+        </div>
+
+        <div class="sec-head reveal" style="margin-top:48px;"><h3>Reporting</h3><span class="pipe">|</span><span class="kick">One screen per division</span></div>
+        <ul class="mp-list reveal">
+          <li><strong>Destruction ready.</strong> Count and volume eligible now, by division and by asset, with one click to produce the proposed purge list.</li>
+          <li><strong>Clocks not started.</strong> Aged, with the exception report as the valuable half: files still open against a lease that ended, a deal that closed, or an employee who left. None of this is visible today.</li>
+          <li><strong>Open legal exposure.</strong> Per asset, every document inside a live limitations window and which window it sits in.</li>
+          <li><strong>Completeness.</strong> Which required records are missing: no completion certificate on a finished capital project, no move-in checklist on a tenancy holding a deposit, no current certificate of insurance on an active vendor.</li>
+          <li><strong>Review queue.</strong> Low-confidence extractions waiting on a person, sized and aged, so the backlog is visible rather than silent.</li>
+          <li><strong>Hold register.</strong> Everything currently frozen, why, and by whom.</li>
+          <li><strong>Audit readiness.</strong> Trust records and the contract log, filtered and current, against a Licensing audit that may arrive unannounced and expects the first package inside two business days.</li>
+        </ul>
+
+        <div class="sec-head reveal" style="margin-top:48px;"><h3>Guardrails</h3><span class="pipe">|</span><span class="kick">Non-negotiable</span></div>
+        <ul class="mp-list reveal">
+          <li><strong>Nothing deletes itself.</strong> The system proposes, the Records Owner approves, and every destroyed file is logged permanently. This is both a legal requirement and what stops a model error from becoming a spoliation problem.</li>
+          <li><strong>A date may only lengthen.</strong> If a recompute would shorten an existing destruction date it flags for review instead of moving it. Shortening requires written approval, logged.</li>
+          <li><strong>Low confidence means a person.</strong> Extraction below the threshold never silently assigns a date. It queues.</li>
+          <li><strong>The rule table is versioned.</strong> Counsel-approved, dated, and version-stamped on every calculation, so any date on screen can be reconstructed years later against the rules in force when it was set.</li>
+          <li><strong>The schedule is an opinion.</strong> The rule table interprets statute. It requires legal sign-off before it counts down against a real document, and a mandatory review before 1 January 2028, when the association chapters are repealed.</li>
+        </ul>
+
+        <details class="disc reveal">
+          <summary>Fields stored against each document, build specification<span class="disc-hint"></span></summary>
+          <div class="disc-body">
+            <div class="comp-wrap">
+              <table class="comp-table narrow">
+                <thead>
+                  <tr class="colhead-row"><th class="type">Field</th><th>Source</th><th class="wrap">Note</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td class="type">DocType</td><td class="range">AI, reviewed</td><td class="wrap">Four-character tag from the controlled list</td></tr>
+                  <tr><td class="type">AssetCode</td><td class="range">File name</td><td class="wrap">Join key to the property or association</td></tr>
+                  <tr><td class="type">TriggerEvent</td><td class="range">Rule table</td><td class="wrap">What starts this clock, stated in words</td></tr>
+                  <tr><td class="type">TriggerDate</td><td class="range">AI or system</td><td class="wrap">The date, or not occurred</td></tr>
+                  <tr><td class="type">TriggerSource</td><td class="range">System</td><td class="wrap">Which document or which system supplied it</td></tr>
+                  <tr><td class="type">ExtractionConfidence</td><td class="range">AI</td><td class="wrap">Below the threshold routes to human review</td></tr>
+                  <tr><td class="type">ReviewedBy / At</td><td class="range">Person</td><td class="wrap">Who confirmed, and when</td></tr>
+                  <tr><td class="type">HoldFlag / HoldRef</td><td class="range">Hold register</td><td class="wrap">Overrides everything downstream</td></tr>
+                  <tr><td class="type">RuleVersion</td><td class="range">Rule table</td><td class="wrap">Which version of the schedule was applied</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p><strong>Calculated, not stored.</strong> Retention rule, destroy-eligible date, time remaining, clock state, limitations rule, limitations expiry, exposure remaining.</p>
+            <p><strong>The one thing that must not drift.</strong> The coarse year written into the file name is the durable, defensible floor. The live countdown is the precise operational view. The calculation writes the token and never the reverse, so the two cannot disagree. If they ever do, the name governs, because the name is what survives leaving the system.</p>
+          </div>
+        </details>
+
+        <!-- ---------- THE ASK ---------- -->
+        <div class="sec-head reveal" style="margin-top:52px;"><h3>Approval requested</h3><span class="pipe">|</span><span class="kick">Two decisions</span></div>
+        <div class="highlight reveal">
+          <span class="h-label">Decision one</span>
+          <span class="h-value">How far to take the naming convention: Option A minimal, Option B full standard, or Option C phased. The team recommends Option C, targeting Option B.</span>
+        </div>
+        <div class="highlight reveal">
+          <span class="h-label">Decision two</span>
+          <span class="h-value">Confirmation of the document tag list. The list is closed by design, because an improvised code is invisible to every filter, every report, and every purge. New codes are added by the Records Owner on request.</span>
+        </div>
+        <p class="sub-note reveal"><strong>What follows those two answers.</strong> Everything else in this section is build work that depends on them: locking the document type list, the date rule table that serves both extraction and the retention engine, the intake form, the operational join to AppFolio, and the reporting screens. <strong>What is not resolved by them.</strong> Legal sign-off on the retention schedule is outstanding and is a prerequisite to automated destruction. A Records Owner has not been named, and the role is assumed throughout this section. Back-fill of documents already in the Library is unscoped. The association chapters are repealed on 1 January 2028, which sets a review date the schedule has to carry from the start.</p>
+      </div>
+
+      <!-- ============ 04 · TOOL STACK ============ -->
       <div class="page" id="page-toolstack">
         <p class="lead reveal">Four tool licenses are requested: Slack Pro, Granola Business, Figma Professional, and Asana Starter. This section costs the four licenses at 5, 10, and 35 seats, then states what each product does and where it is used today, published list pricing for every tier, the capability differences between tiers, and the basis for the tier selected. Each recommendation is followed by the strongest argument against it and by what the selected tier does not address. The Slack request is accompanied by a comparison with Microsoft Teams and by the list of systems connected to the workspace.</p>
 
@@ -1191,7 +2019,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         </details>
       </div>
 
-      <!-- ============ 04 · ADOPTION RISKS ============ -->
+      <!-- ============ 05 · ADOPTION RISKS ============ -->
       <div class="page" id="page-standards">
         <p class="lead reveal">The licenses in the previous section return value only if they are used, consistently, by everyone holding a seat. This section states what the team expects to get in the way of that, and the time proposed to prevent it. These are concerns held by the team rather than findings from a review.</p>
 
@@ -1280,7 +2108,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         </div>
       </div>
 
-      <!-- ============ 05 · OPEN ITEMS ============ -->
+      <!-- ============ 06 · OPEN ITEMS ============ -->
       <div class="page" id="page-ongoing">
         <p class="lead reveal">Two items have been addressed verbally and are recorded here with their figures. Neither has written approval.</p>
 
@@ -1380,7 +2208,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         </div>
       </div>
 
-      <!-- ============ 06 · APPFOLIO DATABASE API ============ -->
+      <!-- ============ 07 · APPFOLIO DATABASE API ============ -->
       <div class="page" id="page-appfolio">
         <p class="lead reveal">Every metric on the KPI Dashboard required the six-step pipeline below. AppFolio saved reports are scoped per manager, so the first two steps repeat three to four times per metric. Maintenance continues for the life of the metric.</p>
 
@@ -1454,7 +2282,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         </div>
       </div>
 
-      <!-- ============ 07 · CLAUDE PREMIUM SEATS ============ -->
+      <!-- ============ 08 · CLAUDE PREMIUM SEATS ============ -->
       <div class="page" id="page-seats">
         <p class="lead reveal">Three team members perform Premium-seat work: full-time AI-assisted development, the Corporate Library platform, and the AppFolio and BuildOps data pipeline. The team holds two Premium seats, so seats are rotated between people and projects.</p>
 
@@ -1495,7 +2323,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         </div>
       </div>
 
-      <!-- ============ 08 · IN PRODUCTION ============ -->
+      <!-- ============ 09 · IN PRODUCTION ============ -->
       <div class="page" id="page-shipped">
         <p class="lead reveal">Five products are in production and in daily use. Each replaces manual assembly, a paid vendor tool, or both. Three carry open work, itemized in the In Development section.</p>
         <div class="cellgrid reveal">
@@ -1546,7 +2374,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         <p class="statute-note">Live URLs are not filled in. Each needs its production address added before this deck is presented. Login credentials are distributed separately and are not held in this repository.</p>
       </div>
 
-      <!-- ============ 09 · IN DEVELOPMENT ============ -->
+      <!-- ============ 10 · IN DEVELOPMENT ============ -->
       <div class="page" id="page-inflight">
         <p class="lead reveal">Projects currently in development, with owner and status. Target dates come from the source team overview document. Entries marked [ estimate ] and [ decision date ] have no date set.</p>
         <div class="sec-head reveal"><h3>Active projects</h3><span class="pipe">|</span><span class="kick">Owner and status</span></div>
@@ -1573,7 +2401,7 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         <p class="statute-note">The 31 July 2026 targets above are drawn from the source team overview document and have passed. Status for those four items needs reconfirming before this deck is presented. "Ongoing" denotes work with no fixed end date rather than work without a target.</p>
       </div>
 
-      <!-- ============ 10 · PLANNED WORK ============ -->
+      <!-- ============ 11 · PLANNED WORK ============ -->
       <div class="page" id="page-pipeline">
         <p class="lead reveal">Work scoped but not started, followed by the medium and low priority backlog.</p>
         <div class="sec-head reveal"><h3>High priority</h3><span class="pipe">|</span><span class="kick">Scoped, not started</span></div>
@@ -1647,21 +2475,23 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
       lead:"Internal build team for AGM. Reporting, dashboards, data pipelines, and workflow tools for processes where commercial software does not fit the requirement or the budget."},
     {route:"howwework",  nav:"howwework",  eyebrow:"02 · Operating Model",t1:"Operating",        t2:"Model",         label:"Infrastructure, Method, Governance",
       lead:"Platform and code hosting, build and release method, access control, and vendor dependency."},
-    {route:"toolstack",  nav:"toolstack",  eyebrow:"03 · Tool Stack",     t1:"Tool",             t2:"Stack",         label:"Pricing and Capability",
+    {route:"library",    nav:"library",    eyebrow:"03 · Corporate Library", t1:"Corporate",     t2:"Library",       label:"Records Standard for Review",
+      lead:"Proposed folder structure, document tagging system, and file naming convention. Four regulated divisions on four retention clocks, and the two decisions required to begin implementation."},
+    {route:"toolstack",  nav:"toolstack",  eyebrow:"04 · Tool Stack",     t1:"Tool",             t2:"Stack",         label:"Pricing and Capability",
       lead:"Slack, Granola, Figma, and Asana. What each product does and where it is used, list pricing by tier, capability by tier, and the basis for each tier selected."},
-    {route:"standards",  nav:"standards",  eyebrow:"04 · Risks",          t1:"Adoption",         t2:"Risks",         label:"What We Are Watching",
+    {route:"standards",  nav:"standards",  eyebrow:"05 · Risks",          t1:"Adoption",         t2:"Risks",         label:"What We Are Watching",
       lead:"What the team expects to get in the way of consistent use, and the maintenance time proposed to prevent it."},
-    {route:"ongoing",    nav:"ongoing",    eyebrow:"05 · Open Items",     t1:"Open",             t2:"Items",         label:"Discussed, Not Approved",
+    {route:"ongoing",    nav:"ongoing",    eyebrow:"06 · Open Items",     t1:"Open",             t2:"Items",         label:"Discussed, Not Approved",
       lead:"Claude API credits and the AppFolio Database API. Both addressed verbally; figures recorded here."},
-    {route:"appfolio",   nav:"appfolio",   eyebrow:"06 · AppFolio API",   t1:"AppFolio",         t2:"Database API",  label:"Data Access Method",
+    {route:"appfolio",   nav:"appfolio",   eyebrow:"07 · AppFolio API",   t1:"AppFolio",         t2:"Database API",  label:"Data Access Method",
       lead:"Replacement for per-report CSV pipelines. Cost, affected products, and the unmeasured labor figure the decision rests on."},
-    {route:"seats",      nav:"seats",      eyebrow:"07 · Claude Seats",   t1:"Claude Premium",   t2:"Seats",         label:"Seat Allocation",
+    {route:"seats",      nav:"seats",      eyebrow:"08 · Claude Seats",   t1:"Claude Premium",   t2:"Seats",         label:"Seat Allocation",
       lead:"Three people perform Premium-seat work against two seats. Seats are currently rotated between them."},
-    {route:"shipped",    nav:"shipped",    eyebrow:"08 · In Production",  t1:"Products in",      t2:"Production",    label:"Delivered",
+    {route:"shipped",    nav:"shipped",    eyebrow:"09 · In Production",  t1:"Products in",      t2:"Production",    label:"Delivered",
       lead:"Five products in daily use. Three carry open work, itemized under In Development."},
-    {route:"inflight",   nav:"inflight",   eyebrow:"09 · In Development", t1:"In",               t2:"Development",   label:"Active Work",
+    {route:"inflight",   nav:"inflight",   eyebrow:"10 · In Development", t1:"In",               t2:"Development",   label:"Active Work",
       lead:"Projects in development, with owner, status, and completion date where one is set."},
-    {route:"pipeline",   nav:"pipeline",   eyebrow:"10 · Planned",        t1:"Planned",          t2:"Work",          label:"Not Started",
+    {route:"pipeline",   nav:"pipeline",   eyebrow:"11 · Planned",        t1:"Planned",          t2:"Work",          label:"Not Started",
       lead:"Work scoped but not started, followed by the medium and low priority backlog."}
   ];
   var IDX = {};
@@ -1687,7 +2517,8 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
     seats:'<circle cx="12" cy="8" r="3.2"/><path d="M5.5 20c0-3.4 2.9-5.6 6.5-5.6s6.5 2.2 6.5 5.6"/>',
     toolstack:'<path d="M12 3.2l8.5 4.4-8.5 4.4-8.5-4.4z"/><path d="M3.5 12l8.5 4.4 8.5-4.4"/><path d="M3.5 16.4l8.5 4.4 8.5-4.4"/>',
     standards:'<path d="M12 4.2l8.6 15.1H3.4z"/><path d="M12 10v4"/><circle cx="12" cy="16.9" r=".7"/>',
-    ongoing:'<circle cx="12" cy="12" r="8.2"/><path d="M12 7.2V12l3.2 2"/>'
+    ongoing:'<circle cx="12" cy="12" r="8.2"/><path d="M12 7.2V12l3.2 2"/>',
+    library:'<path d="M3.5 6.6h5.6l1.7 2.1h9.7v10.8H3.5z"/><path d="M3.5 6.6V4.5h5.1l1.6 2.1"/><path d="M8.4 13.2h7.2"/>'
   };
   function iconSVG(nav){
     var paths = ICONS[nav] || ICONS.overview;

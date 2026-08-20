@@ -8,26 +8,34 @@ dependencies. Fonts load from Google Fonts; everything else is inline. The repos
 design system built for the AGM proposal micro-sites (multi-family, commercial, HOA).
 
 ## Contents
-Ten sections:
+Eleven sections:
 
 1. Overview
 2. Operating Model
-3. Tool Stack
-4. Adoption Risks
-5. Open Items
-6. AppFolio Database API
-7. Claude Premium Seats
-8. In Production
-9. In Development
-10. Planned Work
+3. Corporate Library
+4. Tool Stack
+5. Adoption Risks
+6. Open Items
+7. AppFolio Database API
+8. Claude Premium Seats
+9. In Production
+10. In Development
+11. Planned Work
 
-Sections 3 through 5 carry the budget request. Section 3 opens each tool with what the product does
+Section 3 carries the records standard for the Corporate Library: the proposed folder structure for
+all three division trees, the document tagging system, the file naming convention, and the retention
+clock. It is a proposal for review, not built work, and it closes on the two decisions it asks
+leadership for: how far to take the naming convention, and confirmation of the tag list. Its
+retention periods are the team's reading of Washington statute and are marked as unreviewed by
+counsel.
+
+Sections 4 through 6 carry the budget request. Section 4 opens each tool with what the product does
 and where it is used today, then states list pricing for every tier of Slack, Granola, Figma, and
 Asana, the capability differences between tiers, and the basis for the tier selected, each followed
 by the argument against it and by what the tier does not address. The Slack request additionally
 carries a comparison with Microsoft Teams and a table of the systems connected to the workspace.
-Section 4 states the risks to consistent use and the maintenance time proposed against them.
-Section 5 records the two items already discussed verbally: Claude API credits and the AppFolio Database API.
+Section 5 states the risks to consistent use and the maintenance time proposed against them.
+Section 6 records the two items already discussed verbally: Claude API credits and the AppFolio Database API.
 
 Copy is adapted from the source team overview document. Layout, palette (navy `#00202F`, brand blue
 `#3A8DDE`, serif and sans pairing), and the rail-and-content structure follow the shared AGM
@@ -97,19 +105,19 @@ Tracked once the key is set:
 ## Operational notes
 - `_headers` enforces `noindex` and security headers at the edge.
 - Bracketed placeholders mark figures that are not yet filled in: `[ estimate ]`,
-  `[ decision date ]`, `[ hours per month ]`, `[ amount ]`. Section 5 requires a usage baseline for
-  the monthly Claude credit figure and the current balance for the top-off figure. Section 6
+  `[ decision date ]`, `[ hours per month ]`, `[ amount ]`. Section 6 requires a usage baseline for
+  the monthly Claude credit figure and the current balance for the top-off figure. Section 7
   requires measured hours of manual AppFolio entry.
-- Section 3 costs the four licenses at 5, 10, and 35 seats. Only the 5-seat case corresponds to a
+- Section 4 costs the four licenses at 5, 10, and 35 seats. Only the 5-seat case corresponds to a
   known list of users, being current development team headcount; the other two are comparison
   scenarios with no agreed scope. Totals are the per-seat rate multiplied by seat count. If a rate
   changes after a vendor quote, both the annual and the monthly table need updating, along with the
   month-to-month comparison in the footnote beneath them.
-- Section 4 was written before Asana was added as a fourth license, so its upkeep table originally
+- Section 5 was written before Asana was added as a fourth license, so its upkeep table originally
   named only Granola, Slack, Figma, and Claude. An Asana row was added when the two were merged.
-  Any further tool added to section 3 needs a matching row here, or the deck requests a license
+  Any further tool added to section 4 needs a matching row here, or the deck requests a license
   with no stated upkeep.
-- The Function and Current use pair that opens each tool in section 3 distinguishes measured use
+- The Function and Current use pair that opens each tool in section 4 distinguishes measured use
   from prospective use. Slack and Granola are in use and are described as such. Figma is in use for
   marketing and business development only, and Asana has no seats in use; both say so, and their
   stated value is marked prospective. Move a tool out of prospective wording only when it is
@@ -120,17 +128,17 @@ Tracked once the key is set:
   Cloudflare rows from Planned to Live as they are configured. The table deliberately quantifies
   nothing: no baseline was captured before the channels existed, so time saved cannot be stated.
 - The Slack and Microsoft Teams comparison names no seat counts, deliberately. The workspace held 6
-  members on 13 August 2026 while section 3 costs 5 seats as current development team headcount.
+  members on 13 August 2026 while section 4 costs 5 seats as current development team headcount.
   Reconcile those two figures before presenting, and keep any headcount out of the comparison so
   the seat basis is stated in one place only.
 - Figma is costed at the Full seat rate only. Figma also sells Dev and Collab seats at lower rates
-  within the same plan, which is disclosed in the section 3 Figma footnote and flagged in the
+  within the same plan, which is disclosed in the section 4 Figma footnote and flagged in the
   scenario note as a reason the 35-seat Figma figure runs high.
-- Third-party pricing in section 3 is vendor list pricing, verified 13 August 2026 against vendor
+- Third-party pricing in section 4 is vendor list pricing, verified 13 August 2026 against vendor
   pricing pages and cross-checked against independent pricing summaries. Every tool section links
-  its vendor pricing page in the footnote, and section 3 closes with a consolidated source list
+  its vendor pricing page in the footnote, and section 4 closes with a consolidated source list
   recording what was confirmed and what was not. Re-verify at renewal and before any presentation.
-- Claude API rates in section 5 come from the Anthropic rate card rather than a summary. Sonnet 5
+- Claude API rates in section 6 come from the Anthropic rate card rather than a summary. Sonnet 5
   is $2.00 input and $10.00 output; the previously scheduled increase to $3.00 and $15.00 was
   cancelled and the introductory rate is now standard.
 - The least corroborated figures in the deck are the two Granola Basic-plan limits, 30-day rolling
@@ -141,19 +149,31 @@ Tracked once the key is set:
 - Section 2 carries an itemized tooling spend table taken from the source team overview document.
   The annual column is computed from the monthly figures rather than quoted, giving a total of
   $7,440 to $8,040. The approximately $8,000 per year figure used in the Overview metrics is the
-  upper end of that range. The additional Premium seat in section 7 and the three licenses in
-  section 3 are outside that table, which its disclosure states.
+  upper end of that range. The additional Premium seat in section 8 and the three licenses in
+  section 4 are outside that table, which its disclosure states.
 - The vendor cost range in section 1 cites 2026 US agency pricing surveys from Clutch and
   GoodFirms, plus list pricing for Glean, Birdeye, Buildout, Proposify, PandaDoc, Domo, and Prophia
   as commercial equivalents. The per-product build estimates that backed this range lived on a
   Vendor Cost Basis appendix page, removed deliberately in commit `1a1c293`. Only the source
   attribution was carried forward; the page was not restored.
-- The 31 July 2026 target dates in section 9 come from the source document and have passed. Four
+- The 31 July 2026 target dates in section 10 come from the source document and have passed. Four
   items need status reconfirmed before the deck is presented, which the note under the table says.
-- Section 4 carries four unfilled placeholders for the maintenance block: `[ day ]`, `[ hours ]`,
+- Section 5 carries four unfilled placeholders for the maintenance block: `[ day ]`, `[ hours ]`,
   `[ who ]`, and `[ owner ]`. The cadence has not been agreed, and neither the block nor the
   quarterly review has been costed in staff hours.
-- The access control table in section 8 has `[ add link ]` in every Live URL cell. Credentials are
+- The access control table in section 9 has `[ add link ]` in every Live URL cell. Credentials are
   distributed separately and must not be committed here.
+- Section 3 is transcribed from the team's Excalidraw working diagram. Three things in it are
+  unresolved and stated as such in the section: legal sign-off on the retention schedule, which is a
+  prerequisite to any automated destruction; the Records Owner role, which the section assumes
+  throughout but which has not been assigned; and back-fill of documents already in the Library,
+  which is unscoped. The schedule also carries a mandatory review before 1 January 2028, when the
+  Washington association chapters are repealed. The folder trees, tag lists, retention codes, and the
+  date rule live in `<details>` disclosures; the tag list is closed by design, so a new document type
+  is added by the Records Owner rather than improvised at filing time.
+- The section adds four style classes used nowhere else: `.pattern` for the file-name pattern,
+  `.tree` for the three division trees, `.tag-cols` for the tag lists, and `.legend` for the
+  added/unchanged/restricted key. `.tree` and `.legend` define their amber and red variants for
+  light and dark separately, so a palette change needs both.
 - The footer logos are shared AGM brand assets at `/assets/agm-logo-black.svg` and
   `/assets/agm-logo-white.svg`.
