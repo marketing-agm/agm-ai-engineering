@@ -175,5 +175,17 @@ Tracked once the key is set:
   `.tree` for the three division trees, `.tag-cols` for the tag lists, and `.legend` for the
   added/unchanged/restricted key. `.tree` and `.legend` define their amber and red variants for
   light and dark separately, so a palette change needs both.
+- Section 3 carries six hand-authored inline SVG figures: the four folder levels and the file name
+  at the end of the path, the file name banded by which fields are machine-set and which are AI
+  proposed, the tag stored in both the name and the metadata column with only the name surviving
+  export, the two clocks on a dated timeline, the seven-step pipeline with the line where AI
+  authority ends, and the clock-state machine. Every stroke and fill resolves to a design token, so
+  the figures follow the light and dark toggle without a second copy, and marker fills are set by
+  class because a `<marker>` does not inherit color from the element referencing it. Coordinates are
+  hand-placed against the `viewBox`: moving a label means checking it still clears its neighbours,
+  since nothing here reflows. Below 760px each figure keeps its drawn size and scrolls inside its own
+  box, because scaling an 860-unit viewBox into a phone width renders the labels illegible.
+- The figure wrapper class is `.diagram`, not `.fig`. `.fig` was already taken by the figure cell in
+  a `comp-table` total row, and using it for the figures silently restyled those cells.
 - The footer logos are shared AGM brand assets at `/assets/agm-logo-black.svg` and
   `/assets/agm-logo-white.svg`.

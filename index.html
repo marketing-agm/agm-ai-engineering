@@ -533,6 +533,39 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
 .tag-cols b{color:var(--accent); font-weight:600;}
 .tag-cols i{font-style:normal; color:var(--ink-55);}
 @media(max-width:900px){.tag-cols{column-count:1;} .tree li.l3{padding-left:30px;}}
+/* ---- diagrams: hand-authored inline SVG, themed through the token palette ----
+   Every stroke and fill resolves to a token, so the figures follow the light and
+   dark toggle without a second copy. Marker fills are set by class because a
+   <marker> does not reliably inherit color from the element referencing it. */
+.diagram{margin:30px 0 0; padding:0;}
+.diagram svg{display:block; width:100%; height:auto;}
+.diagram figcaption{font-size:12px; line-height:1.65; color:var(--ink-65); margin-top:16px; padding-top:13px; border-top:1px solid var(--line-soft);}
+.diagram figcaption strong{font-weight:600; color:var(--ink-80);}
+.diagram .box{fill:var(--surface); stroke:var(--line-strong); stroke-width:1;}
+.diagram .box-m{fill:var(--surface-2); stroke:var(--line); stroke-width:1;}
+.diagram .box-a{fill:var(--accent-wash); stroke:var(--accent); stroke-width:1.3;}
+.diagram .box-x{fill:var(--surface-2); stroke:var(--ink-42); stroke-width:1; stroke-dasharray:5 4;}
+.diagram .ln{stroke:var(--line-strong); stroke-width:1.2; fill:none;}
+.diagram .ln-a{stroke:var(--accent); stroke-width:1.6; fill:none;}
+.diagram .ln-d{stroke:var(--ink-42); stroke-width:1.1; fill:none; stroke-dasharray:5 4;}
+.diagram .ln-t{stroke:var(--ink-42); stroke-width:1; fill:none; stroke-dasharray:2 3;}
+.diagram .ar{fill:var(--line-strong);}
+.diagram .ar-a{fill:var(--accent);}
+.diagram .t{fill:var(--ink-80); font-family:var(--sans); font-size:11.5px;}
+.diagram .t-b{fill:var(--ink); font-family:var(--sans); font-size:11.5px; font-weight:600;}
+.diagram .t-s{fill:var(--ink-65); font-family:var(--sans); font-size:10px;}
+.diagram .t-k{fill:var(--ink-55); font-family:var(--sans); font-size:9.5px; font-weight:600; letter-spacing:.11em;}
+.diagram .t-c{fill:var(--accent); font-family:var(--sans); font-size:9.5px; font-weight:600; letter-spacing:.11em;}
+.diagram .t-n{fill:var(--accent); font-family:var(--serif); font-size:13px; font-weight:600;}
+.diagram .t-m{fill:var(--ink); font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:12px;}
+.diagram .t-ms{fill:var(--ink-72); font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:10.5px;}
+/* below roughly 760px a full-width figure scales its labels down to nothing, so
+   the figure holds its drawn size and scrolls inside its own box instead */
+@media(max-width:760px){
+  .diagram{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+  .diagram svg{width:740px; max-width:none;}
+  .diagram figcaption{position:sticky; left:0;}
+}
 /* legend chips for what changed per division */
 .legend{display:flex; flex-wrap:wrap; gap:10px; margin-top:20px;}
 .legend span{font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; padding:6px 12px; border-radius:100px; border:1px solid var(--line-strong); color:var(--ink-72);}
@@ -842,6 +875,56 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
           <div class="cell"><div class="kicker">Level 4</div><div class="cell-title">Document folder</div><div class="cell-desc">Where files sit. Each carries the document tags expected in it and the retention code that governs them.</div></div>
         </div>
 
+        <figure class="diagram reveal">
+          <svg viewBox="0 0 860 262" role="img" aria-label="Four folder levels nesting from property to document folder, with the character budget they consume and the file name that sits at the end of the path.">
+            <defs>
+              <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ar" d="M0 0 L10 5 L0 10 z"/></marker>
+              <marker id="a1a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ar-a" d="M0 0 L10 5 L0 10 z"/></marker>
+            </defs>
+
+            <text class="t-k" x="8" y="12">LEVEL 1</text>
+            <rect class="box" x="8" y="22" width="152" height="66" rx="5"/>
+            <text class="t-b" x="22" y="46">Property</text>
+            <text class="t-ms" x="22" y="68">RM-BALLARD12</text>
+
+            <text class="t-k" x="240" y="12">LEVEL 2</text>
+            <rect class="box" x="240" y="22" width="152" height="66" rx="5"/>
+            <text class="t-b" x="254" y="46">Category</text>
+            <text class="t-ms" x="254" y="68">03 Financial</text>
+
+            <text class="t-k" x="472" y="12">LEVEL 3</text>
+            <rect class="box" x="472" y="22" width="152" height="66" rx="5"/>
+            <text class="t-b" x="486" y="46">Sub-category</text>
+            <text class="t-ms" x="486" y="68">Trust Accounting</text>
+
+            <text class="t-k" x="704" y="12">LEVEL 4</text>
+            <rect class="box" x="704" y="22" width="152" height="66" rx="5"/>
+            <text class="t-b" x="718" y="46">Document folder</text>
+            <text class="t-ms" x="718" y="68">Tenant Ledgers</text>
+
+            <line class="ln" x1="164" y1="55" x2="234" y2="55" marker-end="url(#a1)"/>
+            <text class="t-k" x="199" y="45" text-anchor="middle">CONTAINS</text>
+            <line class="ln" x1="396" y1="55" x2="466" y2="55" marker-end="url(#a1)"/>
+            <text class="t-k" x="431" y="45" text-anchor="middle">CONTAINS</text>
+            <line class="ln" x1="628" y1="55" x2="698" y2="55" marker-end="url(#a1)"/>
+            <text class="t-k" x="663" y="45" text-anchor="middle">CONTAINS</text>
+
+            <line class="ln-t" x1="8" y1="106" x2="856" y2="106"/>
+            <line class="ln" x1="8" y1="100" x2="8" y2="112"/>
+            <line class="ln" x1="856" y1="100" x2="856" y2="112"/>
+            <text class="t-k" x="432" y="128" text-anchor="middle">FOLDER PATH, HELD UNDER 250 CHARACTERS. A FIFTH LEVEL BREACHES IT.</text>
+
+            <path class="ln-a" d="M780 88 V158" marker-end="url(#a1a)"/>
+            <text class="t-c" x="791" y="128">HOLDS</text>
+
+            <rect class="box-a" x="8" y="164" width="848" height="88" rx="5"/>
+            <text class="t-c" x="24" y="188">THE FILE, NAMED AT THE MOMENT IT IS FILED</text>
+            <text class="t-m" x="24" y="214">RM-BALLARD12_U204-TRTL-20260801-Jorgensen-R06C-DOPEN.pdf</text>
+            <text class="t-s" x="24" y="238">The retention code and the destruction year ride inside the name, so they leave the folder with the file.</text>
+          </svg>
+          <figcaption><strong>Four levels, then the name carries the rest.</strong> The depth is capped at four because the folder path consumes a character budget SharePoint enforces. Everything the folder tree cannot express, including which retention rule applies and the year the file becomes destructible, is written into the file name instead.</figcaption>
+        </figure>
+
         <div class="sec-head reveal" style="margin-top:48px;"><h3>Division variants</h3><span class="pipe">|</span><span class="kick">One spine, three trees</span></div>
         <p class="lead reveal">The residential tree is the existing structure, kept intact. Commercial and association are near-identical variants of it rather than separate systems, so a person moving between divisions is reading the same shape.</p>
 
@@ -1022,6 +1105,69 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
           <p class="pn">A hyphen separates fields. An underscore separates sub-fields. CamelCase runs inside a sub-field. There is no fourth kind of punctuation.</p>
         </div>
 
+        <figure class="diagram reveal">
+          <svg viewBox="0 0 860 252" role="img" aria-label="One file name split into its fields, banded by who sets each: the system from the folder it was dropped in, AI proposing three fields for a person to confirm, and the retention code and destruction year calculated from the document type and the trigger date.">
+            <defs>
+              <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ar" d="M0 0 L10 5 L0 10 z"/></marker>
+              <marker id="a2a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ar-a" d="M0 0 L10 5 L0 10 z"/></marker>
+            </defs>
+
+            <text class="t-k" x="90" y="16" text-anchor="middle">SYSTEM SETS</text>
+            <path class="ln" d="M20 26 V34 H160 V26"/>
+            <text class="t-k" x="292" y="16" text-anchor="middle">AI PROPOSES, A PERSON CONFIRMS</text>
+            <path class="ln" d="M172 26 V34 H412 V26"/>
+            <text class="t-c" x="490" y="16" text-anchor="middle">CALCULATED</text>
+            <path class="ln-a" d="M424 26 V34 H556 V26"/>
+
+            <rect class="box-m" x="20" y="44" width="40" height="42" rx="4"/>
+            <text class="t-m" x="40" y="70" text-anchor="middle">CM</text>
+            <text class="t-m" x="66" y="70">-</text>
+            <rect class="box-m" x="72" y="44" width="88" height="42" rx="4"/>
+            <text class="t-m" x="116" y="70" text-anchor="middle">SOUTHCTR</text>
+            <text class="t-m" x="166" y="70">-</text>
+            <rect class="box" x="172" y="44" width="56" height="42" rx="4"/>
+            <text class="t-m" x="200" y="70" text-anchor="middle">CAMR</text>
+            <text class="t-m" x="234" y="70">-</text>
+            <rect class="box" x="240" y="44" width="88" height="42" rx="4"/>
+            <text class="t-m" x="284" y="70" text-anchor="middle">20260228</text>
+            <text class="t-m" x="334" y="70">-</text>
+            <rect class="box" x="340" y="44" width="72" height="42" rx="4"/>
+            <text class="t-m" x="376" y="70" text-anchor="middle">FY2025</text>
+            <text class="t-m" x="418" y="70">-</text>
+            <rect class="box-a" x="424" y="44" width="56" height="42" rx="4"/>
+            <text class="t-m" x="452" y="70" text-anchor="middle">R06C</text>
+            <text class="t-m" x="486" y="70">-</text>
+            <rect class="box-a" x="492" y="44" width="64" height="42" rx="4"/>
+            <text class="t-m" x="524" y="70" text-anchor="middle">D2033</text>
+            <text class="t-m" x="562" y="70">.xlsx</text>
+
+            <text class="t-s" x="40" y="102" text-anchor="middle">division</text>
+            <text class="t-s" x="116" y="102" text-anchor="middle">asset</text>
+            <text class="t-s" x="200" y="102" text-anchor="middle">tag</text>
+            <text class="t-s" x="284" y="102" text-anchor="middle">doc date</text>
+            <text class="t-s" x="376" y="102" text-anchor="middle">descriptor</text>
+
+            <text class="t-s" x="620" y="58">Dropped into the asset folder,</text>
+            <text class="t-s" x="620" y="74">so the first two fields are</text>
+            <text class="t-s" x="620" y="90">never typed by anyone.</text>
+
+            <path class="ln-a" d="M200 116 V142 H452 V92" marker-end="url(#a2a)"/>
+            <text class="t-c" x="326" y="134" text-anchor="middle">RULE TABLE LOOKUP FROM THE TAG</text>
+
+            <rect class="box-m" x="20" y="178" width="270" height="52" rx="5"/>
+            <text class="t-k" x="34" y="200">TRIGGER EVENT DATE</text>
+            <text class="t-s" x="34" y="218">From the document, or from AppFolio</text>
+
+            <path class="ln-a" d="M290 204 H524 V92" marker-end="url(#a2a)"/>
+            <text class="t-c" x="404" y="196" text-anchor="middle">TRIGGER YEAR + RETENTION + 1</text>
+
+            <text class="t-s" x="600" y="200">A model error can mis-file a</text>
+            <text class="t-s" x="600" y="216">document. It cannot produce an</text>
+            <text class="t-s" x="600" y="232">indefensible destruction.</text>
+          </svg>
+          <figcaption><strong>Two fields are derived, not entered.</strong> AI reads the document and proposes what it is, when it happened, and what to call it. The retention code is then a lookup from the tag, and the destruction year is arithmetic on the trigger date. Because neither is typed, a wrong answer from the model shows up as the wrong document type rather than as a file that deletes itself too early.</figcaption>
+        </figure>
+
         <div class="comp-wrap reveal" style="margin-top:30px;">
           <table class="comp-table narrow">
             <thead>
@@ -1165,6 +1311,49 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         <!-- ---------- SECTION 3 · TAGS ---------- -->
         <div class="sec-head reveal" style="margin-top:52px;"><h3>Document tags</h3><span class="pipe">|</span><span class="kick">Definition</span></div>
         <p class="lead reveal">A tag is a four-character code identifying what kind of record a document is. It is stored in two places at once: inside the file name, and in a SharePoint metadata column populated from that name on upload. The duplication is deliberate. The column drives views, filters, dashboards, and automation inside SharePoint. The name is what allows the record to be understood after it leaves SharePoint, whether downloaded, emailed to an owner, exported on termination of a management agreement, or migrated to a successor system. Metadata is stripped at that boundary; the file name is not.</p>
+
+        <figure class="diagram reveal">
+          <svg viewBox="0 0 860 268" role="img" aria-label="The same tag stored twice: in the file name and in a SharePoint metadata column. When a document leaves SharePoint the metadata column does not travel with it and the file name does.">
+            <defs>
+              <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ar" d="M0 0 L10 5 L0 10 z"/></marker>
+              <marker id="a3a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ar-a" d="M0 0 L10 5 L0 10 z"/></marker>
+            </defs>
+
+            <rect class="ln-d" x="8" y="24" width="420" height="222" rx="6" fill="none"/>
+            <text class="t-k" x="20" y="16">INSIDE SHAREPOINT</text>
+
+            <rect class="box-a" x="26" y="46" width="384" height="62" rx="5"/>
+            <text class="t-c" x="40" y="68">THE FILE NAME</text>
+            <text class="t-ms" x="40" y="92">CM-SOUTHCTR-CAMR-20260228-R06C-D2033.xlsx</text>
+
+            <line class="ln" x1="218" y1="108" x2="218" y2="156" marker-end="url(#a3)"/>
+            <text class="t-k" x="228" y="136">PARSED ON UPLOAD</text>
+
+            <rect class="box" x="26" y="162" width="384" height="62" rx="5"/>
+            <text class="t-k" x="40" y="184">THE METADATA COLUMN</text>
+            <text class="t-ms" x="40" y="208">DocType = CAMR</text>
+            <text class="t-s" x="196" y="208">drives views, filters, dashboards</text>
+
+            <path class="ln-a" d="M410 70 H560" marker-end="url(#a3a)"/>
+            <text class="t-c" x="416" y="58">THE NAME TRAVELS</text>
+
+            <path class="ln-d" d="M410 193 H520"/>
+            <line class="ln-d" x1="530" y1="186" x2="544" y2="200"/>
+            <line class="ln-d" x1="544" y1="186" x2="530" y2="200"/>
+            <text class="t-k" x="446" y="178">THE COLUMN DOES NOT</text>
+
+            <rect class="box" x="576" y="46" width="280" height="178" rx="5"/>
+            <text class="t-k" x="590" y="38">OUTSIDE SHAREPOINT</text>
+            <text class="t" x="592" y="74">Downloaded to a desktop</text>
+            <text class="t" x="592" y="98">Emailed to an owner</text>
+            <text class="t" x="592" y="122">Exported on termination</text>
+            <text class="t" x="592" y="146">Migrated to a successor system</text>
+            <line class="ln-t" x1="592" y1="164" x2="840" y2="164"/>
+            <text class="t-ms" x="592" y="186">…-CAMR-…-R06C-D2033</text>
+            <text class="t-s" x="592" y="208">still readable, still classified</text>
+          </svg>
+          <figcaption><strong>The duplication is the point.</strong> The metadata column is what makes the library usable while a document sits in it. The name is what keeps the document intelligible once it does not: on an owner&rsquo;s desktop, in an association&rsquo;s hands at termination, or inside whatever system replaces this one.</figcaption>
+        </figure>
 
         <div class="sec-head reveal" style="margin-top:44px;"><h3>Return beyond search</h3><span class="pipe">|</span><span class="kick">Ten uses</span></div>
         <ul class="mp-list reveal">
@@ -1461,12 +1650,130 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
             </tbody>
           </table>
         </div>
-        <div class="highlight reveal">
-          <span class="h-label">Why the example matters</span>
-          <span class="h-value">The project file becomes destructible roughly a year after the repose bar runs, deliberately. The certificate never becomes destructible at all, because it is the only document that proves when the repose clock started. Neither answer is visible from the folder the documents sit in. That is the case for calculating rather than remembering.</span>
-        </div>
+        <figure class="diagram reveal">
+          <svg viewBox="0 0 860 258" role="img" aria-label="Timeline of one roof replacement. The completion certificate is permanent, the project file becomes destructible in January 2033, and the construction defect repose bar runs in September 2032, so the file outlives the exposure by four months.">
+            <defs>
+              <marker id="a4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ar" d="M0 0 L10 5 L0 10 z"/></marker>
+              <marker id="a4a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ar-a" d="M0 0 L10 5 L0 10 z"/></marker>
+            </defs>
+
+            <text class="t-k" x="124" y="14">SUBSTANTIAL COMPLETION, 5 SEPTEMBER 2026</text>
+            <line class="ln-t" x1="124" y1="20" x2="124" y2="196"/>
+
+            <text class="t-k" x="128" y="42">SUBC, CERTIFICATE OF SUBSTANTIAL COMPLETION</text>
+            <rect class="box-a" x="124" y="48" width="700" height="22" rx="3"/>
+            <line class="ln-a" x1="824" y1="59" x2="850" y2="59" marker-end="url(#a4a)"/>
+            <text class="t-c" x="700" y="64" text-anchor="end">PERMANENT, NEVER DESTROYED</text>
+
+            <text class="t-k" x="128" y="96">CAPX, CAPITAL PROJECT FILE, RETENTION CLOCK</text>
+            <rect class="box" x="124" y="102" width="608" height="22" rx="3"/>
+            <line class="ln-t" x1="732" y1="102" x2="732" y2="196"/>
+            <text class="t-k" x="728" y="96" text-anchor="end">DESTROY ELIGIBLE 1 JANUARY 2033</text>
+
+            <text class="t-k" x="128" y="150">CONSTRUCTION DEFECT REPOSE, LIMITATIONS CLOCK</text>
+            <rect class="box-x" x="124" y="156" width="576" height="22" rx="3"/>
+            <line class="ln-t" x1="700" y1="178" x2="700" y2="196"/>
+            <text class="t-k" x="696" y="150" text-anchor="end">REPOSE BAR RUNS SEPTEMBER 2032</text>
+
+            <line class="ln" x1="60" y1="196" x2="850" y2="196"/>
+            <line class="ln" x1="60" y1="196" x2="60" y2="202"/>
+            <text class="t-s" x="60" y="216" text-anchor="middle">2026</text>
+            <line class="ln" x1="156" y1="196" x2="156" y2="202"/>
+            <text class="t-s" x="156" y="216" text-anchor="middle">2027</text>
+            <line class="ln" x1="252" y1="196" x2="252" y2="202"/>
+            <text class="t-s" x="252" y="216" text-anchor="middle">2028</text>
+            <line class="ln" x1="348" y1="196" x2="348" y2="202"/>
+            <text class="t-s" x="348" y="216" text-anchor="middle">2029</text>
+            <line class="ln" x1="444" y1="196" x2="444" y2="202"/>
+            <text class="t-s" x="444" y="216" text-anchor="middle">2030</text>
+            <line class="ln" x1="540" y1="196" x2="540" y2="202"/>
+            <text class="t-s" x="540" y="216" text-anchor="middle">2031</text>
+            <line class="ln" x1="636" y1="196" x2="636" y2="202"/>
+            <text class="t-s" x="636" y="216" text-anchor="middle">2032</text>
+            <line class="ln" x1="732" y1="196" x2="732" y2="202"/>
+            <text class="t-s" x="732" y="216" text-anchor="middle">2033</text>
+            <line class="ln" x1="828" y1="196" x2="828" y2="202"/>
+            <text class="t-s" x="828" y="216" text-anchor="middle">2034</text>
+
+            <path class="ln-a" d="M700 236 H732"/>
+            <line class="ln-a" x1="700" y1="230" x2="700" y2="242"/>
+            <line class="ln-a" x1="732" y1="230" x2="732" y2="242"/>
+            <text class="t-c" x="688" y="240" text-anchor="end">FOUR MONTHS. THE FILE OUTLIVES THE EXPOSURE, BY DESIGN.</text>
+          </svg>
+          <figcaption><strong>Two documents from one job, three different answers.</strong> The project file stays destructible only after the repose bar has run, so nothing is thrown away while a claim is still possible. The certificate is never destructible at all, because it is the only record that proves when the repose clock started. Neither answer is visible from the folder the two documents sit in, which is the case for calculating a date rather than remembering one.</figcaption>
+        </figure>
 
         <div class="sec-head reveal" style="margin-top:48px;"><h3>Pipeline</h3><span class="pipe">|</span><span class="kick">Arrival to destruction</span></div>
+
+        <figure class="diagram reveal">
+          <svg viewBox="0 0 860 256" role="img" aria-label="Seven pipeline steps from intake to approval. AI reads the document and stops at the review gate; from the rule engine onward every step is deterministic, and a person approves before anything is destroyed.">
+            <defs>
+              <marker id="a5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ar" d="M0 0 L10 5 L0 10 z"/></marker>
+              <marker id="a5a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ar-a" d="M0 0 L10 5 L0 10 z"/></marker>
+            </defs>
+
+            <text class="t-k" x="190" y="14" text-anchor="middle">AI PROPOSES FACTS</text>
+            <text class="t-c" x="620" y="14" text-anchor="middle">THE SYSTEM APPLIES RULES</text>
+            <line class="ln-d" x1="370" y1="22" x2="370" y2="232"/>
+
+            <rect class="box" x="20" y="60" width="100" height="62" rx="5"/>
+            <text class="t-n" x="30" y="80">1</text>
+            <text class="t-b" x="30" y="99">Intake</text>
+            <text class="t-s" x="30" y="114">filed, named</text>
+
+            <rect class="box" x="140" y="60" width="100" height="62" rx="5"/>
+            <text class="t-n" x="150" y="80">2</text>
+            <text class="t-b" x="150" y="99">Extraction</text>
+            <text class="t-s" x="150" y="114">AI reads it</text>
+
+            <rect class="box" x="260" y="60" width="100" height="62" rx="5"/>
+            <text class="t-n" x="270" y="80">3</text>
+            <text class="t-b" x="270" y="99">Review gate</text>
+            <text class="t-s" x="270" y="114">confidence</text>
+
+            <rect class="box-a" x="380" y="60" width="100" height="62" rx="5"/>
+            <text class="t-n" x="390" y="80">4</text>
+            <text class="t-b" x="390" y="99">Rule engine</text>
+            <text class="t-s" x="390" y="114">lookup only</text>
+
+            <rect class="box" x="500" y="60" width="100" height="62" rx="5"/>
+            <text class="t-n" x="510" y="80">5</text>
+            <text class="t-b" x="510" y="99">Join</text>
+            <text class="t-s" x="510" y="114">AppFolio dates</text>
+
+            <rect class="box" x="620" y="60" width="100" height="62" rx="5"/>
+            <text class="t-n" x="630" y="80">6</text>
+            <text class="t-b" x="630" y="99">Live compute</text>
+            <text class="t-s" x="630" y="114">on read</text>
+
+            <rect class="box" x="740" y="60" width="100" height="62" rx="5"/>
+            <text class="t-n" x="750" y="80">7</text>
+            <text class="t-b" x="750" y="99">Approval</text>
+            <text class="t-s" x="750" y="114">a person signs</text>
+
+            <line class="ln" x1="120" y1="91" x2="136" y2="91" marker-end="url(#a5)"/>
+            <line class="ln" x1="240" y1="91" x2="256" y2="91" marker-end="url(#a5)"/>
+            <line class="ln" x1="360" y1="91" x2="376" y2="91" marker-end="url(#a5)"/>
+            <line class="ln" x1="480" y1="91" x2="496" y2="91" marker-end="url(#a5)"/>
+            <line class="ln" x1="600" y1="91" x2="616" y2="91" marker-end="url(#a5)"/>
+            <line class="ln" x1="720" y1="91" x2="736" y2="91" marker-end="url(#a5)"/>
+
+            <path class="ln" d="M310 122 V166" marker-end="url(#a5)"/>
+            <text class="t-k" x="356" y="146" text-anchor="end">BELOW THE THRESHOLD</text>
+            <rect class="box-m" x="176" y="172" width="184" height="48" rx="5"/>
+            <text class="t-b" x="190" y="192">Review queue</text>
+            <text class="t-s" x="190" y="210">a person confirms first</text>
+            <path class="ln" d="M360 196 H452 V126" marker-end="url(#a5)"/>
+
+            <path class="ln-a" d="M790 122 V166" marker-end="url(#a5a)"/>
+            <text class="t-c" x="778" y="146" text-anchor="end">ON APPROVAL ONLY</text>
+            <rect class="box-a" x="660" y="172" width="196" height="48" rx="5"/>
+            <text class="t-b" x="674" y="192">Destroyed, and logged</text>
+            <text class="t-s" x="674" y="210">nothing deletes itself</text>
+          </svg>
+          <figcaption><strong>Where the model&rsquo;s authority ends.</strong> AI reads a document and returns facts. Everything to the right of the dashed line is a deterministic lookup against a versioned schedule, and the last step is a person. A low-confidence reading drops into a queue rather than assigning a date quietly, which is what keeps an extraction error from becoming a destruction error.</figcaption>
+        </figure>
+
         <ol class="step-list reveal">
           <li><strong>Intake.</strong> The document is filed and named. Naming happens at filing, never afterwards.</li>
           <li><strong>Extraction.</strong> AI reads the document and returns document type, trigger event, trigger date, and a confidence score.</li>
@@ -1479,6 +1786,51 @@ html{scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
         <p class="sub-note reveal"><strong>Consequence of the operational join.</strong> Once it is in place, the monthly open-clock reconciliation stops being a manual task: a tenancy ends in AppFolio and the clock starts on its own. That reconciliation is currently the single point at which the whole system fails if a person forgets. It is also the reason the AppFolio Database API in the next section is a dependency of this work rather than a parallel request.</p>
 
         <div class="sec-head reveal" style="margin-top:48px;"><h3>Clock states</h3><span class="pipe">|</span><span class="kick">Four, and what each owes</span></div>
+
+        <figure class="diagram reveal">
+          <svg viewBox="0 0 860 244" role="img" aria-label="A document moves from clock not started, to counting when the trigger is recorded, to eligible when the date passes, to destroyed only on approval. A hold applied from any state overrides all of it.">
+            <defs>
+              <marker id="a6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ar" d="M0 0 L10 5 L0 10 z"/></marker>
+              <marker id="a6a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ar-a" d="M0 0 L10 5 L0 10 z"/></marker>
+            </defs>
+
+            <rect class="box-m" x="8" y="30" width="180" height="58" rx="5"/>
+            <text class="t-b" x="24" y="55">Clock not started</text>
+            <text class="t-ms" x="24" y="75">DOPEN</text>
+
+            <rect class="box" x="234" y="30" width="180" height="58" rx="5"/>
+            <text class="t-b" x="250" y="55">Counting</text>
+            <text class="t-ms" x="250" y="75">D2033</text>
+
+            <rect class="box" x="460" y="30" width="180" height="58" rx="5"/>
+            <text class="t-b" x="476" y="55">Eligible now</text>
+            <text class="t-s" x="476" y="75">on the next purge list</text>
+
+            <rect class="box-a" x="686" y="30" width="166" height="58" rx="5"/>
+            <text class="t-b" x="702" y="55">Destroyed</text>
+            <text class="t-s" x="702" y="75">and logged permanently</text>
+
+            <line class="ln" x1="188" y1="59" x2="228" y2="59" marker-end="url(#a6)"/>
+            <text class="t-k" x="208" y="104" text-anchor="middle">TRIGGER RECORDED</text>
+            <line class="ln" x1="414" y1="59" x2="454" y2="59" marker-end="url(#a6)"/>
+            <text class="t-k" x="434" y="104" text-anchor="middle">DATE PASSES</text>
+            <line class="ln-a" x1="640" y1="59" x2="680" y2="59" marker-end="url(#a6a)"/>
+            <text class="t-c" x="660" y="104" text-anchor="middle">OWNER APPROVES</text>
+
+            <line class="ln-d" x1="98" y1="150" x2="550" y2="150"/>
+            <line class="ln-d" x1="98" y1="88" x2="98" y2="150"/>
+            <line class="ln-d" x1="324" y1="88" x2="324" y2="150"/>
+            <line class="ln-d" x1="550" y1="88" x2="550" y2="150"/>
+            <line class="ln" x1="324" y1="150" x2="324" y2="176" marker-end="url(#a6)"/>
+            <text class="t-k" x="338" y="168">A HOLD APPLIED FROM ANY STATE</text>
+
+            <rect class="box-a" x="214" y="182" width="400" height="52" rx="5"/>
+            <text class="t-b" x="230" y="204">On hold</text>
+            <text class="t-s" x="230" y="222">does not count down, never proposed, released in writing only</text>
+          </svg>
+          <figcaption><strong>Only one transition is automatic.</strong> Recording a trigger starts the clock and the passage of a date makes a file eligible, but nothing moves into the final state without a person. A hold interrupts the sequence from wherever the document happens to be and holds it there until someone lifts it in writing.</figcaption>
+        </figure>
+
         <div class="fee-compact-grid reveal">
           <div class="fee-compact-cell left">
             <div class="fc-k">State</div>
