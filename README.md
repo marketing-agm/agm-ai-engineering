@@ -175,16 +175,31 @@ Tracked once the key is set:
   `.tree` for the three division trees, `.tag-cols` for the tag lists, and `.legend` for the
   added/unchanged/restricted key. `.tree` and `.legend` define their amber and red variants for
   light and dark separately, so a palette change needs both.
-- Section 3 carries six hand-authored inline SVG figures: the four folder levels and the file name
-  at the end of the path, the file name banded by which fields are machine-set and which are AI
-  proposed, the tag stored in both the name and the metadata column with only the name surviving
-  export, the two clocks on a dated timeline, the seven-step pipeline with the line where AI
-  authority ends, and the clock-state machine. Every stroke and fill resolves to a design token, so
-  the figures follow the light and dark toggle without a second copy, and marker fills are set by
-  class because a `<marker>` does not inherit color from the element referencing it. Coordinates are
-  hand-placed against the `viewBox`: moving a label means checking it still clears its neighbours,
-  since nothing here reflows. Below 760px each figure keeps its drawn size and scrolls inside its own
-  box, because scaling an 860-unit viewBox into a phone width renders the labels illegible.
+- Section 3 is figure-led by design: twelve hand-authored inline SVG figures carry the argument and
+  the prose between them is deliberately short. The figures are, in order: how the four pieces
+  connect and what comes out of them; the four folder levels and the file name at the end of the
+  path; the shared spine with what commercial adds and what association replaces; the file name
+  banded by which fields are machine-set and which are AI proposed; six worked naming examples with
+  the retention tail highlighted; the tag stored in both the name and the metadata column with only
+  the name surviving export; six standing queries off three marks; the thirteen retention periods
+  drawn to scale against their triggers; stored facts versus values calculated on read; the two
+  clocks on a dated timeline; the seven-step pipeline with the line where AI authority ends; and the
+  clock-state machine.
+- Reference material sits in `<details>` disclosures rather than inline: every table in the section,
+  the three folder trees, the six tag lists, the date rule, the ten uses of a tag, and the
+  limitations dimension. The section reads as figures and captions with the tables one click away,
+  which is the intended reading order. Do not promote a table back inline without moving something
+  else out.
+- Every stroke and fill in the figures resolves to a design token, so they follow the light and dark
+  toggle without a second copy, and marker fills are set by class because a `<marker>` does not
+  inherit color from the element referencing it. Coordinates are hand-placed against the `viewBox`:
+  moving a label means checking it still clears its neighbours, since nothing here reflows. Below
+  760px each figure keeps its drawn size and scrolls inside its own box, because scaling an 860-unit
+  viewBox into a phone width renders the labels illegible.
+- The retention-period figure is a single-series bar chart: one hue, direct labels in the left
+  column, recessive gridlines, and the two open-ended codes drawn dashed with an arrow rather than
+  given a false end. Keep it single-series; a second series here would need a legend and would not
+  say anything the trigger column does not.
 - The figure wrapper class is `.diagram`, not `.fig`. `.fig` was already taken by the figure cell in
   a `comp-table` total row, and using it for the figures silently restyled those cells.
 - The footer logos are shared AGM brand assets at `/assets/agm-logo-black.svg` and
